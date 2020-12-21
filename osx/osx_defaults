@@ -1,0 +1,6 @@
+NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+NSGlobalDomain KeyRepeat -int 1.6
+NSGlobalDomain InitialKeyRepeat -int 15
+com.apple.desktopservices DSDontWriteNetworkStores -bool true
+com.apple.finder FXEnableExtensionChangeWarning -bool false
+com.apple.terminal StringEncodings -array 4
