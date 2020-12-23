@@ -34,4 +34,4 @@ colorscheme inheritor
 set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 
 " Cursor appearance
-set guicursor=a:block-blinkon0,i-c-ci:ver1-blinkon0
+set guicursor=a:block-blinkon1,i-c-ci:ver1-blinkon1
