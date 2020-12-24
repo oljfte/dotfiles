@@ -98,7 +98,7 @@ function! CustomAbsolutePath()
 endfunction
 
 function! CustomFileName()
-  return exists(expand('%:t'))? ' '.expand('%:t').' ' : ''
+  return ' '.expand('%:t').' '
 endfunction
 
 function! CustomModified()
