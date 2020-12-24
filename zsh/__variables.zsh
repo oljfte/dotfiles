@@ -21,8 +21,6 @@ export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
-export EDITOR=nvim
-export GIT_EDITOR=nvim
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export COMPOSE_DOCKER_CLI_BUILD=1
@@ -32,3 +30,5 @@ export SHELL_SESSION_HISTORY=0
 
 # For ARM (may be temporary)
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+export EDITOR="VIMRUNTIME=$HOME/neovim/runtime $HOME/neovim/build/bin/nvim"
+export GIT_EDITOR=$EDITOR
