@@ -66,7 +66,7 @@ let g:lightline = {
     \   'right': [['cocgitbranch'], ['cocgitdiff']]
     \ },
     \ 'inactive': {
-    \   'left': [['filename']],
+    \   'left': [['NONE'], ['filename']],
     \   'right': []
     \ },
     \ 'component_function': {
