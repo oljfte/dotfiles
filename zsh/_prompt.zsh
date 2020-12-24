@@ -96,7 +96,7 @@ zle -N zle-line-init
 # Construct prompt
 function transient-line() {
     local saved_prompt=$PROMPT
-    PROMPT=$'\n'$'\n'"%F{7}$(fill-line '%~' '%T ')"$'\n'"❯ %f"
+    PROMPT=$'\n'$'\n'"%F{7}$(fill-line '%~' '%T ')"$'\n'"$(venv-name)❯ %f"
     zle reset-prompt
     PROMPT=$saved_prompt
     zle accept-line
