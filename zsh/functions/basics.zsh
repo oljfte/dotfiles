@@ -41,6 +41,18 @@ function colors() {
     echo
 }
 
+function rgitstatus() {
+    for x in $(find . -type d -name ".git"); do
+        pushd $(dirname $x) >/dev/null
+        repeat $COLUMNS printf "\e[37;1m-\e[m"
+        printf "\e[37;1m\n$(pwd)\n\e[m"
+        git status -s
+        [ -z "$(git status -s)" ] && echo "Nothing to commit, working tree clean."
+        popd >/dev/null
+        echo
+    done
+}
+
 function localhost() {
     open http://localhost:$1
 }
