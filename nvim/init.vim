@@ -4,6 +4,6 @@ for config_path in split(globpath('$DOTFILES/nvim/', '_[^_]*\.vim'), '\n')
 endfor
 
 " Source custom configs
-for config_path in split(globpath('$PERSONAL/nvim/', '_[^_]*\.vim'), '\n')
+for config_path in split(globpath('$PERSONAL/nvim/', '*\.vim'), '\n')
   exe 'source' config_path
 endfor
