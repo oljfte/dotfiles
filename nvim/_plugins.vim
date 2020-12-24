@@ -235,4 +235,4 @@ nmap [C <Plug>(coc-git-prevconflict)
 nmap ]C <Plug>(coc-git-nextconflict)
 nmap Gs <Plug>(coc-git-chunkinfo)
 nmap Gc <Plug>(coc-git-commit)
-
+nmap <leader>u :CocCommand git.chunkUndo<CR>
