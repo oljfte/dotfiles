@@ -140,7 +140,7 @@ function room() {
 function pyv() {
     if [ "$1" = "create" ]; then
         if [ ! -z "$2" ]; then
-            python -m venv $PYVENVS/$2
+            python -m venv $PYVENVS/$2 --system-site-packages
             ln -fs $PERSONAL/python/sitecustomize.py $PYVENVS/$2/lib/python*/site-packages
         else
             echo "Specify venv name."
