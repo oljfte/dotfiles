@@ -1,2 +1,2 @@
-*/10 * * * * root find ~ -type f -name .DS_Store 2>/dev/null -delete
-0 5 * * * root source ~/.zshrc && refresh
+SHELL=/bin/zsh
+*/10 * * * * find ~ -type f -name .DS_Store 2>/dev/null -delete
