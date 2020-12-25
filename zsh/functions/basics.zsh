@@ -134,10 +134,16 @@ function pyv() {
             echo "Specify venv name."
         fi
     elif [ "$1" = "list" ]; then
-        ls -a $PYVENVS | sort
+        ls $PYVENVS | sort
     elif [ "$1" = "up" ]; then
         if [ ! -z "$2" ]; then
             source $PYVENVS/$2/bin/activate
+        else
+            echo "Specify venv name."
+        fi
+    elif [ "$1" = "delete" ]; then
+        if [ ! -z "$2" ]; then
+            trash $PYVENVS/$2 && echo "Deleted venv $2 successfully."
         else
             echo "Specify venv name."
         fi
