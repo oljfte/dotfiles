@@ -91,18 +91,6 @@ function zshcf() {
     fi && ( source $HOME/.zshrc; zsh; echo "ZSH configurations have been successfully reloaded." )
 }
 
-function refresh() { # TODO
-    brew update
-    brew upgrade
-    brew cleanup
-    cd $DOTFILES/brew && brew bundle dump -f
-    nvim +PlugUpgrade +PlugUpdate +PlugClean! +qall >/dev/null
-    cd ~/.tmux/plugins/tpm/bin
-    sh install_plugins
-    sh update_plugins all
-    sh clean_plugins
-}
-
 function _tmux_session() {
     config_source="$PERSONAL/tmux/.tmux.$1.conf"
     if [ -f $config_source ]; then
