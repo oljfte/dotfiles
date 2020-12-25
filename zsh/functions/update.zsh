@@ -2,7 +2,7 @@ function update-brew() {
     brew update
     brew upgrade
     brew cleanup
-    cd $DOTFILES/brew && brew bundle dump -f
+    cd $DOTFILES/brew &>/dev/null && brew bundle dump -f
 }
 
 function update-vim() {
@@ -10,9 +10,9 @@ function update-vim() {
 }
 
 function update-tmux() {
-    cd ~/.tmux/plugins/tpm/bin
+    cd ~/.tmux/plugins/tpm/bin &>/dev/null
     sh install_plugins
-    sh update-plugins all
+    sh update_plugins all
     sh clean_plugins
 }
 
@@ -30,7 +30,7 @@ function update-venv_pip() {
 }
 
 function update-gcloud() {
-    gcloud components update
+    gcloud -q components update
 }
 
 function update-all() {
