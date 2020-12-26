@@ -46,7 +46,7 @@ function rgitstatus() {
         pushd $(dirname $x) >/dev/null
         repeat $COLUMNS printf "\e[37;1m-\e[m"
         printf "\e[37;1m\n$(pwd)\n\e[m"
-        git status -s
+        git status -s 2>/dev/null
         [ -z "$(git status -s)" ] && echo "Nothing to commit, working tree clean."
         popd >/dev/null
         echo
@@ -109,7 +109,6 @@ function room() {
     if [ "$(tmux display-message -p -F "#{session_name}" 2>/dev/null)" = "popup" ]; then
         eval $(tmux showenv -gs TMUX_LAST_DETECTED_SESSION)
         parent_session=$TMUX_LAST_DETECTED_SESSION
-        echo $parent_session
         tmux new-window -n 'room_exec_tmp' -t $parent_session &>/dev/null && zsh_pane_index='room_exec_tmp'
         tmux send-keys -t "${parent_session}:${zsh_pane_index}" "_tmux_session $1" C-m &>/dev/null
         for i in `seq 100`; do # Timeout after 5 seconds
