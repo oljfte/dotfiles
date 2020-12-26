@@ -207,8 +207,8 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Coc-explorer
-nmap <silent> <C-e> :CocCommand explorer --quit-on-open --width 40 --sources=buffer+,file+<CR>
-autocmd VimEnter * if !argc() | exe "CocCommand explorer --quit-on-open --width 40 --sources=buffer+,file+ " . expand('%:p:h') | endif
+nmap <silent> <C-e> :CocCommand explorer --width 40 --sources=buffer+,file+<CR>
+autocmd VimEnter * if !argc() | exe "CocCommand explorer --width 40 --sources=buffer+,file+ " . expand('%:p:h') | endif
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 autocmd Filetype coc-explorer :IndentLinesDisable
 highlight CocExplorerBufferRoot ctermfg=15
