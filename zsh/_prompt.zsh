@@ -126,6 +126,6 @@ add-zsh-hook precmd set-prompt
 TRAPWINCH () {
     set-prompt
     zle reset-prompt
-    clear
+    # clear
 }
  
