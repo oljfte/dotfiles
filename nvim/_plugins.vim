@@ -40,6 +40,9 @@ Plug 'christoomey/vim-tmux-navigator'
 " Multi language syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
+" Folding
+Plug 'pseewald/vim-anyfold'
+
 " Snippets (works with coc-snippets)
 Plug 'honza/vim-snippets'
 
@@ -56,6 +59,22 @@ filetype plugin indent on
 
 " Make sure to prioritize configurations below over base visual settings
 source $DOTFILES/nvim/__visual.vim
+
+" vim-anyfold
+set foldlevel=99
+
+augroup anyfold
+    autocmd!
+    autocmd Filetype * AnyFoldActivate
+augroup END
+
+autocmd BufReadPre,BufRead * let f=getfsize(expand("<afile>")) | if f > 1000000 || f == -2 | call LargeFile() | endif
+function LargeFile()
+    augroup anyfold
+        autocmd!
+        autocmd Filetype * setlocal foldmethod=indent
+    augroup END
+endfunction
 
 " lightline
 source $DOTFILES/nvim/colors/inheritor_lightline.vim
