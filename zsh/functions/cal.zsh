@@ -57,8 +57,7 @@ EOS
 )
 
 function show-cal() {
-    TEMP_FILE=$(mktemp $TEMP_DIR/cal.XXXXXX)
-
+    temp_file=$(mktemp $TEMP_DIR/cal.XXXXXX)
     (for event_file in `find ~/Library/Calendars -name "*.ics"`; do
         regex_command=" | sed -E 's/^[A-Z].*:(.*$)/\1/g' | sed -E 's/^([0-9]{4})([0-9]{2})([0-9]{2})T([0-9]{2})([0-9]{2})([0-9]{2}).*$/\1-\2-\3 \4:\5/g'"
         start_date=`eval "grep -h -e 'DTSTART' $event_file $regex_command"`
