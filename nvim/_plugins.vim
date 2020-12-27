@@ -78,7 +78,7 @@ source $DOTFILES/nvim/colors/inheritor_lightline.vim
 let g:lightline = {
     \ 'colorscheme': 'inheritor_lightline',
     \ 'active': {
-    \   'left': [['mode', 'paste'], ['cocstatus', winwidth(0) > 120 ? 'absolutepath' : 'filename', 'modified' ]],
+    \   'left': [['mode', 'paste'], ['cocstatus', winwidth(0) > 160 ? 'absolutepath' : 'filename', 'modified' ]],
     \   'right': [['cocgitbranch'], ['cocgitdiff']]
     \ },
     \ 'inactive': {
