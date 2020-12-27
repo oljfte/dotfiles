@@ -147,6 +147,14 @@ set updatetime=100
 set shortmess+=c
 set signcolumn=yes
 
+let g:coc_global_extensions = [
+      \'coc-explorer',
+      \'coc-git',
+      \'coc-pyright',
+      \'coc-highlight',
+      \'coc-json',
+      \]
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>":
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
