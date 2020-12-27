@@ -125,7 +125,7 @@ add-zsh-hook precmd set-prompt
 # Reset prompt on window resize
 TRAPWINCH () {
     set-prompt
-    zle reset-prompt
+    zle reset-prompt &>/dev/null
     # clear
 }
  
