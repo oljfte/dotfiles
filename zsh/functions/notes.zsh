@@ -39,7 +39,7 @@ call_notes_functions=$(cat << EOS
         tell application "Notes"
             tell account "iCloud"
                 repeat with theNote in notes in folder "Notes"
-                   return name of theNote as string 
+                   log name of theNote as string 
                 end repeat
             end tell
         end tell
