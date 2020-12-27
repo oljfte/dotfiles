@@ -189,9 +189,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
-highlight! link CocHighlightText Search
-
 nmap <leader>rn <Plug>(coc-rename)
 
 xmap <leader>f  <Plug>(coc-format-selected)
