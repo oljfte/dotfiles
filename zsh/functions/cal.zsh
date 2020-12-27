@@ -56,7 +56,7 @@ call_calendar_functions=$(cat << EOS
 EOS
 )
 
-function show_cal() {
+function show-cal() {
     TEMP_FILE=$(mktemp $TEMP_DIR/cal.XXXXXX)
 
     (for event_file in `find ~/Library/Calendars -name "*.ics"`; do
@@ -76,10 +76,10 @@ function show_cal() {
                 fi
             fi
         fi
-    done) > $TEMP_FILE
-    sort $TEMP_FILE -o $TEMP_FILE
-    cat $TEMP_FILE
-    rm $TEMP_FILE
+    done) > $temp_file
+    sort $temp_file -o $temp_file
+    cat $temp_file
+    rm $temp_file
 }
 
 function cal() {
@@ -91,7 +91,7 @@ function cal() {
         echo
         repeat 64 printf "\e[37;1m-\e[m"
         echo "\n"
-        show_cal ${2:-1}
+        show-cal ${2:-1}
     elif [ "$1" = "add" ]; then
         echo "Add event $2 $3 $4"
         calendar_action="addEventToCalendar($cal_args)"
