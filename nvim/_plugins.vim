@@ -37,9 +37,6 @@ Plug 'tpope/vim-surround'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 
-" Multi language syntax highlighting
-Plug 'sheerun/vim-polyglot'
-
 " Folding
 Plug 'pseewald/vim-anyfold'
 
