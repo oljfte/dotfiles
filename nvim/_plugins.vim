@@ -43,6 +43,9 @@ Plug 'pseewald/vim-anyfold'
 " Snippets (works with coc-snippets)
 Plug 'honza/vim-snippets'
 
+" Polyglot
+Plug 'sheerun/vim-polyglot'
+
 " LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
