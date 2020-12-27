@@ -28,6 +28,7 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 export PYTHONDONTWRITEBYTECODE=1
 export KEYTIMEOUT=1
 export SHELL_SESSION_HISTORY=0
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --follow --glob "!.git/*"'
 
 # For ARM (may be temporary)
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
