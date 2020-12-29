@@ -67,9 +67,7 @@ function open-note() {
     note_exists=$(osascript -e "$call_notes_functions" -e "checkIfNoteExists(\"$date\")")
     if [[ $note_exists -eq 1 ]]; then
         echo $(osascript -e "$call_notes_functions" -e "getNote(\"$date\")") > $temp_file
-        cat $temp_file
         plain_txt_buffer=$(sed 's/<\/div> <div>/\n/g' $temp_file | sed 's/<[^>]*>//g' | tail -n +2)
-        echo $plain_txt_buffer
         echo $plain_txt_buffer > $temp_file
     fi
     nvim $temp_file
