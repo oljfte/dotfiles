@@ -81,7 +81,11 @@ function notes() {
     unset notes_action
     notes_args="\"${${@:2}//${IFS:0:1}/\",\"}\""
     if [ "$1" = "open" ]; then
-        open-note $2
+        for note_title in `osascript -e "$call_notes_functions" -e "getNoteList()" 2>&1 | fzf`; do
+            [ ! -z "$note_title" ] && open-note $note_title
+        done
+    elif [ "$1" = "new" ]; then
+        open-note
     elif [ "$1" = "delete" ]; then
         if [ ! -z "$2" ]; then
             osascript -e "$call_notes_functions" -e "deleteNote(\"$2\")"
