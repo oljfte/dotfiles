@@ -24,9 +24,6 @@ Plug 'tpope/vim-commentary'
 " Status line
 Plug 'itchyny/lightline.vim'
 
-" Undotree
-Plug 'mbbill/undotree'
-
 " Indent tool
 Plug 'Yggdroot/indentLine'
 
