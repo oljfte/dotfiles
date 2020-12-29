@@ -18,11 +18,19 @@ function pyv() {
     elif [ "$1" = "list" ]; then
         ls -A1 $PYVENVS
     elif [ "$1" = "up" ]; then
-        venv_name=$(ls -A1 $PYVENVS | fzf)
-        [ ! -z "$venv_name" ] && source $PYVENVS/$venv_name/bin/activate
+        if [ ! -z "$2" ]; then
+            source $PYVENVS/$2/bin/activate
+        else
+            venv_name=$(ls -A1 $PYVENVS | fzf)
+            [ ! -z "$venv_name" ] && source $PYVENVS/$venv_name/bin/activate
+        fi
     elif [ "$1" = "delete" ]; then
-        venv_name=$(ls -A1 $PYVENVS | fzf)
-        [ ! -z "$venv_name" ] && trash $PYVENVS/$venv_name && echo "Deleted venv $venv_name successfully."
+        if [ ! -z "$2" ]; then
+            trash $PYVENVS/$2 && echo "Deleted venv $2 successfully."
+        else
+            venv_name=$(ls -A1 $PYVENVS | fzf)
+            [ ! -z "$venv_name" ] && trash $PYVENVS/$venv_name && echo "Deleted venv $venv_name successfully."
+        fi
     else
         echo "Invalid arguments."
     fi
