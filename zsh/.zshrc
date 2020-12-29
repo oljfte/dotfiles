@@ -22,16 +22,3 @@ if [ -e ${PERSONAL:-' '} ]; then
         source $config
     done
 fi
-
-# Additional sources
-additional_sources=( \
-    $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    $HOME/.poetry/env \
-    $HOME/google-cloud-sdk/path.zsh.inc \
-    $HOME/google-cloud-sdk/completion.zsh.inc \
-    $HOME/.fzf.zsh \
-)
-
-for additional_source in $additional_sources; do
-    [ -f $additional_source ] && source $additional_source
-done
