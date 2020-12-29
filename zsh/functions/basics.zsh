@@ -45,16 +45,25 @@ function localhost() {
     open http://localhost:$1
 }
 
-function _editcf() {
-    target_files=`eval "find $1 -type f -wholename \"*/$2/*\" -wholename \"*${(j:*" -wholename "*:)@:3}*\""`
-    if [[ ! `echo $target_files | sed '/^$/d' | wc -l` -eq 0 ]]; then
-        for target_file in `echo $target_files`; do vim $target_file; done
-        return 0
-    else
-        return 1
+function reload() {
+    if [ "$1" = "all" ]; then
+        for setup_script in $DOTFILES/*/setup.sh; do zsh $setup_script; done
+        for setup_script in $PERSONAL/*/setup.sh; do zsh $setup_script; done
+    elif [ ! -z "$1" ]; then
+        [ -f $DOTFILES/$1/setup.sh ] && zsh $DOTFILES/$1/setup.sh
+        [ -f $PERSONAL/$1/setup.sh ] && zsh $PERSONAL/$1/setup.sh
     fi
+    [[ "$1" = "zsh" || "$1" = "all" ]] && source $HOME/.zshrc
+    [[ "$1" = "tmux" || "$1" = "all" ]] && (tmux ls &>/dev/null && tmux source-file $HOME/.tmux.conf)
+    [ "$2" = "restart" ] && restart
 }
 
+function cf() {
+    for target_file in `builtin cd $DOTFILES && find . -type f | rg --files --hidden --no-ignore --follow --glob '!.git/*' --glob '!personal/.git/*' | sed 's/^.\///' | fzf`; do
+        local target_fullpath=$DOTFILES/$target_file
+        local target_type=${${${target_fullpath#$PERSONAL/}#$DOTFILES/}%%/*}
+        [ -f $target_fullpath ] && ( vim "$target_fullpath"; reload $target_type)
+    done
 }
 
 function update-all() {
