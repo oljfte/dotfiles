@@ -36,7 +36,7 @@ endif
 nnoremap <silent> <ESC><ESC> :noh<cr>
 
 " Easily escape from terminal mode
-tnoremap <silent> <ESC> <C-\><C-n>
+autocmd TermOpen * tnoremap <Esc> <c-\><c-n>
 
 " Inspect highlight group under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
