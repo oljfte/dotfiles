@@ -4,7 +4,7 @@ alias kilt="tmux kill-server"
 # Functions
 function _tmux_session() {
     if [ -z "$1" ]; then
-        session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) && tmux switch-client -t "$session" || echo "No sessions found."
+        session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) && tmux switch-client -t "$session"
     else
         [ -f $DOTFILES/tmux/session-init/.tmux.$1.conf ] && local config_source="$DOTFILES/tmux/session-init/.tmux.$1.conf"
         [ -f $PERSONAL/tmux/session-init/.tmux.$1.conf ] && local config_source="$PERSONAL/tmux/session-init/.tmux.$1.conf"
