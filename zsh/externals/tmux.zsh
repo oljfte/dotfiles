@@ -6,9 +6,9 @@ function _tmux_session() {
     if [ -z "$1" ]; then
         session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) && tmux switch-client -t "$session" || echo "No sessions found."
     else
-        [ -f $DOTFILES/tmux/session-init/.tmux.$1.conf ] && config_source="$DOTFILES/tmux/.tmux.$1.conf"
-        [ -f $PERSONAL/tmux/session-init/.tmux.$1.conf ] && config_source="$PERSONAL/tmux/.tmux.$1.conf"
-        if [ -f $config_source ]; then
+        [ -f $DOTFILES/tmux/session-init/.tmux.$1.conf ] && local config_source="$DOTFILES/tmux/session-init/.tmux.$1.conf"
+        [ -f $PERSONAL/tmux/session-init/.tmux.$1.conf ] && local config_source="$PERSONAL/tmux/session-init/.tmux.$1.conf"
+        if [ ! -z $config_source ]; then
             tmux new-session -d -s $1 &>/dev/null && tmux send-keys -t $1 "tmux source-file $config_source" C-m
         else
             tmux new-session -d -s $1 &>/dev/null
