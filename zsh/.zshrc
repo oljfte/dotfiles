@@ -1,4 +1,5 @@
-# Basic configs 
+# Basic configs
+export DOTFILES=${$(readlink $HOME/.zshrc)%/*/*}
 autoload -Uz compinit && compinit
 zstyle ':completion::complete:*' use-cache true
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
@@ -8,11 +9,12 @@ setopt list_packed
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+setopt nonomatch
 unsetopt prompt_sp
 unsetopt correct_all
 
-# Global configs
-for config in `ls -1 ${$(readlink $HOME/.zshrc)%/*}/_[^_]*\.zsh`; do
+# Additional configs
+for config in `ls -1 $DOTFILES/zsh/_[^_]*\.zsh`; do
     source $config
 done
 
