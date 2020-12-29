@@ -113,7 +113,7 @@ call <SID>set_colors("PMenuSel"         , s:fg       , s:lightgray   , "reverse"
 call <SID>set_colors("PMenuSbar"        , s:darkgray , s:darkgray   , "")
 call <SID>set_colors("PMenuThumb"       , s:lightgray, s:lightgray    , "")
 call <SID>set_colors("Question"         , s:green    , ""            , "")
-call <SID>set_colors("Search"           , s:black    , s:blue        , "")
+call <SID>set_colors("Search"           , s:black    , s:yellow        , "")
 call <SID>set_colors("SpecialKey"       , s:lightgray , ""            , "")
 call <SID>set_colors("StatusLine"       , s:darkgray , s:fg          , "")
 call <SID>set_colors("StatusLineNC"     , s:darkgray , s:fg          , "")
