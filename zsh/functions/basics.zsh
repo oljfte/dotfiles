@@ -45,7 +45,7 @@ function localhost() {
     open http://localhost:$1
 }
 
-function reload() {
+function setup() {
     if [ "$1" = "all" ]; then
         for setup_script in $DOTFILES/*/setup.sh; do zsh $setup_script; done
         for setup_script in $PERSONAL/*/setup.sh; do zsh $setup_script; done
@@ -62,8 +62,9 @@ function cf() {
     for target_file in `builtin cd $DOTFILES && find . -type f | rg --files --hidden --no-ignore --follow --glob '!.git/*' --glob '!personal/.git/*' | sed 's/^.\///' | fzf`; do
         local target_fullpath=$DOTFILES/$target_file
         local target_type=${${${target_fullpath#$PERSONAL/}#$DOTFILES/}%%/*}
-        [ -f $target_fullpath ] && ( vim "$target_fullpath"; reload $target_type)
+        [ -f $target_fullpath ] && ( vim "$target_fullpath"; setup $target_type)
     done
+    relogin
 }
 
 function update-all() {
