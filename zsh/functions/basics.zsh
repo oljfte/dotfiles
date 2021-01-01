@@ -64,7 +64,7 @@ function cf() {
         local target_type=${${${target_fullpath#$PERSONAL/}#$DOTFILES/}%%/*}
         [ -f $target_fullpath ] && ( vim "$target_fullpath"; setup $target_type)
     done
-    relogin
+    [ ! -z $target_file ] && relogin
 }
 
 function update-all() {
