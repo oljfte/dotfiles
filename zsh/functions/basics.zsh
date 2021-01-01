@@ -59,7 +59,7 @@ function setup() {
 }
 
 function cf() {
-    for target_file in `builtin cd $DOTFILES && rg | sed 's/^.\///' | fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'`; do
+    for target_file in `builtin cd $DOTFILES && rg | sed 's/^.\///' | fzf --preview 'bat {}'`; do
         local target_fullpath=$DOTFILES/$target_file
         local target_type=${${${target_fullpath#$PERSONAL/}#$DOTFILES/}%%/*}
         [ -f $target_fullpath ] && ( vim "$target_fullpath"; setup $target_type)
