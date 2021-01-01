@@ -2,4 +2,4 @@
 
 while read row; do
     defaults write $row
-done < osx_defaults
+done < macos_defaults
