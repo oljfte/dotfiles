@@ -40,5 +40,6 @@
         "--line_length=99",
         "--multi_line_output=3"
     ],
-    "python.terminal.executeInFileDir": true
+    "python.terminal.executeInFileDir": true,
+    "python.analysis.useLibraryCodeForTypes": false
 }
