@@ -153,7 +153,7 @@
 	<key>BellBounce</key>
 	<false/>
 	<key>CommandString</key>
-	<string>room default</string>
+	<string>tm default</string>
 	<key>CursorBlink</key>
 	<true/>
 	<key>CursorColor</key>
@@ -251,5 +251,7 @@
 	<integer>55</integer>
 	<key>type</key>
 	<string>Window Settings</string>
+	<key>useOptionAsMetaKey</key>
+	<false/>
 </dict>
 </plist>
