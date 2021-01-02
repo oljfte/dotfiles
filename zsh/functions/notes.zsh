@@ -1,99 +1,91 @@
 #!/bin/zsh
 
-call_notes_functions=$(cat << EOS
-    to getNote(noteTitle)
-        tell application "Notes"
-            tell account "iCloud"
-                tell folder "Notes"
-                    return body of note noteTitle as string
-                end tell
-            end tell
-        end tell
-    end getNote
+FOLDER_NAME="CLI"
 
-    to editNote(noteTitle, noteBody)
-        tell application "Notes"
-            tell account "iCloud"
-                tell folder "Notes"
-                    if (exists note noteTitle) then
-                        set body of note noteTitle to noteBody
-                    else
-                        make new note with properties {name:noteTitle as string, body:noteBody as string}
-                    end if
-                end tell
-            end tell
-        end tell
-    end editNote
+function _get-note() {
+    local note_title=$1
+    echo "$(osascript -e "tell application \"Notes\" to return body of note \"$note_title\" \
+        in folder \"$FOLDER_NAME\" in account \"iCloud\"" | \
+        sed 's/<\/div> <div>/\n/g' | sed 's/<[^>]*>//g' | tail -n +2)"
+}
 
-    to deleteNote(noteTitle)
-        tell application "Notes"
-            tell account "iCloud"
-                tell folder "Notes"
-                    delete note noteTitle
-                end tell
-            end tell
-        end tell
-    end deleteNote
+function _get-notes-list() {
+    echo "$(osascript -e "tell application \"Notes\" to \
+        repeat with theNote in notes in folder \"$FOLDER_NAME\" in account \"iCloud\"" \
+        -e "log name of theNote as string" \
+        -e "end repeat" 2>&1)"
+}
 
-    to getNoteList()
-        tell application "Notes"
-            tell account "iCloud"
-                repeat with theNote in notes in folder "Notes"
-                   log name of theNote as string 
-                end repeat
-            end tell
-        end tell
-    end getNoteList
+function _edit-note() {
+    local note_title=$1
+    local note_body=$2
+    osascript -e "tell application \"Notes\" to \
+        if (exists note \"$note_title\" in folder \"$FOLDER_NAME\" in account \"iCloud\") then" \
+        -e "set body of note \"$note_title\" to \"$note_body\"" \
+        -e "else" \
+        -e "make new note with properties {name:\"$note_title\", body:\"$note_body\"}" \
+        -e "end if" 1>/dev/null
+}
 
-    to checkIfNoteExists(noteTitle)
-        tell application "Notes"
-            tell account "iCloud"
-                tell folder "Notes"
-                    if (exists note noteTitle) then
-                        return 1
-                    else
-                        return 0
-                    end if
-                end tell
-            end tell
-        end tell
-    end checkIfNoteExists
-EOS
-)
+function _delete-note() {
+    local selected_notes=$(_get-notes-list | sort -r | fzf -w 80 -h 25 --preview-window right:80%:wrap \
+        --preview "osascript -e 'tell application \"Notes\" to return body of note \"{}\" \
+        in folder \"$FOLDER_NAME\" in account \"iCloud\"' \
+        | sed 's/<\/div> <div>/\n/g' | sed 's/<[^>]*>//g' | tail -n +2")
 
-function open-note() {
-    date=${1:-$(date '+%Y%m%d')}
-    temp_file="$TEMP_DIR/note-$date.txt"
-    note_exists=$(osascript -e "$call_notes_functions" -e "checkIfNoteExists(\"$date\")")
-    if [[ $note_exists -eq 1 ]]; then
-        echo $(osascript -e "$call_notes_functions" -e "getNote(\"$date\")") > $temp_file
-        plain_txt_buffer=$(sed 's/<\/div> <div>/\n/g' $temp_file | sed 's/<[^>]*>//g' | tail -n +2)
-        echo $plain_txt_buffer > $temp_file
+    for note_title in $selected_notes; do
+        osascript -e "tell application \"Notes\" to delete note \"$note_title\" \
+            in folder \"$FOLDER_NAME\" in account \"iCloud\""
+    done
+}
+
+function _format-file-as-note() {
+    local file_path=$1
+    echo "<div>$(awk -v ORS='</div><div>' '1' $file_path)</div>"
+}
+
+function _note-exists() {
+    local note_title=$1
+    echo $(osascript -e "tell application \"Notes\" to \
+        if (exists note \"$note_title\" in folder \"$FOLDER_NAME\" in account \"iCloud\") then" \
+        -e "return 1" \
+        -e "else" \
+        -e "return 0" \
+        -e "end if")
+}
+
+function _open-note() {
+    if [ "$1" = "new" ]; then
+        local selected_notes=$(date '+%Y%m%d')
+    else
+        local selected_notes=$(_get-notes-list | sort -r | fzf -w 80 -h 25 --preview-window right:80%:wrap \
+            --preview "osascript -e 'tell application \"Notes\" to return body of note \"{}\" \
+            in folder \"$FOLDER_NAME\" in account \"iCloud\"' \
+            | sed 's/<\/div> <div>/\n/g' | sed 's/<[^>]*>//g' | tail -n +2")
     fi
-    nvim $temp_file
-    note_body="<div>$(awk -v ORS='</div><div>' '1' $temp_file)</div>"
-    [[ $note_exists -eq 1 ]] && note_body="<div>${date}</div>$note_body"
-    osascript -e "$call_notes_functions" -e "editNote(\"$date\", \"$note_body\")" 1>/dev/null
-    rm $temp_file
+    
+    for note_title in $selected_notes; do
+        temp_file="$TEMP_DIR/note-$note_title.txt"
+        (($(_note-exists $note_title))) && _get-note $note_title > $temp_file
+        nvim $temp_file
+        if [ -f $temp_file ]; then
+            note_body=$(_format-file-as-note $temp_file)
+            (($(_note-exists $note_title))) && note_body="<div>${note_title}</div>$note_body"
+            _edit-note $note_title $note_body
+            rm $temp_file
+        else
+            return 0
+        fi
+    done
 }
 
 function notes() {
-    unset notes_action
-    notes_args="\"${${@:2}//${IFS:0:1}/\",\"}\""
-    if [ "$1" = "open" ]; then
-        for note_title in `osascript -e "$call_notes_functions" -e "getNoteList()" 2>&1 | fzf`; do
-            [ ! -z "$note_title" ] && open-note $note_title
-        done
-    elif [ "$1" = "new" ]; then
-        open-note
+    if ! (($#)) || [ "$1" = "new" ]; then
+        _open-note $1
     elif [ "$1" = "delete" ]; then
-        if [ ! -z "$2" ]; then
-            osascript -e "$call_notes_functions" -e "deleteNote(\"$2\")"
-        else
-            echo "Specify date."
-        fi
+        _delete-note
     elif [ "$1" = "list" ]; then
-        osascript -e "$call_notes_functions" -e "getNoteList()"
+        _get-notes-list
     else
         echo "Invalid action."
     fi
