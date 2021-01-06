@@ -8,7 +8,6 @@
     ],
     "signature.target": "echo",
     "diagnostic.format": "%message [%source]",
-    "diagnostic.virtualText": true,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.separateRelatedInformationAsDiagnostics": true,
     "suggest.timeout": 5000,
