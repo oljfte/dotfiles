@@ -106,6 +106,7 @@ call <SID>set_colors("NonText"    , s:darkgray          , "NONE"      , "")
 call <SID>set_colors("Normal" , s:fg , "NONE" , "")
 
 call <SID>set_colors("InfoPopup", s:fg, s:darkgray, "")
+call <SID>set_colors("NormalFloat", s:fg, s:darkgray, "")
 
 
 call <SID>set_colors("PMenu"            , s:fg       , s:lightgray    , "")
