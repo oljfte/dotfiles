@@ -6,15 +6,6 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "python"
     ],
-    "explorer.buffer.root.template": "[title]",
-    "explorer.buffer.child.template": "[selection | 1] [bufnr] [name][modified]",
-    "explorer.file.root.template": "[title] [git & 1] [root]",
-    "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent] [icon][diagnosticError & 1][filename omitCenter 1][modified]",
-    "explorer.file.column.indent.indentLine": false,
-    "explorer.file.showHiddenFiles": true,
-    "explorer.icon.expanded": "▼ ",
-    "explorer.icon.collapsed": "▶ ",
-    "explorer.filename.colored.enable": false,
     "signature.target": "echo",
     "diagnostic.format": "%message [%source]",
     "diagnostic.virtualText": true,
@@ -22,6 +13,8 @@
     "diagnostic.separateRelatedInformationAsDiagnostics": true,
     "suggest.timeout": 5000,
     "suggest.asciiCharactersOnly": true,
+    "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
+    "list.selectedSignText": ">",
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "--line-length=99"

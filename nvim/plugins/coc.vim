@@ -6,10 +6,11 @@ set shortmess+=c
 set signcolumn=yes
 
 let g:coc_global_extensions = [
-      \'coc-explorer',
+      \'coc-lists',
+      \'coc-clangd',
       \'coc-git',
+      \'coc-yank',
       \'coc-pyright',
-      \'coc-highlight',
       \'coc-json',
       \]
 
