@@ -1,8 +1,11 @@
 # External sources
-source $HOME/google-cloud-sdk/path.zsh.inc
-source $HOME/google-cloud-sdk/completion.zsh.inc
+# source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # Functions
-function update-gcloud() {
-    gcloud -q components update
-}
+# function update-gcloud() {
+#     gcloud -q components update
+# }
+
+
+# Waiting for M1 compat installer!
