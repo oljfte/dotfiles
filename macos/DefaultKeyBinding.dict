@@ -1,0 +1,6 @@
+{
+    "^h" = "moveBackward:";  
+    "^l" = "moveForward:";  
+    "^k" = "moveUp:";  
+    "^j" = "moveDown:";  
+}
