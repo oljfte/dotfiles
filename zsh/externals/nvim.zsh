@@ -1,3 +1,6 @@
+# Basic configs
+bindkey -v
+
 # Aliases
 alias vi="vim"
 alias vim="nvim"
