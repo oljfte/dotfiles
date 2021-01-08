@@ -99,7 +99,7 @@ EOS
 function _show-cal {
     local temp_file=$(mktemp $TEMP_DIR/cal.XXXXXX)
     [ "$2" = "-p" ] && local rg_query="--files-without-match 'CLASS:PUBLIC'" || rg_query="--files"
-    (for event_file in `eval brg -g '*ics' $rg_query ~/Library/Calendars/`; do
+    (for event_file in `eval rg -g '*ics' $rg_query ~/Library/Calendars/`; do
         local regex_command=" | sed -E 's/^[A-Z].*:(.*$)/\1/g' | sed -E 's/^([0-9]{4})([0-9]{2})([0-9]{2})T([0-9]{2})([0-9]{2})([0-9]{2}).*$/\1-\2-\3 \4:\5/g'"
         local start_date=`eval "grep -h -e 'DTSTART' $event_file $regex_command"`
         if [[ $start_date =~ ^[0-9]{8} ]]; then start_date=$(date -j -f "%Y%m%d " $start_date +%Y-%m-%d); fi

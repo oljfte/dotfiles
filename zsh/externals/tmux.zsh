@@ -11,7 +11,7 @@ function _tmux-target-session() {
     else
         local from_session=$current_session
     fi
-    local sessions_with_configs=$(rg $DOTFILES/**/tmux/session-init | sed 's!^.*/!!' | cut -f 3 -d .)
+    local sessions_with_configs=$(fd 'session-init' -pa -t f $DOTFILES | sed 's!^.*/!!' | cut -f 3 -d .)
     local active_sessions=$(tmux ls -F "#{session_name}" 2>/dev/null | grep -v "popup")
     local active_sessions_with_configs=$({ echo "${active_sessions[*]}"; echo "${sessions_with_configs[*]}"; } | sort | uniq -d | awk NF)
     local inactive_sessions_with_configs=$({ echo "${sessions_with_configs[*]}"; echo "${active_sessions_with_configs[*]}"; } | sort | uniq -u | awk NF)

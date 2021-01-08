@@ -45,6 +45,35 @@ function localhost() {
     open http://localhost:$1
 }
 
+function goody() {
+    local brightness=${1:-1}
+    date_string=$(osascript << EOS
+    set volume with output muted
+
+    if running of application "System Preferences" then
+        try
+            tell application "System Preferences" to quit
+        on error
+            do shell script "killall 'System Preferences'"
+        end try
+    end if
+
+    repeat while running of application "System Preferences" is true
+        delay 0.1
+    end repeat
+
+    tell application "System Preferences" to reveal anchor "displaysDisplayTab" of ¬
+            pane id "com.apple.preference.displays"
+
+    tell application "System Events" to ¬
+        tell value indicator 1 of slider 1 of tab group 1 of window 1 of ¬
+            application process "System Preferences" to set its value to $brightness
+
+    quit application "System Preferences"
+EOS
+    )
+}
+
 function setup() {
     if [ "$1" = "all" ]; then
         for setup_script in $DOTFILES/*/setup.sh; do zsh $setup_script; done
@@ -59,7 +88,7 @@ function setup() {
 }
 
 function cf() {
-    for target_file in `builtin cd $DOTFILES && rg | sed 's/^.\///' | fzf --preview 'bat {}'`; do
+    for target_file in `builtin cd $DOTFILES && fd -t f | sed 's/^.\///' | fzf --preview 'bat {}'`; do
         local target_fullpath=$DOTFILES/$target_file
         local target_type=${${${target_fullpath#$PERSONAL/}#$DOTFILES/}%%/*}
         [ -f $target_fullpath ] && ( vim "$target_fullpath"; setup $target_type)

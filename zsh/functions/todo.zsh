@@ -44,8 +44,14 @@ EOS
 }
 
 function _edit-todo {
+    local prespecified_index=$1
+    [ ! -z $prespecified_index ] && \
+        local prespecified_todo_item="[$prespecified_index] $(osascript -e \
+        "tell application \"Reminders\" to return name of reminder $prespecified_index in list \"todo\"")"
+
     IFS=$'\n'
-    for todo_item in `_show-todo | fzf -w 80 -h 20`; do
+    for todo_item in `[ -z $prespecified_index ] && _show-todo | fzf -w 80 -h 20 || \
+        echo $prespecified_todo_item`; do
         local index=$(echo $todo_item | sed -n 's/^\[\([0-9]*\)\].*$/\1/p')
         [ -z $index ] && return 0
         local temp_file=$(mktemp $TEMP_DIR/todo.XXXXXX)
@@ -72,8 +78,8 @@ function todo() {
     elif [ "$1" = "add" ]; then
         _add-todo $2
     elif [ "$1" = "done" ]; then
-        _done-todo
+        _done-todo $2
     elif [ "$1" = "edit" ]; then
-        _edit-todo
+        _edit-todo $2
     fi
 }
