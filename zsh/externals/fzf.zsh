@@ -17,3 +17,10 @@ alias fzf="fzf-tmux -p 70%"
 
 # Bind alt-c widget to option-c
 bindkey "ç" fzf-cd-widget
+
+# Functions
+function fenv {
+    local out
+    out=$(env | fzf)
+    echo $(echo $out | cut -d= -f2)
+}
