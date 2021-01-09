@@ -2,7 +2,7 @@
 
 while read row; do
     eval defaults write $row
-done < macos_defaults
+done < $DOTFILES/macos/macos_defaults
 
 [ ! -e $HOME/Library/LaunchAgents ] && mkdir -p $HOME/Library/LaunchAgents
 [ ! -e $HOME/Library/KeyBindings ] && mkdir -p $HOME/Library/KeyBindings
