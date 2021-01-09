@@ -19,7 +19,7 @@ xcode-select --install
 export DOTFILES=${dotfiles_parent_dir}/dotfiles
 [ -d $DOTFILES ] && rm -rf $DOTFILES
 
-git clone https://github.com/oljfte/dotfiles.git $dotfiles_parent_dir
+cd $dotfiles_parent_dir && git clone https://github.com/oljfte/dotfiles.git
 
 # Save github token to gh directory
 echo $github_token > $DOTFILES/git/gh/token.txt
