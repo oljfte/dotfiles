@@ -100,7 +100,4 @@ function update-all() {
     update-brew
     update-nvim
     update-tmux
-    update-pip
-    update-venv-pip
-    update-gcloud
 }

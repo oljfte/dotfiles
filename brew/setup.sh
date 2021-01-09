@@ -8,3 +8,5 @@ if [ `command -v brew >/dev/null` ]; then
 fi
 
 brew bundle --file "$DOTFILES/brew/Brewfile"
+
+echo "Done brew setup."
