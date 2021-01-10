@@ -5,8 +5,6 @@ setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
 setopt nonomatch
-unsetopt prompt_sp
-unsetopt correct_all
 
 # Additional configs
 for config in `ls -1 $DOTFILES/zsh/_[^_]*\.zsh`; do
