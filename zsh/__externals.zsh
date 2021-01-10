@@ -1,6 +1,6 @@
 # Dependencies
 source $DOTFILES/zsh/__aliases.zsh
 
-for external_source in `ls -1 $DOTFILES/zsh/externals/*`; do
-    source $external_source;
+for config in `ls -1 $DOTFILES/zsh/externals/*/config.zsh`; do
+    source $config;
 done

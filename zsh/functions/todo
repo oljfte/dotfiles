@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 function _add-todo {
     local todo_string=$1
     [ -z $todo_string ] && return 1
@@ -72,14 +74,12 @@ EOS
     IFS=$' \t\n'
 }
 
-function todo() {
-    if (! (($#)) || [ "$1" = "show" ]); then
-        _show-todo
-    elif [ "$1" = "add" ]; then
-        _add-todo $2
-    elif [ "$1" = "done" ]; then
-        _done-todo $2
-    elif [ "$1" = "edit" ]; then
-        _edit-todo $2
-    fi
-}
+if (! (($#)) || [ "$1" = "show" ]); then
+    _show-todo
+elif [ "$1" = "add" ]; then
+    _add-todo $2
+elif [ "$1" = "done" ]; then
+    _done-todo $2
+elif [ "$1" = "edit" ]; then
+    _edit-todo $2
+fi

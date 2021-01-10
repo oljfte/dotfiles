@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+printf "\033c"
+neaten

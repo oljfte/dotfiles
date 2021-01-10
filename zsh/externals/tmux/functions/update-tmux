@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+cd ~/.tmux/plugins/tpm/bin &>/dev/null
+sh install_plugins
+sh update_plugins all
+sh clean_plugins

@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+cp -r $1 $KEEP_DIR

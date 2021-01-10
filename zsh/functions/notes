@@ -79,14 +79,12 @@ function _open-note() {
     done
 }
 
-function notes() {
-    if ! (($#)) || [ "$1" = "new" ]; then
-        _open-note $1
-    elif [ "$1" = "delete" ]; then
-        _delete-note
-    elif [ "$1" = "list" ]; then
-        _get-notes-list
-    else
-        echo "Invalid action."
-    fi
-}
+if ! (($#)) || [ "$1" = "new" ]; then
+    _open-note $1
+elif [ "$1" = "delete" ]; then
+    _delete-note
+elif [ "$1" = "list" ]; then
+    _get-notes-list
+else
+    echo "Invalid action."
+fi
