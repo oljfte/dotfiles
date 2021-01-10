@@ -7,11 +7,13 @@ set signcolumn=yes
 
 let g:coc_global_extensions = [
       \'coc-lists',
-      \'coc-clangd',
       \'coc-git',
       \'coc-yank',
       \'coc-pyright',
-      \'coc-json',
+      \'coc-clangd',
+      \'coc-rome',
+      \'coc-sql',
+      \'coc-texlab',
       \]
 
 function! s:check_back_space() abort
