@@ -1,10 +1,6 @@
 # Basic configs
 export DOTFILES=${$(readlink $HOME/.zshrc)%/*/*}
-autoload -Uz compinit && compinit
-zstyle ':completion::complete:*' use-cache true
-zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
 setopt share_history
-setopt list_packed
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
