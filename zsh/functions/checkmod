@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+stat -f "%Lp" "$1"

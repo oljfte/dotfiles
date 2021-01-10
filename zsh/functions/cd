@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+if [ $# = 0 ]; then
+    builtin cd && ll
+elif [ "$1" = "-" ]; then
+    builtin cd -
+elif [ -d $1 ]; then
+    builtin cd "$1" && ll
+else
+    echo "No such directory." && return 1
+fi

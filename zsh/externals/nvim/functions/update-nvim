@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+nvim +PlugUpgrade +PlugUpdate +PlugClean! +qall >/dev/null

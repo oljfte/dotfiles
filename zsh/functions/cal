@@ -123,19 +123,17 @@ function _show-cal {
     rm $temp_file
 }
 
-function cal {
-    if [ "$1" = "show" ]; then
-        echo
-        /usr/bin/cal -3
-        echo
-        repeat 64 printf "\e[37;1m-\e[m"
-        echo "\n"
-        _show-cal ${2:-1}
-    elif [ "$1" = "add" ]; then
-        _add-event-to-cal
-    elif [ "$1" = "delete" ]; then
-        _delete-event-from-cal
-    else
-        /usr/bin/cal $* 2>/dev/null || echo "Invalid action."
-    fi
-}
+if [ "$1" = "show" ]; then
+    echo
+    /usr/bin/cal -3
+    echo
+    repeat 64 printf "\e[37;1m-\e[m"
+    echo "\n"
+    _show-cal ${2:-1}
+elif [ "$1" = "add" ]; then
+    _add-event-to-cal
+elif [ "$1" = "delete" ]; then
+    _delete-event-from-cal
+else
+    /usr/bin/cal $* 2>/dev/null || echo "Invalid action."
+fi

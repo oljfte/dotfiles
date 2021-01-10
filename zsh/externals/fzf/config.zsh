@@ -15,12 +15,5 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # Aliases
 alias fzf="fzf-tmux -p 70%"
 
-# Bind alt-c widget to option-c
+# ZLE
 bindkey "ç" fzf-cd-widget
-
-# Functions
-function fenv {
-    local out
-    out=$(env | fzf)
-    echo $(echo $out | cut -d= -f2)
-}

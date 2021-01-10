@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+gcloud -q components update

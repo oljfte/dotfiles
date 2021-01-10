@@ -3,9 +3,6 @@
 # source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # Functions
-# function update-gcloud() {
-#     gcloud -q components update
-# }
-
+# autoload -z $(dirname $0)/functions/*
 
 # Waiting for M1 compat installer!
