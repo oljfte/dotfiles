@@ -47,11 +47,11 @@ nnoremap <leader>cim <Plug>(coc-implementation)
 nnoremap <leader>crf <Plug>(coc-references)
 nnoremap <leader>cdc :call <SID>show_documentation()<CR>
 nnoremap <leader>crn <Plug>(coc-rename)
-xnoremap <leader>cfs  <Plug>(coc-format-selected)
+xnoremap <leader>cfs <Plug>(coc-format-selected)
 nnoremap <leader>cfs <Plug>(coc-format-selected)
-nnoremap <leader>cfa :call CocAction('format')<cr>
-nnoremap <leader>cfo :call CocAction('fold', <f-args>)
-nnoremap <leader>coi :call CocAction('runCommand', 'editor.action.organizeImport')
+nnoremap <leader>cfa :call CocAction('format')<CR>
+nnoremap <leader>cfo :call CocAction('fold')<CR>
+nnoremap <leader>coi :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <leader>ghp <Plug>(coc-git-prevchunk)
 nnoremap <leader>ghn <Plug>(coc-git-nextchunk)
 nnoremap <leader>gcp <Plug>(coc-git-prevconflict)
