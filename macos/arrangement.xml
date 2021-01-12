@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <regularWindowApps>
+        <appName>Calendar</appName>
+    </regularWindowApps>
+    <fullscreenApps>
+        <appName>TweetDeck</appName>
+        <appName>Mail</appName>
+        <appName>Slack</appName>
+        <appName>Safari</appName>
+        <appName>Terminal</appName>
+    </fullscreenApps>
+</items>
+
