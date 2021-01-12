@@ -129,7 +129,7 @@ if [ "$1" = "show" ]; then
     echo
     repeat 64 printf "\e[37;1m-\e[m"
     echo "\n"
-    _show-cal ${2:-1}
+    _show-cal ${2:-2}
 elif [ "$1" = "add" ]; then
     _add-event-to-cal
 elif [ "$1" = "delete" ]; then
