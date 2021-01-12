@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+local volume=${1:-0}
+osascript -e "set Volume $volume"
