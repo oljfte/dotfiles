@@ -13,7 +13,6 @@
     "suggest.timeout": 5000,
     "suggest.asciiCharactersOnly": true,
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
-    "list.selectedSignText": ">",
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "--line-length=99"
