@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git show $(_fghash)

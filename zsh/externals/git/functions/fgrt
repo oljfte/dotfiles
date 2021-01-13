@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git restore $(_fgfile) && (echo "\n--- Status ---"; git status -s)

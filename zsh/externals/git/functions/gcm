@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git commit -m $* && (echo "\n--- Status ---"; git status -s) 

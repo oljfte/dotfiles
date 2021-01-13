@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git add $* && (echo "\n--- Status ---"; git status -s)

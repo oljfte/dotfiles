@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git pull && (echo "\n--- Status ---"; git status -s)

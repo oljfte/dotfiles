@@ -3,5 +3,5 @@
 git rev-parse HEAD > /dev/null 2>&1 || return
 git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
     fzf --ansi --no-sort --reverse --multi \
-    --preview 'echo {} | sed "s/[^a-z0-9 ]//g" | sed "s/  */ /g" | sed "s/^  *//g" | cut -f 2 -d " " | xargs git show --coloralways' |
+    --preview 'echo {} | sed "s/[^a-z0-9 ]//g" | sed "s/  */ /g" | sed "s/^  *//g" | cut -f 2 -d " " | xargs git show --color=always' |
     sed "s/[^a-z0-9 ]//g" | sed "s/  */ /g" | sed "s/^  *//g" | cut -f 2 -d " "
