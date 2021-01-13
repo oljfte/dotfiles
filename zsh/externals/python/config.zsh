@@ -1,4 +1,4 @@
-# Environmental variables
+# Environment variables
 export PYTHONDONTWRITEBYTECODE=1
 
 # Aliases

@@ -17,11 +17,12 @@ endif
 
 call plug#begin(expand('~/.config/nvim/plugged'))
 
-"" Plugs list
+" Plugs list
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } | Plug 'junegunn/fzf.vim'
 
 call plug#end()
 filetype plugin indent on

@@ -1,10 +1,8 @@
 #!/bin/zsh
 
-local brightness=${1:-1}
-date_string=$(osascript << EOS
-set volume with output muted
-
-if running of application "System Preferences" then
+local brightness=${(j:.:)${(s::)${(l:2::0:)${1:-10}}}}
+osascript << EOS
+if application "System Preferences" is running then
     try
         tell application "System Preferences" to quit
     on error
@@ -12,12 +10,12 @@ if running of application "System Preferences" then
     end try
 end if
 
-repeat while running of application "System Preferences" is true
+repeat while application "System Preferences" is running
     delay 0.1
 end repeat
 
 tell application "System Preferences" to reveal anchor "displaysDisplayTab" of ¬
-        pane id "com.apple.preference.displays"
+    pane id "com.apple.preference.displays"
 
 tell application "System Events" to ¬
     tell value indicator 1 of slider 1 of tab group 1 of window 1 of ¬
@@ -25,5 +23,3 @@ tell application "System Events" to ¬
 
 quit application "System Preferences"
 EOS
-)
-

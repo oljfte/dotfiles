@@ -6,7 +6,6 @@ set shortmess+=c
 set signcolumn=yes
 
 let g:coc_global_extensions = [
-      \'coc-lists',
       \'coc-git',
       \'coc-yank',
       \'coc-pyright',
@@ -15,6 +14,8 @@ let g:coc_global_extensions = [
       \'coc-sql',
       \'coc-texlab',
       \]
+
+autocmd FileType * let b:coc_additional_keywords = ["-"]
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -48,27 +49,11 @@ nnoremap <leader>cim <Plug>(coc-implementation)
 nnoremap <leader>crf <Plug>(coc-references)
 nnoremap <leader>cdc :call <SID>show_documentation()<CR>
 nnoremap <leader>crn <Plug>(coc-rename)
-xnoremap <leader>cfs  <Plug>(coc-format-selected)
+xnoremap <leader>cfs <Plug>(coc-format-selected)
 nnoremap <leader>cfs <Plug>(coc-format-selected)
-nnoremap <leader>cfa :call CocAction('format')<cr>
-nnoremap <leader>cfo :call CocAction('fold', <f-args>)
-nnoremap <leader>coi :call CocAction('runCommand', 'editor.action.organizeImport')
-nnoremap <leader>clf  :<C-u>CocList files<cr>
-nnoremap <leader>clb  :<C-u>CocList buffers<cr>
-nnoremap <leader>clr  :<C-u>CocList mru<cr>
-nnoremap <leader>clgf  :<C-u>CocList gfiles<cr>
-nnoremap <leader>clgs  :<C-u>CocList gstatus<cr>
-nnoremap <leader>clgc  :<C-u>CocList commits<cr>
-nnoremap <leader>clbr  :<C-u>CocList branches<cr>
-nnoremap <leader>clbrc  :<C-u>CocList bcommits<cr>
-nnoremap <leader>cld  :<C-u>CocList diagnostics<cr>
-nnoremap <leader>cle  :<C-u>CocList extensions<cr>
-nnoremap <leader>clc  :<C-u>CocList commands<cr>
-nnoremap <leader>clo  :<C-u>CocList outline<cr>
-nnoremap <leader>cls  :<C-u>CocList snippets<cr>
-nnoremap <leader>cly  :<C-u>CocList yank<cr>
-nnoremap <leader>clsy  :<C-u>CocList -I symbols<cr>
-nnoremap <leader>cll  :<C-u>CocListResume<CR>
+nnoremap <leader>cfa :call CocAction('format')<CR>
+nnoremap <leader>cfo :call CocAction('fold')<CR>
+nnoremap <leader>coi :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <leader>ghp <Plug>(coc-git-prevchunk)
 nnoremap <leader>ghn <Plug>(coc-git-nextchunk)
 nnoremap <leader>gcp <Plug>(coc-git-prevconflict)

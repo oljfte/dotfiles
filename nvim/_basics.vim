@@ -21,6 +21,10 @@ set softtabstop=0
 set shiftwidth=4
 set expandtab
 
+" Command completion
+set wildmenu
+set wildmode=list:longest,full
+
 " Enable hidden buffers
 set hidden
 
@@ -29,6 +33,11 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+" Grep
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,.DS_Store
 
 " Rendering options
 set ttimeoutlen=1

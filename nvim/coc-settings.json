@@ -13,12 +13,11 @@
     "suggest.timeout": 5000,
     "suggest.asciiCharactersOnly": true,
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
-    "list.selectedSignText": ">",
     "python.formatting.provider": "black",
+    "python.formatting.blackPath": "/opt/homebrew/bin/black",
     "python.formatting.blackArgs": [
         "--line-length=99"
     ],
-    "python.jediEnabled": false,
     "python.linting.enabled": true,
     "python.linting.flake8Args": [
         "--max-line-length=99",
@@ -28,10 +27,5 @@
     ],
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "python.sortImports.args": [
-        "--line_length=99",
-        "--multi_line_output=3"
-    ],
-    "python.terminal.executeInFileDir": true,
     "python.analysis.useLibraryCodeForTypes": false
 }

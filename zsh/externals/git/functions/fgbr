@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git switch $(_fgbranch)
