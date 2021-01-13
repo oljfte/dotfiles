@@ -1,4 +1,4 @@
-# Environmental variables
+# Environment variables
 export GIT_EDITOR=$EDITOR
 
 # Functions

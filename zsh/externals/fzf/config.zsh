@@ -2,7 +2,7 @@
 source $(brew --prefix)/opt/fzf/shell/completion.zsh
 source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 
-# Environmental variables
+# Environment variables
 export PATH="$(brew --prefix)/opt/fzf/bin:$PATH"
 export FZF_TMUX=1
 export FZF_TMUX_OPTS='-p 70%'

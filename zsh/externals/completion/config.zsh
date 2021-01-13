@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Environmental variables
+# Environment variables
 export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
 # Functions
