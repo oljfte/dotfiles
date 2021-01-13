@@ -15,6 +15,8 @@ let g:coc_global_extensions = [
       \'coc-texlab',
       \]
 
+autocmd FileType * let b:coc_additional_keywords = ["-"]
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
