@@ -10,9 +10,11 @@ let g:coc_global_extensions = [
       \'coc-yank',
       \'coc-pyright',
       \'coc-clangd',
-      \'coc-rome',
       \'coc-sql',
       \'coc-texlab',
+      \'coc-html',
+      \'coc-css',
+      \'coc-tsserver',
       \]
 
 autocmd FileType * let b:coc_additional_keywords = ["-"]
