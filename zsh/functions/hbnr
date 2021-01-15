@@ -1,0 +1,64 @@
+#!/bin/zsh
+
+
+function _get-default-browser {
+    osascript << EOS 2>&1
+    use framework "AppKit"
+    use AppleScript version "2.4"
+    use scripting additions
+
+    property NSWorkspace : a reference to current application's NSWorkspace
+    property NSURL : a reference to current application's NSURL
+
+    set wurl to NSURL's URLWithString:"https://www.apple.com"
+    set thisBrowser to (NSWorkspace's sharedWorkspace)'s ¬
+                        URLForApplicationToOpenURL:wurl
+    set appname to (thisBrowser's absoluteString)'s lastPathComponent()'s ¬
+                    stringByDeletingPathExtension() as text
+    return appname as text
+EOS
+}
+
+function _reload-url-in-browser {
+    local url="file://$1"
+    local url_after_host=$url
+    
+    local default_browser=$(_get-default-browser)
+    
+    osascript << EOS
+    tell application "$default_browser"
+
+        if (count every window) = 0 then
+            make new window
+        end if
+
+        set topWindows to every window whose name is not ""
+        set numWindows to the number of topWindows
+        set found to false
+        
+        repeat with x from 1 to numWindows
+            set numTabs to the number of tabs in window x
+            repeat with y from 1 to numTabs
+                set tabUrl to the URL of tab y of window x
+                if tabUrl contains "$url_after_host" then
+                    set found to true
+                    tell tab y of window x to do JavaScript "location.reload(true);"
+                end if
+            end repeat
+        end repeat
+        
+        if found is false then
+            tell window 1 to make new tab with properties {URL:"$url"}
+        end if
+    end tell
+EOS
+echo "Reloaded at $(date +'%H:%M:%S')"
+}
+
+local target_dir=${1:-$PWD}
+echo "--- Start HBNR ---"
+echo "Watching: $target_dir"
+
+fswatch --recursive --one-per-batch $target_dir | (while read filename; do
+    _reload-url-in-browser $target_dir
+done)

@@ -2,7 +2,7 @@
 source $DOTFILES/zsh/__variables.zsh
 
 alias sudo="sudo "
-alias ll="rm .DS_Store &>/dev/null; ls -alG"
+alias ll="rm .DS_Store &>/dev/null; exa -alh --git"
 alias mv="mv -i"
 alias psg="ps aux | grep"
 alias delds="fd -H '^\.DS_Store$' -tf -X rm"

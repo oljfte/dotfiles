@@ -27,5 +27,6 @@
     ],
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
-    "python.analysis.useLibraryCodeForTypes": false
+    "python.analysis.useLibraryCodeForTypes": false,
+    "html.autoClosingTags": true
 }

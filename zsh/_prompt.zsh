@@ -74,20 +74,17 @@ function fill-line() {
 
 # Change cursor by vim mode
 function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] ||
-        [[ $1 = 'block' ]]; then
-            echo -ne '\e[1 q'
-            BOTTOM_LEFT="%F{7}$(venv-name)❮ %f"
-            set-prompt
-            zle reset-prompt
-        elif [[ ${KEYMAP} == main ]] ||
-            [[ ${KEYMAP} == viins ]] ||
-            [[ ${KEYMAP} = '' ]] ||
-            [[ $1 = 'beam' ]]; then
-                echo -ne '\e[5 q'
-                BOTTOM_LEFT="%F{2}$(venv-name)❯ %f"
-                set-prompt
-                zle reset-prompt
+    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+        echo -ne '\e[1 q'
+        BOTTOM_LEFT="%F{7}$(venv-name)❮ %f"
+        set-prompt
+        zle reset-prompt
+    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || \
+        [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+        echo -ne '\e[5 q'
+        BOTTOM_LEFT="%F{2}$(venv-name)❯ %f"
+        set-prompt
+        zle reset-prompt
     fi
 }
 zle -N zle-keymap-select
@@ -109,6 +106,7 @@ function transient-line() {
 }
 zle -N transient-line
 bindkey '^M' transient-line
+bindkey -M vicmd '^M' transient-line
 
 TRAPINT() {
     transient-line &>/dev/null
@@ -132,6 +130,5 @@ add-zsh-hook precmd set-prompt
 TRAPWINCH () {
     set-prompt
     zle reset-prompt &>/dev/null
-    # clear
 }
  
