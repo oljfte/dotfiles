@@ -20,4 +20,5 @@ export KEYTIMEOUT=1
 export SHELL_SESSION_HISTORY=0
 
 # For ARM (may be temporary)
-export EDITOR="VIMRUNTIME=$HOME/neovim/runtime $HOME/neovim/build/bin/nvim"
+export VIMRUNTIME="$HOME/neovim/runtime"
+export EDITOR="$HOME/neovim/build/bin/nvim"
