@@ -46,9 +46,9 @@ function! CustomModified()
 endfunction
 
 function! LightlineCocGitBranch()
-    return exists('g:coc_git_status')? ' '.substitute(trim(get(g:, 'coc_git_status', '')), '[^a-zA-Z0-9_\ ]', '', 'g').' ' : ''
+    return len(trim(get(g:, 'coc_git_status', ''))) > 0? ' '.substitute(trim(get(g:, 'coc_git_status', '')), '[^a-zA-Z0-9_\ ]', '', 'g').' ' : ''
 endfunction
 
 function! LightlineCocGitDiff()
-    return exists('b:coc_git_status')? ' '.trim(get(b:, 'coc_git_status', '')).' ' : ''
+    return len(trim(get(b:, 'coc_git_status', ''))) > 0? ' '.trim(get(b:, 'coc_git_status', '')).' ' : ''
 endfunction
