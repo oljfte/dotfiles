@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 git rev-parse HEAD > /dev/null 2>&1 || return
-for x in $(\fd -t d -H ".git" -E '.github' .); do
+for x in $(\fd --no-ignore -t d -H ".git" -E '.github' .); do
     pushd $(dirname $x) >/dev/null
     printf "\e[36;1m\n$(pwd)\n\e[m"
     git status -s 2>/dev/null
