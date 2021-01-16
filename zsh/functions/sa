@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+local tab_index=$(osascript << EOS 2>&1
+tell application "Safari"
+        repeat with thewindow in windows
+                repeat with theTab in tabs of thewindow
+                        log index of theTab as string & ": " & name of theTab as string
+                end repeat
+        end repeat
+end tell
+EOS
+)
+
+echo $tab_index | fzf -w 80 -h 20 | cut -d':' -f1 | xargs -I{} osascript -e "tell application \"Safari\" to activate" -e "tell front window of application \"Safari\" to set current tab to tab {}"

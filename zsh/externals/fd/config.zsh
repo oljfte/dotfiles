@@ -1,2 +1,2 @@
 # Aliases
-alias fd="fd --hidden --exclude '.git' --exclude '.Trash' --exclude '.DS_Store'"
+alias fd="fd --hidden --no-ignore --exclude '.git' --exclude '.Trash' --exclude '.DS_Store'"

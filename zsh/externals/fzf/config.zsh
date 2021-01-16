@@ -7,7 +7,7 @@ export PATH="$(brew --prefix)/opt/fzf/bin:$PATH"
 export FZF_TMUX=1
 export FZF_TMUX_OPTS='-p 70%'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --exclude .DS_Store'
-export FZF_DEFAULT_OPTS="--reverse --color 16 --inline-info --multi \
+export FZF_DEFAULT_OPTS="--reverse --color 16 --inline-info --multi --ansi \
     --bind tab:toggle,shift-tab:toggle-all,ctrl-j:down,ctrl-k:up,ctrl-l:preview-down,ctrl-h:preview-up --preview-window wrap"
 export FZF_CTRL_T_COMMAND='fd --follow --hidden --exclude .git --exclude .DS_Store'
 export FZF_CTRL_T_OPTS="--preview 'bat {}'"

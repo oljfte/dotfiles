@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-git merge --no-ff $(_fgbranch) && (echo "\n--- Status ---"; ([[ $(git status -s) ]] && git status -s || echo "Nothing to commit, working tree clean."))

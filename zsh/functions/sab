@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+plutil -convert xml1 ~/Library/Safari/Bookmarks.plist -o - | grep -A1 -E '(>URLString<|>title<)' | grep -v -E '(>URLString|>title|^--)' | cut -d\> -f2 | cut -d\< -f1 | sed 'N;s/\n/{;}/' | awk -F '{;}' '{printf "%s \x1b[36m%s\x1b[m\n", $1, $2}' | fzf -h 30 --ansi | sed 's#.*\(https*://\)#\1#' | xargs open
