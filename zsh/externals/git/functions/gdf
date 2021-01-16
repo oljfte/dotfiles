@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 git rev-parse HEAD > /dev/null 2>&1 || return
-local diff_preview="git diff $@ -- {-1}"
+local diff_preview="git diff --color $@ -- {-1}"
 git diff $@ --name-only | fzf --preview $diff_preview
