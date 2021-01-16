@@ -1,8 +1,9 @@
 #!/bin/zsh
 
-for x in $(\fd -t d -H ".git" .); do
+git rev-parse HEAD > /dev/null 2>&1 || return
+for x in $(\fd -t d -H ".git" -E '.github' .); do
     pushd $(dirname $x) >/dev/null
-    printf "\e[37;1m\n$(pwd)\n\e[m"
+    printf "\e[36;1m\n$(pwd)\n\e[m"
     git status -s 2>/dev/null
     [ -z "$(git status -s)" ] && echo "Nothing to commit, working tree clean."
     popd >/dev/null
