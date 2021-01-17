@@ -1,34 +1,5 @@
 #!/bin/zsh
 
-function _tmux-target-session() {
-    local prespecified_session=$1
-    local current_session=$(echo $([[ ! -z $TMUX ]] && echo $(tmux display -p -F "#{session_name}" 2>/dev/null)))
-    if [ "$current_session" = "popup" ]; then
-        eval $(tmux showenv -gs TMUX_LAST_DETECTED_SESSION)
-        local from_session=$TMUX_LAST_DETECTED_SESSION
-    else
-        local from_session=$current_session
-    fi
-    local sessions_with_configs=$(find $DOTFILES -path "*/session-init/*" | sed 's!^.*/!!' | cut -f 3 -d .)
-    local active_sessions=$(tmux ls -F "#{session_name}" 2>/dev/null | grep -v "popup")
-    local active_sessions_with_configs=$({ echo "${active_sessions[*]}"; echo "${sessions_with_configs[*]}"; } | sort | uniq -d | awk NF)
-    local inactive_sessions_with_configs=$({ echo "${sessions_with_configs[*]}"; echo "${active_sessions_with_configs[*]}"; } | sort | uniq -u | awk NF)
-    local session_options=$({ echo $active_sessions; \
-        [ ! -z $inactive_sessions_with_configs ] && echo $inactive_sessions_with_configs | sed 's/.*/(&)/' } | grep -v ${from_session:-' '} | awk NF)
-    local n_session_options=$(echo $session_options | wc -l)
-
-    if [ -z "$prespecified_session" ]; then
-        if [[ $n_session_options -gt 0 ]]; then
-            local target_session=$(echo $session_options | fzf -w 40 -h 15 | sed 's/[()]//g')
-        else
-            local target_session="default"
-        fi
-    else
-        local target_session="$prespecified_session"
-    fi
-    echo $target_session
-}
-
 local target_session=$(_tmux-target-session $1)
 [ -z "$target_session" ] && return 1
 if [ "$(tmux display -p -F "#{session_name}" 2>/dev/null)" = "popup" ]; then

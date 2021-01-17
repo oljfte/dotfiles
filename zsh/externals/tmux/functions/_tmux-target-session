@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+local prespecified_session=$1
+
+if [ -z "$prespecified_session" ]; then
+    if [[ $(_tmux-session-options) ]]; then
+        local target_session=$(_tmux-session-options | \
+            fzf +m -w 40 -h 15 --bind 'ctrl-d:execute(tmux kill-session -t {})+reload(source ~/.zshrc && _tmux-session-options)' | sed 's/[()]//g')
+    else
+        local target_session="default"
+    fi
+else
+    local target_session="$prespecified_session"
+fi
+echo $target_session
