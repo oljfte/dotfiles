@@ -3,8 +3,8 @@
 git rev-parse HEAD > /dev/null 2>&1 || return
 
 if ([[ $# -eq 0 ]] || ([ "$1" = "-p" ] && [[ $# -eq 1 ]])); then
-    git diff --name-only | xargs git status -s -- {} | fzf --nth 2..,.. \
-        --preview '(git diff -- {-1} | sed 1,4d; cat {-1})' \
+    {git diff --name-only; git ls-files --others --exclude-standard;} | xargs git status -s -- {} | fzf --nth 2..,.. \
+        --preview '(git diff --color -- {-1} | sed 1,4d; cat {-1})' \
         | cut -c4- | sed 's/.* -> //' | xargs -o git add $1
 else
      git add $@
