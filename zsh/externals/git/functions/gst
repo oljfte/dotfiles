@@ -24,3 +24,5 @@ awk -vOFS='' '
     }
 ' <(git diff --color --stat=$(($(tput cols) - 3)) HEAD | sed '$d; s/^ //') \
     <(git -c color.status=always status -sb)
+
+[[ $(git status -s) ]] || echo "Clean"
