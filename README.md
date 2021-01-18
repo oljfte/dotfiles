@@ -6,7 +6,7 @@ My dotfiles for macOS.
 
 
 ## Installation
-Run ```zsh -c "$(curl -fsSL dotfile.oljfte.com)"```
+Run ```zsh -c "$(curl -fsSL dotfiles.oljfte.com)"```
 
 
 ## Features
