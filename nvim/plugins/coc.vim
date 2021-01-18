@@ -12,6 +12,7 @@ let g:coc_global_extensions = [
       \'coc-clangd',
       \'coc-sql',
       \'coc-texlab',
+      \'coc-emmet',
       \'coc-html',
       \'coc-css',
       \'coc-tsserver',

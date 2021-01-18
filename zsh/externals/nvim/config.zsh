@@ -1,5 +1,6 @@
 # Basic configs
 bindkey -v
+bindkey "^?" backward-delete-char
 
 # Functions
 autoload -z $(dirname $0)/functions/*
