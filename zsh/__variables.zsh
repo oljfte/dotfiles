@@ -18,7 +18,3 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export KEYTIMEOUT=1
 export SHELL_SESSION_HISTORY=0
-
-# For ARM (may be temporary)
-export VIMRUNTIME="$HOME/neovim/runtime"
-export EDITOR="$HOME/neovim/build/bin/nvim"
