@@ -6,6 +6,7 @@
     <fullscreenApps>
         <appName>TweetDeck</appName>
         <appName>Mail</appName>
+        <appName>Discord</appName>
         <appName>Slack</appName>
         <appName>Safari</appName>
         <appName>Terminal</appName>
