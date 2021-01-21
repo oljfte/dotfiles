@@ -1,6 +1,6 @@
-#!/bin/zsh
-
-# Environment variables
+# External source
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
 # Functions
