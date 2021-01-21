@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+local poetry_pj_dir=$(fd 'pyvenv.cfg' ~ | sed -r 's/(.*)\/\.venv.*/\1/' | fzf -w 80 -h 20)
+[ ! -z "$poetry_pj_dir" ] && cd $poetry_pj_dir
