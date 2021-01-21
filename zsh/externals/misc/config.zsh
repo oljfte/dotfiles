@@ -1,6 +1,9 @@
 # External source
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Environment variables
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
 export FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
 # Functions
