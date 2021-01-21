@@ -93,7 +93,7 @@ call <SID>set_colors("ErrorMsg"   , s:black  , s:red    , "")
 call <SID>set_colors("VertSplit"  , s:lightgray    , s:darkgray    , "NONE")
 
 call <SID>set_colors("Folded"     , s:lightgray , s:darkgray    , "")
-call <SID>set_colors("FoldColumn" , s:lightgray , s:darkgray    , "")
+call <SID>set_colors("FoldColumn" , s:lightgray , "NONE"        , "")
 call <SID>set_colors("SignColumn" , s:lightgray , "NONE"        , "")
 
 call <SID>set_colors("IncSearch"  , s:blue , "Black" , "reverse")
@@ -127,14 +127,15 @@ call <SID>set_colors("Title"            , s:magenta  , ""            , "")
 call <SID>set_colors("Visual"           , s:fg       , s:lightgray    , "")
 call <SID>set_colors("VisualNOS"        , s:fg       , s:lightgray    , "")
 call <SID>set_colors("WarningMsg"       , s:red      , "NONE"        , "")
-call <SID>set_colors("WildMenu"         , s:green    , s:darkgray    , "")
+call <SID>set_colors("WildMenu"         , s:fg       , s:darkgray    , "reverse")
 
 call <SID>set_colors("Underlined"       , ""         , ""             , "underline")
 call <SID>set_colors("Ignore"           , s:darkgray      , ""             , "")
 call <SID>set_colors("Error"            , s:black    , s:red          , "")
-call <SID>set_colors("Todo"             , s:black   , s:red        , "NONE")
+call <SID>set_colors("Todo"             , s:black   , s:red        , "")
 
 call <SID>set_colors("Comment", s:lightgray, "", "")
+
 
 call <SID>set_colors("Constant", s:green, "", "")
 hi link String    Constant
@@ -178,6 +179,7 @@ hi link Tag            Special
 hi link Delimiter      Special
 hi link SpecialComment Special
 hi link Debug          Special
+
 
 delf <SID>set_colors
 unlet s:darkgray s:lightgray s:bg s:fg s:blue s:yellow s:red s:green s:cyan s:magenta s:dimyellow s:dimred s:dimgreen s:dimcyan
