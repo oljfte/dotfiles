@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-if [ `command -v brew >/dev/null` ]; then
+if ! command -v brew &> /dev/null; then
     cd /opt
     sudo mkdir homebrew
     sudo chown oljfte:admin homebrew
