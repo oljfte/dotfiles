@@ -2,6 +2,9 @@
 bindkey -v
 bindkey "^?" backward-delete-char
 
+# Environment variables
+export EDITOR="nvim"
+
 # Functions
 autoload -z $(dirname $0)/functions/*
 
