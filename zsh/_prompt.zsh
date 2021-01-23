@@ -98,15 +98,15 @@ zle -N zle-line-init
 
 # Construct prompt
 function transient-line() {
-    local saved_prompt=$PROMPT
     PROMPT=$'\n'$'\n'"%F{7}$(fill-line '%~' '%T ')"$'\n'"$([ -z "$(venv-name)" ] || echo ${"$(venv-name)":1})❯ %f"
     zle reset-prompt
-    PROMPT=$saved_prompt
     zle accept-line
 }
 zle -N transient-line
 bindkey '^M' transient-line
 bindkey -M vicmd '^M' transient-line
+
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS=(transient-line $ZSH_AUTOSUGGEST_CLEAR_WIDGETS)
 
 TRAPINT() {
     transient-line &>/dev/null
