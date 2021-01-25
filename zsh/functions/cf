@@ -1,9 +1,9 @@
 #!/bin/zsh
 
+local target_file
 for target_file in `builtin cd $DOTFILES && fd -t f | sed 's/^.\///' | fzf --preview 'bat {}'`; do
     local target_fullpath=$DOTFILES/$target_file
-    local target_type=${${${target_fullpath#$PERSONAL/}#$DOTFILES/}%%/*}
-    [ -f $target_fullpath ] && ( vim "$target_fullpath"; setup $target_type)
+    [ -f $target_fullpath ] && vim $target_fullpath
 done
 [ ! -z $target_file ] && relogin
 
