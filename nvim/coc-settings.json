@@ -28,5 +28,6 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.analysis.useLibraryCodeForTypes": false,
-    "html.autoClosingTags": true
+    "html.autoClosingTags": true,
+    "eslint.filetypes": ["javascript", "javascriptreact", "typescript"]
 }
