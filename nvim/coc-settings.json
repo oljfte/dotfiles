@@ -10,6 +10,9 @@
     "diagnostic.format": "%message [%source]",
     "diagnostic.checkCurrentLine": true,
     "diagnostic.separateRelatedInformationAsDiagnostics": true,
+    "diagnostic.hintSign": "▫",
+    "diagnostic.warningSign": "▵",
+    "diagnostic.errorSign": "×",
     "suggest.timeout": 5000,
     "suggest.asciiCharactersOnly": true,
     "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
@@ -28,6 +31,5 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "python.analysis.useLibraryCodeForTypes": false,
-    "html.autoClosingTags": true,
-    "eslint.filetypes": ["javascript", "javascriptreact", "typescript"]
+    "html.autoClosingTags": true
 }
