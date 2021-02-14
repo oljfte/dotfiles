@@ -4,6 +4,7 @@ source $DOTFILES/zsh/__variables.zsh
 alias sudo="sudo "
 alias mv="mv -i"
 alias psg="ps aux | grep"
+alias delat="xattr -c"
 alias shutdown="sudo shutdown -h now"
 alias restart="sudo shutdown -r now"
 alias relogin="exec $SHELL -l"
