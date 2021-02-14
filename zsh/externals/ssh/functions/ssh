@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 if [ $# -eq 0 ]; then
-    local target_host=$(grep -i ^host < ~/.ssh/config | tail -n +3 | awk '{print $2}' | fzf)
+    local target_host=$(grep -i ^host < ~/.ssh/config | tail -n +3 | awk '{print $2}' | fzf -w 40 -h 15)
     [ ! -z $target_host ] && ssh $target_host
 else
     /usr/bin/ssh $@
