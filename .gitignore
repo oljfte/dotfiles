@@ -1,1 +1,5 @@
+# Ignore directory for personal stuff
 personal/
+
+# Auto-generated json by running brew bundle
+Brewfile.lock.json
