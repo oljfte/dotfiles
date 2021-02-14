@@ -3,4 +3,3 @@
 brew update
 brew upgrade
 brew cleanup
-cd $DOTFILES/brew &>/dev/null && brew bundle dump -f
