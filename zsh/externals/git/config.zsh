@@ -4,6 +4,7 @@ export GIT_EDITOR=$EDITOR
 # Aliases
 alias gft="git fetch"
 alias gcb="git branch --show-current"
+alias gtp="cd $(git rev-parse --show-toplevel)"
 
 # Functions
 autoload -z $(dirname $0)/functions/* 
