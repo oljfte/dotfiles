@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <items>
     <regularWindowApps>
-        <appName>Calendar</appName>
+        <appName>Reminders</appName>
+        <appName>Notes</appName>
     </regularWindowApps>
     <fullscreenApps>
         <appName>TweetDeck</appName>
         <appName>Mail</appName>
-        <appName>Discord</appName>
+        <appName>Calendar</appName>
         <appName>Slack</appName>
-        <appName>Safari</appName>
+        <appName>Google Chrome</appName>
         <appName>Terminal</appName>
     </fullscreenApps>
 </items>

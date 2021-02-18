@@ -8,7 +8,7 @@ command! -bang -nargs=* Rg
       \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
       \   fzf#vim#with_preview(), <bang>0)
 
-nnoremap <leader>ff :Files 
+nnoremap <leader>ff :Files <CR>
 nnoremap <leader>fgf :GFiles 
 nnoremap <leader>fgs :GFiles? 
 nnoremap <leader>fgc :BCommits <CR>

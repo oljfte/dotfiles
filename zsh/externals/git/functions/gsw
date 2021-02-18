@@ -1,4 +1,8 @@
 #!/bin/zsh
 
 git rev-parse HEAD > /dev/null 2>&1 || return
-git switch $(_fgbranch)
+if ! (($#)); then
+  git switch $(_fgbranch)
+else
+  git checkout -b $1
+fi
