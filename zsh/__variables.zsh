@@ -7,6 +7,7 @@ export DOTFILES=${DOTFILES:-"$ENV_UTILS/local/dotfiles"}
 export PERSONAL="$DOTFILES/personal"
 export TEMP_DIR="/tmp"
 export KEEP_DIR="$DOCUMENTS/keep"
+export MEMO_DIR="$DOCUMENTS/memo"
 export LOG_DIR="/var/log"
 export PATH="/usr/local/bin:$PATH"
 export PATH="~/.local/bin:$PATH"
