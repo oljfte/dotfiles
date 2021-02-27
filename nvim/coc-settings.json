@@ -14,7 +14,6 @@
   "suggest.timeout": 5000,
   "suggest.asciiCharactersOnly": true,
   "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
-  "typescript.validate.enable": false,
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "/opt/homebrew/bin/black",
   "python.formatting.blackArgs": ["--line-length=99"],
