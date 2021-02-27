@@ -58,7 +58,6 @@ cask "google-chrome"
 cask "google-cloud-sdk"
 cask "keyboardcleantool"
 cask "slack"
-cask "vanilla"
 mas "Magnet", id: 441258766
 mas "TweetDeck", id: 485812721
 mas "Xcode", id: 497799835
