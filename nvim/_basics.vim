@@ -12,6 +12,9 @@ set fileencodings=utf-8
 " Fix backspace indent
 set backspace=indent,eol,start
 
+" Do not separate words with hyphen
+set isk+=-
+
 " Disable mouse
 set mouse=
 
