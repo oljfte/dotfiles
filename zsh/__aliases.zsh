@@ -1,5 +1,5 @@
 # Dependencies
-source $DOTFILES/zsh/__variables.zsh
+source $DOTFILES/zsh/__constants.zsh
 
 alias sudo="sudo "
 alias mv="mv -i"
