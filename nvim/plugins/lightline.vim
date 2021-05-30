@@ -46,7 +46,7 @@ function! CustomModified()
 endfunction
 
 function! LightlineCocGitBranch()
-    return len(trim(get(g:, 'coc_git_status', ''))) > 0? ' '.substitute(trim(get(g:, 'coc_git_status', '')), '[^a-zA-Z0-9_\ ]', '', 'g').' ' : ''
+    return len(trim(get(g:, 'coc_git_status', ''))) > 0? ' '.substitute(trim(get(g:, 'coc_git_status', '')), '[^-a-zA-Z0-9_\ ]', '', 'g').' ' : ''
 endfunction
 
 function! LightlineCocGitDiff()
