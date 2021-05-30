@@ -2,3 +2,5 @@
 
 local target_project=$(gcloud config configurations list | fzf -w 110 -h 10 --header-lines=1 | awk '{ print $1}')
 [ ! -z $target_project ] && gcloud config configurations activate $target_project
+
+export GOOGLE_APPLICATION_CREDENTIALS=$(ls -rt $PERSONAL/gcloud/credentials/${target_project}.json)
