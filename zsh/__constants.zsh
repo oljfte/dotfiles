@@ -1,12 +1,12 @@
 # Exports
-export CONFIG="$HOME/.config"
 export DOCUMENTS="$HOME/Documents"
 export DESKTOP="$HOME/Desktop"
-export ENV_UTILS="$DOCUMENTS/env-utils"
-export DOTFILES=${DOTFILES:-"$ENV_UTILS/local/dotfiles"}
+export CONFIG="$DOCUMENTS/.config"
+export WORK="$DOCUMENTS/work"
+export DOTFILES=${DOTFILES:-"$CONFIG/local/dotfiles"}
 export PERSONAL="$DOTFILES/personal"
 export TEMP_DIR="/tmp"
-export KEEP_DIR="$DOCUMENTS/keep"
+export KEEP_DIR="$DOCUMENTS/.keep"
 export MEMO_DIR="$DOCUMENTS/memo"
 export LOG_DIR="/var/log"
 export PATH="/usr/local/bin:$PATH"
