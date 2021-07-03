@@ -29,10 +29,14 @@ function git-action() {
 # Virtual env info 
 function venv-name() {
     if [ $VIRTUAL_ENV ]; then
-        if [ "$(basename $VIRTUAL_ENV)" = ".venv" ]; then 
-            echo ' '$(basename ${VIRTUAL_ENV%/*})' '
+        if [ $VIRTUAL_ENV_NAME ]; then
+            echo ' '$VIRTUAL_ENV_NAME' '
         else
-            echo ' '$(basename $VIRTUAL_ENV)' '
+            if [ "$(basename $VIRTUAL_ENV)" = ".venv" ]; then
+                echo ' '$(basename ${VIRTUAL_ENV%/*})' '
+            else
+                echo ' '$(basename $VIRTUAL_ENV)' '
+            fi
         fi
     fi
 }
