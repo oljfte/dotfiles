@@ -64,6 +64,7 @@ cask "google-chrome"
 cask "google-cloud-sdk"
 cask "karabiner-elements"
 cask "keyboardcleantool"
+cask "rectangle"
 cask "slack"
 cask "timemator"
 mas "TweetDeck", id: 485812721
