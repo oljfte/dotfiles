@@ -5,5 +5,5 @@ for target_file in `builtin cd $DOTFILES && fd -t f | sed 's/^.\///' | fzf --pre
     local target_fullpath=$DOTFILES/$target_file
     [ -f $target_fullpath ] && vim $target_fullpath
 done
-[ ! -z $target_file ] && relogin
+[ ! -z $target_file ] && exec $SHELL -l
 
