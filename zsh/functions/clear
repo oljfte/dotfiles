@@ -1,4 +1,4 @@
 #!/bin/zsh
 
+NEW_LINE_BEFORE_PROMPT=false
 printf "\033c"
-neaten

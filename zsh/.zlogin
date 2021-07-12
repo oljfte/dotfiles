@@ -1,1 +1,1 @@
-neaten
+NEW_LINE_BEFORE_PROMPT=false

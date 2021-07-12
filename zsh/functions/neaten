@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-printf '\033[5 q\r'
-printf '\n%.0s' {1..$(( $LINES + 10 ))}
