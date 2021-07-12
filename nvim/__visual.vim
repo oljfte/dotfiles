@@ -1,5 +1,5 @@
 syntax on
-set ruler
+set noruler
 set number
 set noshowmode
 set title
@@ -16,8 +16,11 @@ let g:indentLine_faster = 1
 au TermEnter * setlocal scrolloff=0
 au TermLeave * setlocal scrolloff=3
 
-" Status bar
-set laststatus=2
+" Status line
+set laststatus=1
+
+set statusline="hoge"
+
 
 " Use modeline overrides
 set modeline
@@ -29,9 +32,6 @@ nnoremap N Nzzzv
 " Colorscheme
 source $DOTFILES/nvim/colors/inheritor.vim
 colorscheme inheritor 
-
-" Dim inactive panes
-set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 
 " Cursor appearance
 set guicursor=a:block-blinkon1,i-c-ci:ver1-blinkon1
