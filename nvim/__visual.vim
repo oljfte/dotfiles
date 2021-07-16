@@ -19,8 +19,11 @@ au TermLeave * setlocal scrolloff=3
 " Status line
 set laststatus=1
 
-set statusline="hoge"
-
+" Highlight yanked area
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=500}
+augroup END
 
 " Use modeline overrides
 set modeline
