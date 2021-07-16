@@ -69,7 +69,7 @@ zle -N zle-line-init
 
 # Construct prompt
 function transient-line() {
-    PROMPT="%F{7}❯ %f"
+    PROMPT=$([ ! -z $BUFFER ] && echo "%F{7}❯ %f" || echo)
     zle reset-prompt
     zle accept-line
 }
@@ -96,7 +96,7 @@ function set-prompt() {
 }
 
 function insert-new-line-before-prompt() {
-    $NEW_LINE_BEFORE_PROMPT && echo "\n\n" || NEW_LINE_BEFORE_PROMPT=true
+    $NEW_LINE_BEFORE_PROMPT && echo "\n" || NEW_LINE_BEFORE_PROMPT=true
 }
 
 function insert-new-line-before-exec() {
