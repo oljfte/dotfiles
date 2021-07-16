@@ -1,9 +1,3 @@
-" Change input source to ABC when focusing on vim
-if executable('osascript')
-  let g:force_alphanumeric_input_command = "osascript -e 'tell application \"System Events\" to key code 102' &"
-  autocmd! FocusGained * call system(g:force_alphanumeric_input_command)
-endif
-
 " Encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -72,4 +66,3 @@ augroup vimrc-make-cmake
 augroup END
 
 set autoread
-
