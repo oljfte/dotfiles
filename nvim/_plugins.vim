@@ -8,11 +8,18 @@ endif
 call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Plugs list
-Plug 'itchyny/lightline.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } | Plug 'junegunn/fzf.vim'
-Plug 'sheerun/vim-polyglot'
+Plug 'neovim/nvim-lspconfig'
+  \| Plug 'nvim-lua/completion-nvim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'nvim-telescope/telescope.nvim'
+  \| Plug 'nvim-lua/popup.nvim'
+  \| Plug 'nvim-lua/plenary.nvim'
+  \| Plug 'nvim-telescope/telescope-fzf-writer.nvim'
+  \| Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'preservim/nerdcommenter'
 
 call plug#end()
