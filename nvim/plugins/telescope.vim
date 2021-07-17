@@ -16,11 +16,11 @@ require('telescope').setup {
         ["<esc>"] = actions.close,
       },
     },
-  }
+  },
   extensions = {
     fzf_writer = {
       use_highlighter = true
-    }
-  }
+    },
+  },
 }
 EOF

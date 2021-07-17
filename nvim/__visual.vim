@@ -3,6 +3,7 @@ set noruler
 set number
 set noshowmode
 set title
+set shortmess+=I
 set t_Co=256
 
 let no_buffers_menu=1
