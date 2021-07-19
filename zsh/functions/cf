@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-local target_file
-for target_file in `builtin cd $DOTFILES && fd --no-ignore -t f | sed 's/^.\///' | fzf --preview 'bat {}'`; do
-    local target_fullpath=$DOTFILES/$target_file
-    [ -f $target_fullpath ] && vim $target_fullpath
-done
-[ ! -z $target_file ] && exec $SHELL -l
-
