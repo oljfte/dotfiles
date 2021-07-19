@@ -1,0 +1,16 @@
+gui:
+  theme:
+    selectedLineBgColor:
+      - bold
+    selectedRangeBgColor:
+      - bold
+  mouseEvents: false
+  showListFooter: false
+  showRandomTip: false
+  showCommandLog: false
+git:
+  merging:
+    manualCommit: true
+    args: '--no-ff'
+  pull:
+    mode: 'ff-only'
