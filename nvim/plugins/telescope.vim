@@ -1,7 +1,7 @@
-nnoremap <leader>ff :lua require('telescope').extensions.fzf_writer.files()<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fh <cmd>Telescope oldfiles<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fg :lua require('telescope').extensions.fzf_writer.grep()<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
 lua <<EOF
 local actions = require('telescope.actions')
@@ -17,10 +17,17 @@ require('telescope').setup {
       },
     },
   },
-  extensions = {
-    fzf_writer = {
-      use_highlighter = true
-    },
+  pickers = {
+    find_files = {
+      find_command = {
+        'fd',
+        '--type',
+        'file',
+        '--follow',
+        '--hidden',
+        '--no-ignore-vcs',
+      },
+    }
   },
 }
 EOF
