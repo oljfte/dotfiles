@@ -83,7 +83,7 @@ call <SID>set_colors("CursorLineNr" , "NONE" , s:darkgray      , "")
 call <SID>set_colors("Directory"    , s:blue , ""         , "")
 call <SID>set_colors("DiffAdd"      , s:dimgreen, "NONE", "")
 call <SID>set_colors("DiffDelete"   , s:dimred,   "NONE", "")
-call <SID>set_colors("DiffChange"   , s:dimcyan, "NONE", "")
+call <SID>set_colors("DiffChange"   , s:green, "NONE", "")
 call <SID>set_colors("DiffText"     , s:magenta, "NONE", "")
 
 hi link EndOfBuffer NonText
