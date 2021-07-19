@@ -1,124 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>AMApplicationBuild</key>
-	<string>509</string>
-	<key>AMApplicationVersion</key>
-	<string>2.10</string>
-	<key>AMDocumentVersion</key>
-	<string>2</string>
-	<key>actions</key>
-	<array>
-		<dict>
-			<key>action</key>
-			<dict>
-				<key>AMAccepts</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Optional</key>
-					<true/>
-					<key>Types</key>
-					<array>
-						<string>com.apple.applescript.object</string>
-					</array>
-				</dict>
-				<key>AMActionVersion</key>
-				<string>1.0.2</string>
-				<key>AMApplication</key>
-				<array>
-					<string>Automator</string>
-				</array>
-				<key>AMParameterProperties</key>
-				<dict>
-					<key>source</key>
-					<dict/>
-				</dict>
-				<key>AMProvides</key>
-				<dict>
-					<key>Container</key>
-					<string>List</string>
-					<key>Types</key>
-					<array>
-						<string>com.apple.applescript.object</string>
-					</array>
-				</dict>
-				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Run AppleScript.action</string>
-				<key>ActionName</key>
-				<string>Run AppleScript</string>
-				<key>ActionParameters</key>
-				<dict>
-					<key>source</key>
-					<string>--- Helperson areFullscreensOK(appList)	set isOK to true	tell application "System Events"		set currentApplication to (name of 1st process whose frontmost is true)		tell application "Mission Control" to launch		tell list 1 in group 2 of group 1 of group 1 of process "Dock"			try				repeat with i from 1 to count of appList					if not name of button -i as string is item -i of appList as string then						set isOK to false						exit repeat					end if				end repeat			on error				set isOK to false			end try			delay 0.1			repeat with i from 1 to count of buttons				if name of button i as string is currentApplication as string then					click button i					exit repeat				end if				if i = (count of buttons) then					click button 1				end if			end repeat		end tell	end tell	return isOKend areFullscreensOKon areRegularWindowsOK(appList)	set isOK to true	repeat with appName in appList		if application appName is not running then			set isOK to false		else			try				tell application "System Events"					if (count of windows of process appName) = 0 then						set isOK to false					end if					repeat with theWindow in windows of process appName						if value of attribute "AXFullScreen" of theWindow is true then							set isOK to false						end if					end repeat				end tell			on error				set isOK to false			end try		end if	end repeat	return isOKend areRegularWindowsOKon setupApps(appList, isToEnterFullScreen)	set maxSetupIteration to 3	set maxActivateIteration to 20	set maxAttributeSetIteration to 5	set maxQuitIteration to 10	set repeatIntervalBuffer to 0.1		repeat with appName in appList		set setupIteration to 0		repeat until setupIteration ≥ maxSetupIteration			set activeApplication to ""			set activateIteration to 0			repeat until activeApplication as string = appName as string or activateIteration ≥ maxActivateIteration				tell application appName to activate				-- Some apps behaves weirdly...				if appName as string is "Mail" as string then					tell application "Mail" to activate message viewer 1				end if				--				tell application "System Events"					set activeApplication to (name of 1st process whose frontmost is true)				end tell				delay 0.3 + repeatIntervalBuffer				set activateIteration to activateIteration + 1			end repeat			try				tell application "System Events"					set attributeSetIteration to 0					repeat until value of attribute "AXFullScreen" of window 1 of process appName as string is isToEnterFullScreen as string or attributeSetIteration ≥ maxAttributeSetIteration						set value of attribute "AXFullScreen" of window 1 of process appName to isToEnterFullScreen						delay 0.3 + repeatIntervalBuffer						set attributeSetIteration to attributeSetIteration + 1					end repeat					exit repeat				end tell			on error				set quitIteration to 0				repeat while application appName is running or quitIteration ≥ maxQuitIteration					try						tell application appName to quit					end try					delay 0.2 + repeatIntervalBuffer					set quitIteration to quitIteration + 1				end repeat			end try			set setupIteration to setupIteration + 1		end repeat	end repeatend setupAppson adjustBrightness(brightness)	if application "System Preferences" is running then		try			tell application "System Preferences" to quit		on error			do shell script "killall 'System Preferences'"		end try	end if	repeat while application "System Preferences" is running		delay 0.1	end repeat	tell application "System Preferences" to reveal anchor "displaysDisplayTab" of ¬		pane id "com.apple.preference.displays"	tell application "System Events" to ¬		tell value indicator 1 of slider 1 of tab group 1 of window 1 of ¬			application process "System Preferences" to set its value to brightness	tell application "System Preferences" to quitend adjustBrightness--- Maintell application "System Events"	set currentApplication to (name of 1st process whose frontmost is true)end telladjustBrightness(0.2)set volume with output mutedset appListPath to ((path to home folder as string) &amp; ".config:Totonoe:arrangement.xml")tell application "System Events"	tell XML file appListPath		tell XML element "items"			tell XML element "regularWindowApps"				set regularWindowApps to value of every XML element whose name is "appName"			end tell			tell XML element "fullscreenApps"				set fullscreenApps to value of every XML element whose name is "appName"			end tell		end tell	end tellend tellif not areFullscreensOK(fullscreenApps) then	setupApps(fullscreenApps, false)	setupApps(fullscreenApps, true)end ifif not areRegularWindowsOK(regularWindowApps) then	setupApps(regularWindowApps, false)end iftell application currentApplication to activateadjustBrightness(1)</string>
-				</dict>
-				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.RunScript</string>
-				<key>CFBundleVersion</key>
-				<string>1.0.2</string>
-				<key>CanShowSelectedItemsWhenRun</key>
-				<false/>
-				<key>CanShowWhenRun</key>
-				<true/>
-				<key>Category</key>
-				<array>
-					<string>AMCategoryUtilities</string>
-				</array>
-				<key>Class Name</key>
-				<string>RunScriptAction</string>
-				<key>InputUUID</key>
-				<string>71AB40E4-906A-4DDE-BAAD-48F6B4457EBC</string>
-				<key>Keywords</key>
-				<array>
-					<string>Run</string>
-				</array>
-				<key>OutputUUID</key>
-				<string>789FF780-3A16-4285-A821-A0A69EE8DA6B</string>
-				<key>UUID</key>
-				<string>5DDBF20E-C76E-4997-BF0B-B1443A758CA1</string>
-				<key>UnlocalizedApplications</key>
-				<array>
-					<string>Automator</string>
-				</array>
-				<key>arguments</key>
-				<dict>
-					<key>0</key>
-					<dict>
-						<key>default value</key>
-						<string>on run {input, parameters}
-	
-	(* Your script goes here *)
-	
-	return input
-end run</string>
-						<key>name</key>
-						<string>source</string>
-						<key>required</key>
-						<string>0</string>
-						<key>type</key>
-						<string>0</string>
-						<key>uuid</key>
-						<string>0</string>
-					</dict>
-				</dict>
-				<key>isViewVisible</key>
-				<integer>1</integer>
-				<key>location</key>
-				<string>649.000000:315.000000</string>
-				<key>nibPath</key>
-				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
-			</dict>
-			<key>isViewVisible</key>
-			<integer>1</integer>
-		</dict>
-	</array>
-	<key>connectors</key>
-	<dict/>
-	<key>workflowMetaData</key>
-	<dict>
-		<key>workflowTypeIdentifier</key>
-		<string>com.apple.Automator.application</string>
-	</dict>
-</dict>
-</plist>
