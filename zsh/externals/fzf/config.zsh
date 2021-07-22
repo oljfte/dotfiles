@@ -7,8 +7,9 @@ export PATH="$(brew --prefix)/opt/fzf/bin:$PATH"
 export FZF_TMUX=1
 export FZF_TMUX_OPTS='-p 70%'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --no-ignore-vcs'
-export FZF_DEFAULT_OPTS="--reverse --color 16 --inline-info --multi --ansi \
-    --bind tab:toggle,shift-tab:toggle-all,ctrl-j:down,ctrl-k:up,ctrl-l:preview-down,ctrl-h:preview-up --preview-window wrap"
+export FZF_DEFAULT_OPTS="--reverse --inline-info --multi --ansi \
+    --bind tab:toggle,shift-tab:toggle-all,ctrl-j:down,ctrl-k:up,ctrl-l:preview-down,ctrl-h:preview-up --preview-window wrap \
+    --color='bg+:0,fg:8,fg+:15,info:7,spinner:7,hl:2,hl+:2,pointer:7,marker:2,prompt:7'"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_CTRL_T_OPTS="--preview 'bat {}'"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
