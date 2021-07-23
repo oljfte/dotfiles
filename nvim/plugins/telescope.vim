@@ -16,6 +16,16 @@ require('telescope').setup {
         ["<esc>"] = actions.close,
       },
     },
+    prompt_prefix = "",
+    selection_caret = "",
+    entry_prefix = "",
+    layout_strategy = "vertical",
+    layout_config = {
+      vertical = {
+        width = 0.8,
+        height = 0.6,
+      }
+    },
   },
   pickers = {
     find_files = {
@@ -31,3 +41,8 @@ require('telescope').setup {
   },
 }
 EOF
+
+highlight TelescopeNormal ctermfg=darkgray
+highlight TelescopeSelection ctermfg=white gui=bold
+highlight TelescopeMultiSelection ctermfg=white gui=bold
+highlight TelescopeMatching ctermfg=green
