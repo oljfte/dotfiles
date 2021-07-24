@@ -67,6 +67,7 @@ cask "karabiner-elements"
 cask "keyboardcleantool"
 cask "rectangle"
 cask "slack"
+cask "spotify"
 cask "timemator"
 mas "LINE", id: 539883307
 mas "TweetDeck", id: 485812721
