@@ -9,7 +9,6 @@ lua << EOF
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- Mappings
     local opts = { noremap=true, silent=true }
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -26,38 +25,61 @@ lua << EOF
     buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-    -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    end
-
-    -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
-        require('lspconfig').util.nvim_multiline_command [[
-        :hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-        :hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-        :hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-        augroup lsp_document_highlight
-            autocmd!
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]]
-    end
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
 
-  local servers = {'pyright', 'gopls', 'rust_analyzer'}
+  local servers = {
+    "pyright",
+    "rust_analyzer",
+    "tsserver",
+    "solargraph"
+  }
+
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
+      flags = {
+        debounce_text_changes = 150,
+      }
     }
   end
-EOF
 
-" Completion
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  vim.fn.sign_define("LspDiagnosticsSignError", {text = ""})
+  vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ""})
+  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
+  vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
+
+  vim.fn.sign_define("LspDiagnosticsSignError", {texthl = "LspDiagnosticsSignError", numhl = "LspDiagnosticsLineNrError"})
+  vim.fn.sign_define("LspDiagnosticsSignWarning", {texthl = "LspDiagnosticsSignWarning", numhl = "LspDiagnosticsLineNrWarning"})
+  vim.fn.sign_define("LspDiagnosticsSignInformation", {texthl = "LspDiagnosticsSignInformation", numhl = "LspDiagnosticsLineNrInformation"})
+  vim.fn.sign_define("LspDiagnosticsSignHint", {texthl = "LspDiagnosticsSignHint", numhl = "LspDiagnosticsLineNrHint"})
+
+  vim.api.nvim_exec([[
+    set completeopt=longest,menuone,noinsert,noselect
+    set shortmess+=c
+
+    autocmd BufEnter * lua require'completion'.on_attach()
+    let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    highlight LspDiagnosticsDefaultHint ctermfg=lightgray
+    highlight LspDiagnosticsDefaultError ctermfg=red
+    highlight LspDiagnosticsDefaultWarning ctermfg=yellow
+    highlight LspDiagnosticsDefaultInformation ctermfg=blue
+
+    highlight LspDiagnosticsLineNrWarning ctermfg=yellow
+    highlight LspDiagnosticsLineNrError ctermfg=red
+    highlight LspDiagnosticsLineNrInformation ctermfg=green
+    highlight LspDiagnosticsLineNrHint ctermfg=lightgray
+  ]], false)
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        prefix = "◀",
+      },
+    }
+  )
+EOF
