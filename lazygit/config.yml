@@ -16,3 +16,6 @@ git:
     args: '--no-ff'
   pull:
     mode: 'ff-only'
+refresher:
+  refreshInterval: 3
+  fetchInterval: 30
