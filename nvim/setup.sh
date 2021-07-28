@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-[ ! -e $HOME/.config/nvim/colors ] && mkdir -p $HOME/.config/nvim/colors
-[ ! -e $HOME/.config/nvim/snippets ] && mkdir -p $HOME/.config/nvim/snippets
-ln -fs $DOTFILES/nvim/init.vim $HOME/.config/nvim
-ln -fs $DOTFILES/nvim/coc-settings.json $HOME/.config/nvim
-ln -fs $DOTFILES/nvim/colors/* $HOME/.config/nvim/colors
+rm -rf $HOME/.config/nvim
+mkdir $HOME/.config/nvim
+
+ln -fs $DOTFILES/nvim/init.lua $HOME/.config/nvim/init.lua
+ln -fs $DOTFILES/nvim/lua $HOME/.config/nvim/lua
 
 echo "Done nvim setup."
