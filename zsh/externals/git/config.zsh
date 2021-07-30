@@ -1,2 +1,2 @@
 # Environment variables
-export GIT_EDITOR=$EDITOR
+export GIT_EDITOR="nvim"
