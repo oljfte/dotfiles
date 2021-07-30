@@ -17,6 +17,11 @@ function vi-yank-xclip {
 zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
 
-# Aliases
-alias vi="vim"
-alias vim="nvim"
+function open-nvim {
+   nvim
+   zle reset-prompt
+}
+
+zle -N open-nvim
+bindkey -M vicmd '^v' open-nvim
+bindkey -M viins '^v' open-nvim
