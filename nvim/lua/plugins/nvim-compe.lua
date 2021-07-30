@@ -34,6 +34,7 @@ return function()
         return vim.fn['compe#complete']()
       end
     end
+
     _G.s_tab_complete = function()
       if vim.fn.pumvisible() == 1 then
         return t "<C-p>"
@@ -46,4 +47,5 @@ return function()
     utils.keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
     utils.keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
     utils.keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+    utils.keymap('i', '<CR>', "compe#confirm('<CR>')", {expr = true, noremap = true})
 end
