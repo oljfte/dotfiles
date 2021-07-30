@@ -11,5 +11,5 @@ local sessions_with_configs=$(find $DOTFILES -path "*/session-init/*" | sed 's!^
 local active_sessions=$(tmux ls -F "#{session_name}" 2>/dev/null | grep -v "popup")
 local active_sessions_with_configs=$({ echo ${active_sessions}; echo ${sessions_with_configs}; } | sort | uniq -d | awk NF)
 local inactive_sessions_with_configs=$({ echo ${sessions_with_configs}; echo ${active_sessions_with_configs}; } | sort | uniq -u | awk NF)
-{ echo $active_sessions; \
+{ echo $active_sessions | awk 'NF'; \
     [ ! -z $inactive_sessions_with_configs ] && echo $inactive_sessions_with_configs | sed 's/.*/(&)/' } | grep -v ${from_session:-' '}
