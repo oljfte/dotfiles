@@ -3,3 +3,6 @@ personal/
 
 # Auto-generated json by running brew bundle
 Brewfile.lock.json
+
+# Karabiner-Elements backups
+karabiner/karabiner/automatic_backups
