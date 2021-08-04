@@ -4,6 +4,7 @@ local formatter_dir = "plugins.nvim-lspconfig.langservers.formatter"
 local black = require(formatter_dir..".".."black")
 local isort = require(formatter_dir..".".."isort")
 local prettier = require(formatter_dir..".".."prettier")
+local rubocop_format = require(formatter_dir..".".."rubocop")
 
 -- Linters
 local linter_dir = "plugins.nvim-lspconfig.langservers.linter"
@@ -11,6 +12,7 @@ local linter_dir = "plugins.nvim-lspconfig.langservers.linter"
 local flake8 = require(linter_dir..".".."flake8")
 local mypy = require(linter_dir..".".."mypy")
 local eslint = require(linter_dir..".".."eslint")
+local rubocop_lint = require(linter_dir..".".."rubocop")
 
 -- Languages
 local language_configs = {
@@ -25,6 +27,7 @@ local language_configs = {
   scss = {prettier},
   css = {prettier},
   markdown = {prettier},
+  ruby = {rubocop_format, rubocop_lint},
 }
 
 -- Language Server Configs
@@ -36,5 +39,6 @@ return {
   },
   pyright = {},
   clangd = {},
-  tsserver = {}
+  tsserver = {},
+  solargraph = {}
 }
