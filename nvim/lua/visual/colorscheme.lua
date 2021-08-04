@@ -13,7 +13,7 @@ local cyan = "06"
 
 utils.highlight("Conceal", nil, "NONE", nil)
 utils.highlight("Cursor", "NONE", "NONE", "reverse")
-utils.highlight("CursorLineNr", "NONE", darkgray, nil)
+utils.highlight("CursorLineNr", "NONE", nil, nil)
 utils.highlight("Directory", blue, nil, nil)
 utils.highlight("DiffAdd", green, "NONE", nil)
 utils.highlight("DiffDelete", red, "NONE", nil)

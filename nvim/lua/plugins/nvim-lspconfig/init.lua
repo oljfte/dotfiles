@@ -5,6 +5,8 @@ return function()
     local on_attach = function(client)
         require("plugins.nvim-lspconfig.visual")
         require("plugins.nvim-lspconfig.keymap")
+
+        vim.cmd("autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })")
     end
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] =
