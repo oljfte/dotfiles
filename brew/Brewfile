@@ -10,7 +10,6 @@ brew "bazel"
 brew "python@3.9", link: false
 brew "coreutils"
 brew "cowsay"
-brew "docker"
 brew "exa"
 brew "fd"
 brew "jpeg"
@@ -69,7 +68,7 @@ cask "keyboardcleantool"
 cask "rectangle"
 cask "slack"
 cask "spotify"
-cask "timemator"
+cask "timing"
 mas "LINE", id: 539883307
 mas "TweetDeck", id: 485812721
 mas "Xcode", id: 497799835
