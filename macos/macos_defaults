@@ -7,6 +7,8 @@ ApplePressAndHoldEnabled -bool false
 com.apple.dock static-only -bool true
 com.apple.dock launchanim -bool false
 com.apple.dock persistent-apps -array
+com.apple.dock orientation left
+com.apple.Dock autohide -bool true
 com.apple.finder AppleShowAllFiles -bool true
 com.apple.finder ShowStatusBar -bool true
 com.apple.finder ShowPathbar -bool true
@@ -16,3 +18,4 @@ com.apple.desktopservices DSDontWriteUSBStores -bool true
 com.apple.Safari ShowFullURLInSmartSearchField -bool true
 com.apple.Safari AutoOpenSafeDownloads -bool false
 com.apple.terminal StringEncodings -array 4
+com.apple.keyboard.fnState -boolean true
