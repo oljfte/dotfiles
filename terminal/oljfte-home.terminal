@@ -167,6 +167,8 @@
 	<false/>
 	<key>BlinkText</key>
 	<true/>
+	<key>CommandString</key>
+	<string>tm</string>
 	<key>CursorBlink</key>
 	<true/>
 	<key>CursorColor</key>
@@ -199,7 +201,7 @@
 	<key>ProfileCurrentVersion</key>
 	<real>2.0699999999999998</real>
 	<key>RunCommandAsShell</key>
-	<true/>
+	<false/>
 	<key>SelectionColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
