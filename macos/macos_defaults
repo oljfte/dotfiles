@@ -19,3 +19,4 @@ com.apple.Safari ShowFullURLInSmartSearchField -bool true
 com.apple.Safari AutoOpenSafeDownloads -bool false
 com.apple.terminal StringEncodings -array 4
 com.apple.keyboard.fnState -boolean true
+-currentHost read com.apple.screensaver idleTime -int 300
