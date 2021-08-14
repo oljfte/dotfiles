@@ -7,6 +7,10 @@ return function()
         require("plugins.nvim-lspconfig.keymap")
 
         vim.cmd("autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })")
+
+        if client.name ~= 'efm' then
+            client.resolved_capabilities.document_formatting = false
+        end
     end
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] =
