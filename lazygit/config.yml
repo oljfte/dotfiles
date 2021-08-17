@@ -19,3 +19,26 @@ git:
 refresher:
   refreshInterval: 3
   fetchInterval: 30
+keybinding:
+  universal:
+    quit: '<c-c>'
+    return: '<esc>'
+    togglePanel: '<down>'
+    prevItem: 'k'
+    nextItem: 'j'
+    prevBlock: '<up>'
+    nextBlock: '<down>'
+    prevBlock-alt: '<c-k>'
+    nextBlock-alt: '<c-j>'
+    select: '<enter>'
+    goInto: '<a-enter>'
+    confirm: 'y'
+    openFile: '<c-o>'
+    pushFiles: '<insert>'
+    copyToClipboard: 'Y'
+    submitEditorText: '<F12>'
+    appendNewline: '<enter>'
+  status:
+    recentRepos: '<tab>'
+  commits:
+    checkoutCommit: '<enter>'
