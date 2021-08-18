@@ -34,11 +34,12 @@ keybinding:
     goInto: '<a-enter>'
     confirm: 'y'
     openFile: '<c-o>'
-    pushFiles: '<insert>'
+    pushFiles: '<F12>'
     copyToClipboard: 'Y'
-    submitEditorText: '<F12>'
-    appendNewline: '<enter>'
+    submitEditorText: '<F11>'
   status:
     recentRepos: '<tab>'
   commits:
     checkoutCommit: '<enter>'
+    moveUpCommit: '<F10>' # move commit up one
+    moveDownCommit: '<F9>' # move commit down one
