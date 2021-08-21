@@ -32,7 +32,7 @@ keybinding:
     nextBlock-alt: '<c-j>'
     select: '<space>'
     goInto: '<enter>'
-    confirm: 'y'
+    confirm: '<enter>'
     openFile: '<c-o>'
     pushFiles: '<F12>'
     copyToClipboard: 'Y'
