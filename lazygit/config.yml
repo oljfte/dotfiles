@@ -30,7 +30,7 @@ keybinding:
     nextBlock: '<down>'
     prevBlock-alt: '<c-k>'
     nextBlock-alt: '<c-j>'
-    select: '<tab>'
+    select: '<space>'
     goInto: '<enter>'
     confirm: 'y'
     openFile: '<c-o>'
@@ -41,5 +41,5 @@ keybinding:
     recentRepos: '<tab>'
   commits:
     checkoutCommit: '<enter>'
-    moveUpCommit: '<F10>' # move commit up one
-    moveDownCommit: '<F9>' # move commit down one
+    moveUpCommit: '<F10>'
+    moveDownCommit: '<F9>'
