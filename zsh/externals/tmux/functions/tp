@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-tmux setenv -g TMUX_LAST_DETECTED_SESSION $(tmux display-message -p '#S');
-eval $(tmux showenv -gs TMUX_LAST_DETECTED_SESSION);
-[ "$TMUX_LAST_DETECTED_SESSION" = "popup" ] \
-  && tmux detach-client \
-  || tmux popup -E "tmux attach -t popup || tmux new -s popup"

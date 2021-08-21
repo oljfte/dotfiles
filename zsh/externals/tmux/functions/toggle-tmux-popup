@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+local session_name=${1:-"popup"}
+local matched_config_sources=$(find $DOTFILES -path "*/session-init/.tmux.$session_name.conf" | sort -n)
+local target_config_source=$(echo $matched_config_sources | grep $PERSONAL || echo $matched_config_sources | head -n 1)
+if [ ! -z $target_config_source ]; then
+    tmux new -d -s $session_name &>/dev/null && tmux send -t $session_name "tmux source-file $target_config_source" C-m
+else
+    tmux new -d -s $session_name &>/dev/null
+fi
+
+tmux setenv -g TMUX_LAST_DETECTED_SESSION $(tmux display-message -p '#S');
+eval $(tmux showenv -gs TMUX_LAST_DETECTED_SESSION);
+[ "$TMUX_LAST_DETECTED_SESSION" = "$session_name" ] \
+  && tmux detach-client \
+  || tmux popup -E "tmux attach -t $session_name || tmux new -s $session_name"

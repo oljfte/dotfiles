@@ -1,13 +1,13 @@
 #!/bin/zsh
 
-local target_session=$(_tmux-target-session $1)
+local target_session=$(_get-tmux-session $1)
 [ -z "$target_session" ] && return 1
 if [ "$(tmux display -p -F "#{session_name}" 2>/dev/null)" = "popup" ]; then
     eval $(tmux showenv -gs TMUX_LAST_DETECTED_SESSION)
     local from_session=$TMUX_LAST_DETECTED_SESSION
     if [ ! "$target_session" = "$from_session" ]; then
         tmux neww -n 'tm_exec_tmp' -t $from_session &>/dev/null && local working_window='tm_exec_tmp'
-        tmux send -t "${from_session}:${working_window}" "tmux-attach-session $target_session" C-m &>/dev/null
+        tmux send -t "${from_session}:${working_window}" "attach-tmux-session $target_session" C-m &>/dev/null
         for i in `seq 100`; do # Timeout after 3 seconds
             if [ "$(tmux list-client -F \#S | sed '/popup/d')" = "$target_session" ]; then
                 tmux killw -t "${from_session}:tm_exec_tmp" &>/dev/null
@@ -18,5 +18,5 @@ if [ "$(tmux display -p -F "#{session_name}" 2>/dev/null)" = "popup" ]; then
         tmux detach
     fi
 else
-    tmux-attach-session $target_session
+    attach-tmux-session $target_session
 fi

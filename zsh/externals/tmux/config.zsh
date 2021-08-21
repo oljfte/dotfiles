@@ -2,10 +2,10 @@
 autoload -z $(dirname $0)/functions/*
 
 # ZLE
-zle -N tm
-bindkey -M vicmd '^o' tm
-bindkey -M viins '^o' tm
+zle -N show-tmux-sessions
+bindkey -M vicmd "^o" show-tmux-sessions
+bindkey -M viins "^o" show-tmux-sessions
 
-zle -N tp
-bindkey -M vicmd '^p' tp
-bindkey -M viins '^p' tp
+zle -N toggle-tmux-popup
+bindkey -M vicmd "^p" toggle-tmux-popup
+bindkey -M viins "^p" toggle-tmux-popup
