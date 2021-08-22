@@ -31,7 +31,7 @@ keybinding:
     prevBlock-alt: '<c-k>'
     nextBlock-alt: '<c-j>'
     select: '<space>'
-    goInto: '<enter>'
+    goInto: '<right>'
     confirm: '<enter>'
     openFile: '<c-o>'
     pushFiles: '<F12>'
