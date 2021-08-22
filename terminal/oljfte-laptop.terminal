@@ -168,7 +168,7 @@
 	<key>BlinkText</key>
 	<true/>
 	<key>CommandString</key>
-	<string>tm</string>
+	<string>select-tmux-session</string>
 	<key>CursorBlink</key>
 	<true/>
 	<key>CursorColor</key>

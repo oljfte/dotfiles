@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+[ ! $TMUX ] && return
+
 local session_name=${1:-"popup"}
 local matched_config_sources=$(find $DOTFILES -path "*/session-init/.tmux.$session_name.conf" | sort -n)
 local target_config_source=$(echo $matched_config_sources | grep $PERSONAL || echo $matched_config_sources | head -n 1)

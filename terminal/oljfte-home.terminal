@@ -168,7 +168,7 @@
 	<key>BlinkText</key>
 	<true/>
 	<key>CommandString</key>
-	<string>tm</string>
+	<string>select-tmux-session</string>
 	<key>CursorBlink</key>
 	<true/>
 	<key>CursorColor</key>
@@ -273,6 +273,8 @@
 	<string></string>
 	<key>columnCount</key>
 	<integer>200</integer>
+	<key>fontAllowsDisableAntialias</key>
+	<true/>
 	<key>keyMapBoundKeys</key>
 	<dict>
 		<key>#F739</key>
