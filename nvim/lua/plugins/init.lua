@@ -53,6 +53,13 @@ return packer.startup(
             }
         )
 
+        use(
+            {
+                "lukas-reineke/indent-blankline.nvim",
+                config = require("plugins.indent-blankline")
+            }
+        )
+
         packer.install()
         packer.compile()
     end
