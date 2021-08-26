@@ -30,3 +30,16 @@ vim.cmd([[
         autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
     augroup END
 ]])
+
+vim.cmd([[
+  setl updatetime=300
+  highlight WordUnderCursor ctermbg=08 cterm=bold
+  autocmd CursorHold * call HighlightCursorWord()
+  function! HighlightCursorWord()
+      let search = getreg('/')
+      let cword = expand('<cword>')
+      if match(cword, search) == -1
+          exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
+      endif
+  endfunction
+]])
