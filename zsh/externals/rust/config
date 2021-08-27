@@ -1,4 +1,6 @@
 #!/bin/zsh
 
+source $HOME/.cargo/env
+
 # Environment Variables
-export PATH=$PATH:/Users/oljfte/.cargo/bin
+export PATH=$PATH:$HOME/.cargo/bin
