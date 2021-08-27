@@ -10,6 +10,7 @@ brew "bazel"
 brew "python@3.9", link: false
 brew "coreutils"
 brew "cowsay"
+brew "deno"
 brew "efm-langserver"
 brew "exa"
 brew "fd"
