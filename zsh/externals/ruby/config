@@ -1,3 +1,4 @@
 # Environment variables
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="$(brew --prefix)/opt/ruby/bin:$PATH"
+export PATH="$(gem env | grep "EXECUTABLE DIRECTORY" | awk '{print $4}'):$PATH"
 eval "$(rbenv init -)"
