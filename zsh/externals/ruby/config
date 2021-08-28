@@ -1,6 +1,7 @@
 # Environment variables
 export PATH="$BREW_PREFIX/opt/ruby/bin:$PATH"
-export PATH="$(gem env | grep 'EXECUTABLE DIRECTORY' | awk '{print $4}'):$PATH"
+# NOTE: Path below depends on versions, but getting this dynamically slows down zsh login.
+export PATH="$BREW_PREFIX/lib/ruby/gems/3.0.0/bin:$PATH"
 
 # Functions
 function rbenv() {
