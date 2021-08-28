@@ -4,13 +4,13 @@ env:
   TERM: alacritty
 
 window:
-  #dimensions:
-    #columns: 0
-    #lines: 0
+  dimensions:
+    columns: 361
+    lines: 95
 
-  #position:
-    #x: 0
-    #y: 0
+  position:
+    x: 1742
+    y: 50
 
   padding:
     x: 36
