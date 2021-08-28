@@ -3,8 +3,8 @@ const PRIMARY_MODIFIER = ["ctrl", "cmd"];
 const SECONDARY_MODIFIER = ["ctrl", "alt"];
 
 // Padding
-const MENUBAR_HEIGHT = 25;
-const PADDING = 0;
+const MENUBAR_HEIGHT = 0;
+const PADDING = 50;
 const POSITION_TORELANCE = 30;
 
 // Grid
