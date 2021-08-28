@@ -20,7 +20,7 @@ window:
 
   decorations: buttonless
 
-  opacity: 0.97
+  #opacity: 1.0
 
   #startup_mode: Windowed
 
@@ -38,8 +38,6 @@ window:
   #history: 10000
 
   #multiplier: 3
-
-background_opacity: 0.97 # FIXME: Deprecated in latest
 
 font:
   normal:
