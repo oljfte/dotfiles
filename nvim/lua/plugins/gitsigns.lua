@@ -18,7 +18,7 @@ return function()
         }
     )
 
-    utils.highlight("GitSignsAdd", "02", "NONE", nil)
-    utils.highlight("GitSignsChange", "04", "NONE", nil)
-    utils.highlight("GitSignsDelete", "01", "NONE", nil)
+    utils.highlight("GitSignsAdd", "#30d158", "NONE", nil)
+    utils.highlight("GitSignsChange", "#0a84ff", "NONE", nil)
+    utils.highlight("GitSignsDelete", "#ff453a", "NONE", nil)
 end

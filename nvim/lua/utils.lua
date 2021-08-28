@@ -14,16 +14,16 @@ function M.cnoreabbrev(from, to)
     vim.cmd("cnoreabbrev "..from.." "..to)
 end
 
-function M.highlight(group, ctermfg, ctermbg, attr)
+function M.highlight(group, guifg, guibg, attr)
     local parts = {group}
-    if ctermfg then
-        table.insert(parts, "ctermfg=" .. ctermfg)
+    if guifg then
+        table.insert(parts, "guifg=" .. guifg)
     end
-    if ctermbg then
-        table.insert(parts, "ctermbg=" .. ctermbg)
+    if guibg then
+        table.insert(parts, "guibg=" .. guibg)
     end
     if attr then
-        table.insert(parts, "cterm=" .. attr)
+        table.insert(parts, "gui=" .. attr)
     end
     vim.api.nvim_command("highlight " .. table.concat(parts, " "))
 end

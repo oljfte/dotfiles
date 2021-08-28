@@ -11,6 +11,7 @@ opt.title = true
 opt.shortmess = opt.shortmess + "I"
 opt.laststatus = 1
 opt.guicursor = {"a:block-blinkon1", "i-c-ci:ver1-blinkon1"}
+opt.termguicolors = true
 
 vim.g.no_buffers_menu = 1
 vim.wo.fillchars = 'eob: '
@@ -32,14 +33,17 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  setl updatetime=300
-  highlight WordUnderCursor ctermbg=08 cterm=bold
+  setl updatetime=500
+  highlight WordUnderCursor guibg=#303030
   autocmd CursorHold * call HighlightCursorWord()
   function! HighlightCursorWord()
       let search = getreg('/')
       let cword = expand('<cword>')
-      if match(cword, search) == -1
+      let cchar = matchstr(getline('.'), '\%'.col('.').'c.')
+      if match(cword, search) == -1 && len(cword) > 0 && stridx(cword, cchar) != -1
           exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
+      else
+          exe 'match WordUnderCursor /\V\<%s\>/'
       endif
   endfunction
 ]])

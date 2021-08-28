@@ -95,7 +95,7 @@ const WINDOW_ARRANGEMENT = [
     spaceIndex: 3,
   },
   {
-    name: "Terminal",
+    name: "Alacritty",
     gridFrame: { x: 4, y: 0, width: 8, height: 12 },
     spaceIndex: 3,
   },

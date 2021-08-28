@@ -1,15 +1,16 @@
 local utils = require("utils")
 
-local black = "00"
-local white = "15"
-local lightgray = "07"
-local darkgray = "08"
-local red = "01"
-local green = "02"
-local yellow = "03"
-local blue = "04"
-local magenta = "05"
-local cyan = "06"
+local black =    "#171717"
+local red =      "#ff453a"
+local green =    "#30d158"
+local yellow =   "#ffd60a"
+local blue =     "#0a84ff"
+local magenta =  "#bf5af2"
+local cyan =     "#64d2ff"
+local white =    "#dbdbdb"
+-- TODO
+local lightgray = "#787880"
+local darkgray = "#545458"
 
 utils.highlight("Conceal", nil, "NONE", nil)
 utils.highlight("Cursor", "NONE", "NONE", "reverse")
@@ -55,7 +56,7 @@ utils.highlight("Underlined", nil, nil, "underline")
 utils.highlight("Ignore", darkgray, nil, nil)
 utils.highlight("Error", black, red, nil)
 utils.highlight("Todo", black, red, nil)
-utils.highlight("Comment", darkgray, nil, nil)
+utils.highlight("Comment", lightgray, nil, nil)
 
 utils.highlight("Constant", green, nil, nil)
 utils.highlight_link("String", "Constant")

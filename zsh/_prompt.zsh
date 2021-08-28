@@ -45,14 +45,14 @@ function venv-name() {
 function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
         echo -ne '\e[1 q'
-        BOTTOM_LEFT="%F{7}❮ %f"
+        BOTTOM_LEFT="%F{7}● %f"
         [ -z $(venv-name) ] || BOTTOM_LEFT="%F{7}$(venv-name)%f $BOTTOM_LEFT"
         set-prompt
         zle reset-prompt
     elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || \
         [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
         echo -ne '\e[5 q'
-        BOTTOM_LEFT="%F{2}❯ %f"
+        BOTTOM_LEFT="%F{2}● %f"
         [ -z $(venv-name) ] || BOTTOM_LEFT="%F{2}$(venv-name)%f $BOTTOM_LEFT"
         set-prompt
         zle reset-prompt
@@ -69,7 +69,7 @@ zle -N zle-line-init
 
 # Construct prompt
 function transient-line() {
-    PROMPT=$([ ! -z $BUFFER ] && echo "%F{7}❯ %f" || echo)
+    PROMPT=$([ ! -z $BUFFER ] && echo "%F{7}● %f" || echo)
     zle reset-prompt
     zle accept-line
 }
