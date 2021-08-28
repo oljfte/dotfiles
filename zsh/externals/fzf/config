@@ -1,9 +1,9 @@
 # External sources
-source $(brew --prefix)/opt/fzf/shell/completion.zsh
-source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+source $BREW_PREFIX/opt/fzf/shell/completion.zsh
+source $BREW_PREFIX/opt/fzf/shell/key-bindings.zsh
 
 # Environment variables
-export PATH="$(brew --prefix)/opt/fzf/bin:$PATH"
+export PATH="$BREW_PREFIX/opt/fzf/bin:$PATH"
 export FZF_TMUX=1
 export FZF_TMUX_OPTS='-p 70%'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --no-ignore-vcs'

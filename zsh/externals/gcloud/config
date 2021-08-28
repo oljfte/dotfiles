@@ -1,6 +1,5 @@
-# External sources
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# Environment Variables
+export PATH="$PATH:$BREW_PREFIX/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin"
 
 # Functions
 autoload -z $(dirname $0)/functions/*
