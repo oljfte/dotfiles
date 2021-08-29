@@ -96,7 +96,7 @@ function set-prompt() {
 }
 
 function insert-new-line-before-prompt() {
-    $NEW_LINE_BEFORE_PROMPT && echo "\n" || NEW_LINE_BEFORE_PROMPT=true
+    $NEW_LINE_BEFORE_PROMPT && echo || NEW_LINE_BEFORE_PROMPT=true
 }
 
 function insert-new-line-before-exec() {
