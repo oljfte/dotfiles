@@ -1,70 +1,75 @@
-colors:
-  primary:
-    background: '#171717'
-    foreground: '#dbdbdb'
+scheme:
+  oljfte: &oljfte
+    primary:
+      background: "#1c1c1e"
+      foreground: "#dbdbe0"
 
-    dim_foreground: '#828284'
-    bright_foreground: '#eaeaec'
+      dim_foreground: "#878792"
+      bright_foreground: "#eaeaef"
 
-  #search:
-    #matches:
-    #  foreground: '#000000'
-    #  background: '#ffffff'
-    #focused_match:
-    #  foreground: '#ffffff'
-    #  background: '#000000'
+    cursor:
+      text: "#000000"
+      cursor: "#FFFFFF"
 
-    #bar:
-    #  background: '#c5c8c6'
-    #  foreground: '#1d1f21'
+    vi_mode_cursor:
+      text: "#000000"
+      cursor: "#FFFFFF"
 
-  #hints:
-    #start:
-    #  foreground: '#1d1f21'
-    #  background: '#e9ff5e'
+    search:
+      matches:
+        foreground: "#1C1C1C"
+        background: "#F6D337"
 
-    #end:
-    #  foreground: '#e9ff5e'
-    #  background: '#1d1f21'
+      focused_match:
+        foreground: "#1C1C1C"
+        background: "#3B74F9"
 
-  #line_indicator:
-  #  foreground: None
-  #  background: None
+      bar:
+        background: "#8F8F8F"
+        foreground: "#1d1f21"
 
-  #selection:
-  #  text: CellBackground
-  #  background: CellForeground
+    selection:
+      text: CellForeground
+      background: "#3C3F54"
 
-  normal:
-    black:   '#1C1C1C'
-    red:     '#E5513B'
-    green:   '#5FC657'
-    yellow:  '#F6D337'
-    blue:    '#3B74F9'
-    magenta: '#A955EA'
-    cyan:    '#7AC7FC'
-    white:   '#8F8F8F'
+    normal:
+      black:   "#1c1c1e"
+      red:     "#e5623a"
+      green:   "#0ed158"
+      yellow:  "#d2c330"
+      blue:    "#1092ff"
+      magenta: "#d253a2"
+      cyan:    "#00bed8"
+      white:   "#878792"
 
-  bright:
-    black:   '#3E3E3E'
-    red:     '#E5513B'
-    green:   '#5FC657'
-    yellow:  '#F6D337'
-    blue:    '#3B74F9'
-    magenta: '#A955EA'
-    cyan:    '#7AC7FC'
-    white:   '#DEDEDE'
+    bright:
+      black:   "#363640"
+      red:     "#e5623a"
+      green:   "#0ed158"
+      yellow:  "#d2c330"
+      blue:    "#1092ff"
+      magenta: "#d253a2"
+      cyan:    "#00bed8"
+      white:   "#dbdbe0"
 
-  dim:
-    black:   '#1C1C1C'
-    red:     '#E5513B'
-    green:   '#5FC657'
-    yellow:  '#F6D337'
-    blue:    '#3B74F9'
-    magenta: '#A955EA'
-    cyan:    '#7AC7FC'
-    white:   '#8F8F8F'
+    dim:
+      black:   "#1c1c1e"
+      red:     "#e5623a"
+      green:   "#0ed158"
+      yellow:  "#d2c330"
+      blue:    "#1092ff"
+      magenta: "#d253a2"
+      cyan:    "#00bed8"
+      white:   "#878792"
 
-  #indexed_colors: []
+    indexed_colors:
+      [
+        # tmux border, indent line
+        { index: 16, color: "#323236" },
+        # selection
+        { index: 17, color: "#3C3F48" },
+      ]
 
-  transparent_background_colors: true
+    transparent_background_colors: false
+
+colors: *oljfte

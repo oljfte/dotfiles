@@ -33,8 +33,8 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  setl updatetime=500
-  highlight WordUnderCursor guibg=#303030
+  setl updatetime=300
+  highlight WordUnderCursor guibg=#3C3F48
   autocmd CursorHold * call HighlightCursorWord()
   function! HighlightCursorWord()
       let search = getreg('/')

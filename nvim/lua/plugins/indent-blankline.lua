@@ -1,6 +1,6 @@
 return function()
   local utils = require("utils")
-  utils.highlight("IndentBlanklineChar", "#303030", "NONE", nil)
+  utils.highlight("IndentBlanklineChar", "#323236", "NONE", nil)
   require("indent_blankline").setup {
       char = "▏",
   }
