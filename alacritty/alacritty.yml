@@ -1,5 +1,6 @@
-#import:
-#  - /path/to/alacritty.yml
+import:
+  - ~/.config/alacritty/colors.yml
+
 env:
   TERM: alacritty
 
@@ -69,78 +70,6 @@ font:
   #use_thin_strokes: true
 
 #draw_bold_text_with_bright_colors: false
-
-
-colors:
-  primary:
-    background: '#171717'
-    foreground: '#dbdbdb'
-
-    dim_foreground: '#828284'
-    bright_foreground: '#eaeaec'
-
-  #search:
-    #matches:
-    #  foreground: '#000000'
-    #  background: '#ffffff'
-    #focused_match:
-    #  foreground: '#ffffff'
-    #  background: '#000000'
-
-    #bar:
-    #  background: '#c5c8c6'
-    #  foreground: '#1d1f21'
-
-  #hints:
-    #start:
-    #  foreground: '#1d1f21'
-    #  background: '#e9ff5e'
-
-    #end:
-    #  foreground: '#e9ff5e'
-    #  background: '#1d1f21'
-
-  #line_indicator:
-  #  foreground: None
-  #  background: None
-
-  #selection:
-  #  text: CellBackground
-  #  background: CellForeground
-
-  normal:
-    black:   '#171717'
-    red:     '#ff453a'
-    green:   '#30d158'
-    yellow:  '#ffd60a'
-    blue:    '#0a84ff'
-    magenta: '#bf5af2'
-    cyan:    '#64d2ff'
-    white:   '#878787'
-
-  bright:
-    black:   '#363636'
-    red:     '#ff453a'
-    green:   '#30d158'
-    yellow:  '#ffd60a'
-    blue:    '#0a84ff'
-    magenta: '#bf5af2'
-    cyan:    '#64d2ff'
-    white:   '#dbdbdb'
-
-  dim:
-    black:   '#171717'
-    red:     '#ff453a'
-    green:   '#30d158'
-    yellow:  '#ffd60a'
-    blue:    '#0a84ff'
-    magenta: '#bf5af2'
-    cyan:    '#64d2ff'
-    white:   '#878787'
-
-  #indexed_colors: []
-
-  transparent_background_colors: true
 
 #bell:
   #animation: EaseOutExpo
