@@ -9,7 +9,7 @@ local magenta = "#d253a2"
 local cyan = "#00bed8"
 local white = "#dbdbe0"
 local lightgray = "#878792"
-local darkgray = "#363640"
+local darkgray = "#525256"
 
 utils.highlight("Conceal", nil, "NONE", nil)
 utils.highlight("Cursor", "NONE", "NONE", "reverse")
