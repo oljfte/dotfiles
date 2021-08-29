@@ -322,6 +322,6 @@ debug:
 
   #persistent_logging: false
 
-  log_level: Trace
+  log_level: Warn
 
   #print_events: falsel
