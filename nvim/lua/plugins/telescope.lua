@@ -1,6 +1,7 @@
 return function()
     local actions = require("telescope.actions")
     local utils = require("utils")
+    local colors = require("colors")
 
     require("telescope").setup(
         {
@@ -31,10 +32,10 @@ return function()
         }
     )
 
-    utils.highlight("TelescopeNormal", "lightgray", nil, nil)
-    utils.highlight("TelescopeSelection", "white", nil, "bold")
-    utils.highlight("TelescopeMultiSelection", "white", nil, "bold")
-    utils.highlight("TelescopeMatching", "green", nil, nil)
+    utils.highlight("TelescopeNormal", colors.lightgray, nil, nil)
+    utils.highlight("TelescopeSelection", colors.white, nil, "bold")
+    utils.highlight("TelescopeMultiSelection", colors.white, nil, "bold")
+    utils.highlight("TelescopeMatching", colors.green, nil, nil)
 
     utils.keymap('n', "<leader>ff", ":Telescope find_files<CR>")
     utils.keymap('n', "<leader>fh", ":Telescope oldfiles<CR>")

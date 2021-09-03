@@ -1,15 +1,16 @@
 local utils = require("utils")
+local colors = require("colors")
 
-local black = "#1c1c1e"
-local red = "#e5623a"
-local green = "#0ed158"
-local yellow = "#d2c330"
-local blue = "#1092ff"
-local magenta = "#d253a2"
-local cyan = "#00bed8"
-local white = "#dbdbe0"
-local lightgray = "#878792"
-local darkgray = "#525256"
+local black = colors.black
+local red = colors.red
+local green = colors.green
+local yellow = colors.yellow
+local blue = colors.blue
+local magenta = colors.magenta
+local cyan = colors.cyan
+local white = colors.white
+local lightgray = colors.lightgray
+local darkgray = colors.darkgray
 
 utils.highlight("Conceal", nil, "NONE", nil)
 utils.highlight("Cursor", "NONE", "NONE", "reverse")

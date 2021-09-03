@@ -1,4 +1,4 @@
-require("visual.colorscheme")
+require("visual.highlights")
 
 local opt = vim.opt
 
