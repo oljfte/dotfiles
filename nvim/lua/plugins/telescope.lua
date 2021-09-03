@@ -17,24 +17,14 @@ return function()
                 prompt_prefix = " ",
                 selection_caret = " ",
                 entry_prefix = " ",
-                layout_strategy = "vertical",
-                layout_config = {
-                    vertical = {
-                        -- TODO: Set min/max
-                        width = 0.8,
-                        height = 0.6
-                    }
-                }
             },
             pickers = {
                 find_files = {
                     find_command = {
-                        "fd",
-                        "--type",
-                        "file",
-                        "--follow",
+                        "rg",
+                        "--ignore",
                         "--hidden",
-                        "--no-ignore-vcs"
+                        "--files"
                     }
                 }
             }
