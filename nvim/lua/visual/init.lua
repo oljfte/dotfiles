@@ -24,6 +24,7 @@ vim.cmd([[
     augroup END
 ]])
 
+-- Enable relativenumber only in normal mode on focused buffer
 vim.cmd([[
     augroup toggle_relative_number
         autocmd!
@@ -32,6 +33,7 @@ vim.cmd([[
     augroup END
 ]])
 
+-- Auto highlight word under cursor
 vim.cmd([[
   setl updatetime=300
   highlight WordUnderCursor guibg=#3C3F48
