@@ -1,5 +1,5 @@
 # Environment Variables
-export BREW_PREFIX=$(brew --prefix)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Functions
 autoload -z $(dirname $0)/functions/*
