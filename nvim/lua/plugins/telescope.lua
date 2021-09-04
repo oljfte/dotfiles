@@ -23,7 +23,7 @@ return function()
                 find_files = {
                     find_command = {
                         "rg",
-                        "--ignore",
+                        "--follow",
                         "--hidden",
                         "--files"
                     }
