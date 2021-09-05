@@ -1,9 +1,10 @@
-# Exports
+# Environment Variables
+export DOTFILES=${DOTFILES:-"$CONFIG/local/dotfiles"}
 export DOCUMENTS="$HOME/Documents"
 export DESKTOP="$HOME/Desktop"
 export CONFIG="$DOCUMENTS/.config"
 export WORK="$DOCUMENTS/work"
-export DOTFILES=${DOTFILES:-"$CONFIG/local/dotfiles"}
+export STUDY="$DOCUMENTS/study"
 export PERSONAL="$DOTFILES/personal"
 export TEMP_DIR="/tmp"
 export KEEP_DIR="$DOCUMENTS/.keep"
