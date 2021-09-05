@@ -39,9 +39,12 @@ return packer.startup(
 
         use(
             {
-                "hrsh7th/nvim-compe",
-                config = require("plugins.nvim-compe"),
-                event = "InsertEnter"
+                "hrsh7th/nvim-cmp",
+                config = require("plugins.nvim-cmp"),
+                requires = {
+                    "hrsh7th/cmp-buffer",
+                    "hrsh7th/cmp-nvim-lsp",
+                }
             }
         )
 
