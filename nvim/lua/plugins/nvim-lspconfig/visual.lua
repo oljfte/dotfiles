@@ -1,14 +1,15 @@
 local utils = require("utils")
+local colors = require("colors")
 
-utils.highlight("LspDiagnosticsDefaultHint", "lightgray")
-utils.highlight("LspDiagnosticsDefaultError", "red")
-utils.highlight("LspDiagnosticsDefaultWarning", "yellow")
-utils.highlight("LspDiagnosticsDefaultInformation", "blue")
+utils.highlight("LspDiagnosticsDefaultHint", colors.lightgray)
+utils.highlight("LspDiagnosticsDefaultError", colors.red)
+utils.highlight("LspDiagnosticsDefaultWarning", colors.yellow)
+utils.highlight("LspDiagnosticsDefaultInformation", colors.blue)
 
-utils.highlight("LspDiagnosticsLineNrHint", "lightgray")
-utils.highlight("LspDiagnosticsLineNrError", "red")
-utils.highlight("LspDiagnosticsLineNrWarning", "yellow")
-utils.highlight("LspDiagnosticsLineNrInformation", "blue")
+utils.highlight("LspDiagnosticsLineNrHint", colors.lightgray)
+utils.highlight("LspDiagnosticsLineNrError", colors.red)
+utils.highlight("LspDiagnosticsLineNrWarning", colors.yellow)
+utils.highlight("LspDiagnosticsLineNrInformation", colors.blue)
 
 utils.sign_define("LspDiagnosticsSignError", "", nil, nil, "LspDiagnosticsLineNrError")
 utils.sign_define("LspDiagnosticsSignWarning", "", nil, nil, "LspDiagnosticsLineNrWarning")

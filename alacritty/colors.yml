@@ -30,7 +30,7 @@ scheme:
 
     selection:
       text: CellForeground
-      background: "#3C3F54"
+      background: "#2C3F64"
 
     normal:
       black:   "#1c1c1e"

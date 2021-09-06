@@ -9,6 +9,6 @@ colors.magenta = "#d253a2"
 colors.cyan = "#00bed8"
 colors.white = "#dbdbe0"
 colors.lightgray = "#878792"
-colors.darkgray = "#525256"
+colors.darkgray = "#323236"
 
 return colors
