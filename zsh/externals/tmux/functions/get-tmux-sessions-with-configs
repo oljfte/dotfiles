@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+find $DOTFILES -path "*/session-init/*" | sed 's!^.*/!!' | cut -f 3 -d . | xargs -0 echo

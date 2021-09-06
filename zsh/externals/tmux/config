@@ -1,6 +1,11 @@
 # Functions
 autoload -z $(dirname $0)/functions/*
 
+# Aliases
+for session_name in $(get-tmux-sessions-with-configs); do
+  eval "alias $session_name=\"select-tmux-session $session_name\"";
+done
+
 # ZLE
 function select-tmux-session-in-term() {
   if [ $TMUX ]; then
