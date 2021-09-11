@@ -8,7 +8,9 @@ alias screensaver="open -b com.apple.ScreenSaver.Engine"
 # Alias key string in lower-case to its value only if it is a valid path
 # for every environment key-value pairs.
 while IFS="=" read -A i; do
-  if [[ $i[1]:l =~ ^.*[a-z].*$ && $i[2] =~ ^\/[^:]*$ ]] && [ -e $i[2] ]; then
-    eval "alias $i[1]:l=\"cd $i[2]\""
+  local alias_name=$i[1]:l
+  local alias_value=$i[2]
+  if ! type $alias_name &>/dev/null && [ -e $alias_value ] && [[ $alias_name =~ ^.*[a-z].*$ && $alias_value =~ ^\/[^:]*$ ]]; then
+    eval "alias $alias_name=\"cd $alias_value\""
   fi
 done <<< $(env)
