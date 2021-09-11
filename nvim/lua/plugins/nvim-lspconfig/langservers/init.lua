@@ -41,5 +41,6 @@ return {
   pyright = {},
   clangd = {},
   tsserver = {},
-  solargraph = {}
+  solargraph = {},
+  denols = {}
 }
