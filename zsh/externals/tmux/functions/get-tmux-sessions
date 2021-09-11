@@ -9,5 +9,5 @@ else
 fi
 local active_sessions_with_configs=$({ get-tmux-active-sessions; get-tmux-sessions-with-configs; } | sort | uniq -d | awk NF)
 local inactive_sessions_with_configs=$({ get-tmux-sessions-with-configs; echo ${active_sessions_with_configs}; } | sort | uniq -u | awk NF)
-{ echo $(get-tmux-active-sessions) | awk 'NF'; \
+{ get-tmux-active-sessions | awk 'NF'; \
     [ ! -z $inactive_sessions_with_configs ] && echo $inactive_sessions_with_configs | sed 's/.*/(&)/' } | grep -v ${from_session:-' '}
