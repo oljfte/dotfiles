@@ -3,8 +3,8 @@ autoload -z $(dirname $0)/functions/*
 
 # Aliases
 for session_name in $(get-tmux-sessions-with-configs); do
-  eval "alias $session_name=\"[ $(tmux display-message -p '#S') = $session_name ] \
-    && cd $(eval echo \$${(U)session_name:-PWD}) \
+  eval "alias $session_name=\"[ \"\$(tmux display-message -p '#S' 2>/dev/null)\" = \"$session_name\" ] \
+    && cd $(echo \$${(U)session_name:-PWD}) \
     || select-tmux-session $session_name\"";
 done
 
