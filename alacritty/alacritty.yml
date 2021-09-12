@@ -22,8 +22,8 @@ font:
     style: Italic
   bold_italic:
     family: 'Source Code Pro'
-    style: Bold Italic
-  size: 15.0
+    style: Italic
+  size: 13.5
   offset:
     x: 0
     y: 2
@@ -38,6 +38,3 @@ shell:
   program: /bin/zsh
   args:
     - --login
-
-debug:
-  log_level: Warn
