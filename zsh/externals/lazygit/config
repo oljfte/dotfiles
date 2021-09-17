@@ -1,6 +1,6 @@
 # ZLE
 function open-lazygit-in-popup {
-    [ $TMUX ] && tmux popup -d '#{pane_current_path}' -E 'lazygit' || lazygit
+    [ $TMUX ] && tmux popup -d '#{pane_current_path}' -w 80% -h 80% -E 'lazygit' || lazygit
 }
 
 zle -N open-lazygit-in-popup
