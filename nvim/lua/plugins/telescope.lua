@@ -14,10 +14,9 @@ return function()
                         ["<esc>"] = actions.close
                     }
                 },
-                -- TODO: Change these to empty string once https://github.com/nvim-telescope/telescope.nvim/pull/1046 is merged
-                prompt_prefix = " ",
-                selection_caret = " ",
-                entry_prefix = " ",
+                prompt_prefix = "",
+                selection_caret = "",
+                entry_prefix = "",
             },
             pickers = {
                 find_files = {
