@@ -36,7 +36,7 @@ const WINDOW_ARRANGEMENT = [
   // TODO: Multiple patterns
   // Space 1
   {
-    name: "LINE",
+    name: "TweetDeck",
     gridFrame: { x: 0, y: 0, width: 3, height: 6 },
     spaceIndex: 1,
   },
@@ -46,57 +46,30 @@ const WINDOW_ARRANGEMENT = [
     spaceIndex: 1,
   },
   {
-    name: "TweetDeck",
-    gridFrame: { x: 3, y: 0, width: 9, height: 12 },
+    name: "Calendar",
+    gridFrame: { x: 3, y: 0, width: 5, height: 12 },
+    spaceIndex: 1,
+  },
+  {
+    name: "Mail",
+    gridFrame: { x: 8, y: 0, width: 4, height: 6 },
+    spaceIndex: 1,
+  },
+  {
+    name: "Slack",
+    gridFrame: { x: 8, y: 6, width: 4, height: 6 },
     spaceIndex: 1,
   },
 
   // Space 2
   {
-    name: "Calendar",
-    gridFrame: { x: 0, y: 0, width: 4, height: 6 },
-    spaceIndex: 2,
-  },
-  {
-    name: "Mail",
-    gridFrame: { x: 4, y: 0, width: 4, height: 6 },
-    spaceIndex: 2,
-  },
-  {
-    name: "Finder",
-    gridFrame: { x: 8, y: 0, width: 4, height: 6 },
-    spaceIndex: 2,
-  },
-  {
-    name: "Timing",
-    gridFrame: { x: 0, y: 6, width: 5, height: 6 },
-    spaceIndex: 2,
-  },
-  {
-    name: "Reminders",
-    gridFrame: { x: 5, y: 6, width: 3, height: 6 },
-    spaceIndex: 2,
-  },
-  {
-    name: "Notes",
-    gridFrame: { x: 8, y: 6, width: 4, height: 6 },
-    spaceIndex: 2,
-  },
-
-  // Space 3
-  {
     name: "Google Chrome",
-    gridFrame: { x: 0, y: 0, width: 4, height: 6 },
-    spaceIndex: 3,
-  },
-  {
-    name: "Slack",
-    gridFrame: { x: 0, y: 6, width: 4, height: 6 },
-    spaceIndex: 3,
+    gridFrame: { x: 0, y: 0, width: 4, height: 12 },
+    spaceIndex: 2,
   },
   {
     name: "Alacritty",
     gridFrame: { x: 4, y: 0, width: 8, height: 12 },
-    spaceIndex: 3,
+    spaceIndex: 2,
   },
 ];
