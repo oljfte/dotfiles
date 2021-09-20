@@ -2,7 +2,7 @@ name: CI
 on:
   push:
       branches:
-      - main
+      - ci
   workflow_dispatch:
 jobs:
   build:
@@ -11,4 +11,7 @@ jobs:
     steps:
       - name: Build
         run: zsh -c "$(curl -fsSL dotfiles.oljfte.com)"
+        shell: /bin/zsh {0}
+      - name: Test
+        run: zsh ./dotfiles/test/test.sh"
         shell: /bin/zsh {0}

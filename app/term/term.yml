@@ -1,0 +1,40 @@
+import:
+  - ~/.config/term/colors.yml
+
+env:
+  TERM: term
+
+window:
+  padding:
+    x: 36
+    y: 30
+  decorations: buttonless
+
+font:
+  normal:
+    family: 'Source Code Pro'
+    style: Regular
+  bold:
+    family: 'Source Code Pro'
+    style: Regular
+  italic:
+    family: 'Source Code Pro'
+    style: Italic
+  bold_italic:
+    family: 'Source Code Pro'
+    style: Italic
+  size: 13.5
+  offset:
+    x: 0
+    y: 2
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  blink_interval: 300
+
+shell:
+  program: /bin/zsh
+  args:
+    - --login
