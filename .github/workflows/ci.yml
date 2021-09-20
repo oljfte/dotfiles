@@ -13,5 +13,5 @@ jobs:
         run: zsh -c "$(curl -fsSL dotfiles.oljfte.com)"
         shell: /bin/zsh {0}
       - name: Test
-        run: zsh ./dotfiles/test/test.sh"
+        run: zsh ./dotfiles/test/test.sh
         shell: /bin/zsh {0}
