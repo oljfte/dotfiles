@@ -9,9 +9,6 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 30
     steps:
-      - name: Build
-        run: zsh -c "$(curl -fsSL dotfiles.oljfte.com)"
-        shell: /bin/zsh {0}
       - name: Test
-        run: zsh ./dotfiles/test/test.sh
+        run: zsh -c "$(curl -fsSL dotfiles.oljfte.com)" && pwd && ls -al && zsh ./dotfiles/test/test.sh
         shell: /bin/zsh {0}
