@@ -32,8 +32,7 @@ const GRID_Y_PATTERNS = GRID.y.length;
 const RESTORING_ITERATION = 20;
 const RESTORING_INTERVAL = 200;
 
-const WINDOW_ARRANGEMENT = [
-  // TODO: Multiple patterns
+const WINDOW_ARRANGEMENT_WIDE = [
   // Space 1
   {
     name: "TweetDeck",
@@ -71,5 +70,52 @@ const WINDOW_ARRANGEMENT = [
     name: "Alacritty",
     gridFrame: { x: 4, y: 0, width: 8, height: 12 },
     spaceIndex: 2,
+  },
+];
+
+const WINDOW_ARRANGEMENT_LAPTOP = [
+  // Space 1
+  {
+    name: "Spotify",
+    gridFrame: { x: 0, y: 0, width: 7, height: 12 },
+    spaceIndex: 1,
+  },
+  {
+    name: "TweetDeck",
+    gridFrame: { x: 7, y: 0, width: 5, height: 12 },
+    spaceIndex: 1,
+  },
+
+  // Space 2
+  {
+    name: "Calendar",
+    gridFrame: { x: 0, y: 0, width: 12, height: 12 },
+    spaceIndex: 2,
+  },
+
+  // Space 3
+  {
+    name: "Mail",
+    gridFrame: { x: 0, y: 0, width: 6, height: 12 },
+    spaceIndex: 3,
+  },
+  {
+    name: "Slack",
+    gridFrame: { x: 6, y: 0, width: 6, height: 12 },
+    spaceIndex: 3,
+  },
+
+  // Space 4
+  {
+    name: "Google Chrome",
+    gridFrame: { x: 0, y: 0, width: 12, height: 12 },
+    spaceIndex: 4,
+  },
+
+  // Space 5
+  {
+    name: "Term",
+    gridFrame: { x: 0, y: 0, width: 12, height: 12 },
+    spaceIndex: 5,
   },
 ];
