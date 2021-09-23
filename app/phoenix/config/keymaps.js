@@ -14,4 +14,4 @@ Key.on("l", SECONDARY_MODIFIER, () => focusClosestInDirection("east"));
 Key.on("f", PRIMARY_MODIFIER, () => maximizeWindow());
 
 // Restore all
-Key.on("space", PRIMARY_MODIFIER, () => restoreAllWindows(WINDOW_ARRANGEMENT_WIDE));
+Key.on("space", PRIMARY_MODIFIER, () => restoreAllWindows(WINDOW_LAYOUT));

@@ -1,5 +1,6 @@
 import:
   - ~/.config/term/colors.yml
+  - ~/.config/term/font-size.yml
 
 env:
   TERM: term
@@ -23,7 +24,6 @@ font:
   bold_italic:
     family: 'Source Code Pro'
     style: Italic
-  size: 13.5
   offset:
     x: 0
     y: 2
