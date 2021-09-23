@@ -6,3 +6,5 @@ Brewfile.lock.json
 
 # Karabiner-Elements backups
 karabiner/karabiner/automatic_backups
+
+log/
