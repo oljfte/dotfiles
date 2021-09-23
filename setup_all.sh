@@ -14,4 +14,4 @@ echo "export DOTFILES=\"$DOTFILES\"" > ~/.zshenv
 cd $dotfiles_parent_dir && git clone https://github.com/oljfte/dotfiles.git
 
 # Run setup scripts for global configs
-for setup_script in $DOTFILES/*/setup.sh; do zsh $setup_script; done
+setopt extended_glob && for setup_script in $DOTFILES/**/*/setup.sh~*/personal*; do zsh $setup_script; done
