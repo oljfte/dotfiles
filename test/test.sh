@@ -54,3 +54,5 @@ result_all+=" out of $(( passed_all + failed_all )) cases"
 echo "\033[1;34mOverall:\033[0m\n"
 echo "$result_all"
 draw-separator
+
+[ $failed_all -eq 0 ] && return 0 || return 1
