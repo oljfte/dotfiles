@@ -1,5 +1,4 @@
 # Environment Variables
-export DOTFILES=${DOTFILES:-"$CONFIG/local/dotfiles"}
 export PERSONAL="$DOTFILES/personal"
 export DOCUMENTS="$HOME/Documents"
 export DESKTOP="$HOME/Desktop"
