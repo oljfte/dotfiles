@@ -1,0 +1,362 @@
+Mon Sep 20 03:05:34 JST 2021 test_alacritty_installed
+Mon Sep 20 03:05:34 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Mon Sep 20 03:05:34 JST 2021 test_bar
+Mon Sep 20 03:05:34 JST 2021 test_baz
+Mon Sep 20 03:05:34 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Mon Sep 20 03:05:34 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Mon Sep 20 03:05:34 JST 2021 test_foo_baz
+Mon Sep 20 03:05:34 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Mon Sep 20 03:05:34 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Mon Sep 20 03:05:34 JST 2021 test_bar_baz
+Mon Sep 20 03:06:06 JST 2021 test_alacritty_installed
+Mon Sep 20 03:06:06 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Mon Sep 20 03:06:06 JST 2021 test_bar
+Mon Sep 20 03:06:06 JST 2021 test_baz
+Mon Sep 20 03:06:06 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Mon Sep 20 03:06:06 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Mon Sep 20 03:06:06 JST 2021 test_foo_baz
+Mon Sep 20 03:06:06 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Mon Sep 20 03:06:06 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Mon Sep 20 03:06:06 JST 2021 test_bar_baz
+Mon Sep 20 03:06:20 JST 2021 test_alacritty_installed
+Mon Sep 20 03:06:20 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Mon Sep 20 03:06:20 JST 2021 test_bar
+Mon Sep 20 03:06:20 JST 2021 test_baz
+Mon Sep 20 03:06:20 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Mon Sep 20 03:06:20 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Mon Sep 20 03:06:20 JST 2021 test_foo_baz
+Mon Sep 20 03:06:20 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Mon Sep 20 03:06:20 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Mon Sep 20 03:06:20 JST 2021 test_bar_baz
+Mon Sep 20 03:06:33 JST 2021 test_alacritty_installed
+Mon Sep 20 03:06:33 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Mon Sep 20 03:06:33 JST 2021 test_bar
+Mon Sep 20 03:06:33 JST 2021 test_baz
+Mon Sep 20 03:06:33 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Mon Sep 20 03:06:33 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Mon Sep 20 03:06:33 JST 2021 test_foo_baz
+Mon Sep 20 03:06:33 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Mon Sep 20 03:06:33 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Mon Sep 20 03:06:33 JST 2021 test_bar_baz
+Tue Sep 21 00:17:17 JST 2021 test_phoenix_installed
+Tue Sep 21 00:17:17 JST 2021 test_term_installed
+Tue Sep 21 00:17:18 JST 2021 test_bat_installed
+Tue Sep 21 00:17:18 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:17:18 JST 2021 test_bar
+Tue Sep 21 00:17:18 JST 2021 test_baz
+Tue Sep 21 00:17:18 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:17:18 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:17:18 JST 2021 test_foo_baz
+Tue Sep 21 00:17:18 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:17:18 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:17:18 JST 2021 test_bar_baz
+Tue Sep 21 00:17:48 JST 2021 test_phoenix_installed
+Tue Sep 21 00:17:48 JST 2021 test_term_installed
+Tue Sep 21 00:17:48 JST 2021 test_bat_installed
+Tue Sep 21 00:17:48 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:17:48 JST 2021 test_bar
+Tue Sep 21 00:17:48 JST 2021 test_baz
+Tue Sep 21 00:17:48 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:17:48 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:17:48 JST 2021 test_foo_baz
+Tue Sep 21 00:17:48 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:17:48 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:17:48 JST 2021 test_bar_baz
+Tue Sep 21 00:18:01 JST 2021 test_phoenix_installed
+Tue Sep 21 00:18:01 JST 2021 test_term_installed
+Tue Sep 21 00:18:01 JST 2021 test_bat_installed
+Tue Sep 21 00:18:01 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:18:01 JST 2021 test_bar
+Tue Sep 21 00:18:01 JST 2021 test_baz
+Tue Sep 21 00:18:01 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:18:01 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:18:01 JST 2021 test_foo_baz
+Tue Sep 21 00:18:01 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:18:01 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:18:01 JST 2021 test_bar_baz
+Tue Sep 21 00:26:21 JST 2021 test_phoenix_installed
+Tue Sep 21 00:26:21 JST 2021 test_term_installed
+Tue Sep 21 00:26:21 JST 2021 test_bat_installed
+Tue Sep 21 00:26:21 JST 2021 test_fd_installed
+Tue Sep 21 00:26:21 JST 2021 test_git_installed
+Tue Sep 21 00:26:21 JST 2021 test_rg_installed
+Tue Sep 21 00:26:21 JST 2021 test_brew_installed
+Tue Sep 21 00:26:21 JST 2021 test_zshrc_conpiled
+Tue Sep 21 00:26:21 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 00:26:21 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:26:21 JST 2021 test_bar
+Tue Sep 21 00:26:21 JST 2021 test_baz
+Tue Sep 21 00:26:21 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:26:21 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:26:21 JST 2021 test_foo_baz
+Tue Sep 21 00:26:21 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:26:21 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:26:21 JST 2021 test_bar_baz
+Tue Sep 21 00:28:12 JST 2021 test_phoenix_installed
+Tue Sep 21 00:28:12 JST 2021 test_term_installed
+Tue Sep 21 00:28:12 JST 2021 test_bat_installed
+Tue Sep 21 00:28:12 JST 2021 test_fd_installed
+Tue Sep 21 00:28:12 JST 2021 test_git_installed
+Tue Sep 21 00:28:12 JST 2021 test_rg_installed
+Tue Sep 21 00:28:12 JST 2021 test_brew_installed
+Tue Sep 21 00:28:12 JST 2021 test_zshrc_conpiled
+Tue Sep 21 00:28:12 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 00:28:12 JST 2021 test_dotfiles_path_set
+Tue Sep 21 00:28:12 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:28:12 JST 2021 test_bar
+Tue Sep 21 00:28:12 JST 2021 test_baz
+Tue Sep 21 00:28:12 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:28:12 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:28:12 JST 2021 test_foo_baz
+Tue Sep 21 00:28:12 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:28:12 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:28:12 JST 2021 test_bar_baz
+Tue Sep 21 00:28:20 JST 2021 test_phoenix_installed
+Tue Sep 21 00:28:20 JST 2021 test_term_installed
+Tue Sep 21 00:28:20 JST 2021 test_bat_installed
+Tue Sep 21 00:28:20 JST 2021 test_fd_installed
+Tue Sep 21 00:28:20 JST 2021 test_git_installed
+Tue Sep 21 00:28:20 JST 2021 test_rg_installed
+Tue Sep 21 00:28:20 JST 2021 test_brew_installed
+Tue Sep 21 00:28:20 JST 2021 test_zshrc_conpiled
+Tue Sep 21 00:28:20 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 00:28:20 JST 2021 test_dotfiles_path_set
+Tue Sep 21 00:28:20 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:28:20 JST 2021 test_bar
+Tue Sep 21 00:28:20 JST 2021 test_baz
+Tue Sep 21 00:28:20 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:28:20 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:28:20 JST 2021 test_foo_baz
+Tue Sep 21 00:28:20 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:28:20 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:28:20 JST 2021 test_bar_baz
+Tue Sep 21 00:52:39 JST 2021 test_phoenix_installed
+Tue Sep 21 00:52:39 JST 2021 test_term_installed
+Tue Sep 21 00:52:39 JST 2021 test_bat_installed
+Tue Sep 21 00:52:39 JST 2021 test_fd_installed
+Tue Sep 21 00:52:39 JST 2021 test_git_installed
+Tue Sep 21 00:52:39 JST 2021 test_rg_installed
+Tue Sep 21 00:52:39 JST 2021 test_brew_installed
+Tue Sep 21 00:52:39 JST 2021 test_zshrc_conpiled
+Tue Sep 21 00:52:39 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 00:52:39 JST 2021 test_dotfiles_path_set
+Tue Sep 21 00:52:39 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:52:39 JST 2021 test_bar
+Tue Sep 21 00:52:39 JST 2021 test_baz
+Tue Sep 21 00:52:39 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:52:39 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:52:39 JST 2021 test_foo_baz
+Tue Sep 21 00:52:39 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:52:39 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:52:39 JST 2021 test_bar_baz
+Tue Sep 21 00:53:05 JST 2021 test_phoenix_installed
+Tue Sep 21 00:53:06 JST 2021 test_term_installed
+Tue Sep 21 00:53:06 JST 2021 test_bat_installed
+Tue Sep 21 00:53:06 JST 2021 test_fd_installed
+Tue Sep 21 00:53:06 JST 2021 test_git_installed
+Tue Sep 21 00:53:06 JST 2021 test_rg_installed
+Tue Sep 21 00:53:06 JST 2021 test_brew_installed
+Tue Sep 21 00:53:06 JST 2021 test_zshrc_conpiled
+Tue Sep 21 00:53:06 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 00:53:06 JST 2021 test_dotfiles_path_set
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+Tue Sep 21 00:53:06 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:53:06 JST 2021 test_bar
+Tue Sep 21 00:53:06 JST 2021 test_baz
+Tue Sep 21 00:53:06 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:53:06 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:53:06 JST 2021 test_foo_baz
+Tue Sep 21 00:53:06 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:53:06 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:53:06 JST 2021 test_bar_baz
+Tue Sep 21 00:53:42 JST 2021 test_phoenix_installed
+Tue Sep 21 00:53:42 JST 2021 test_term_installed
+Tue Sep 21 00:53:42 JST 2021 test_bat_installed
+Tue Sep 21 00:53:42 JST 2021 test_fd_installed
+Tue Sep 21 00:53:42 JST 2021 test_git_installed
+Tue Sep 21 00:53:42 JST 2021 test_rg_installed
+Tue Sep 21 00:53:42 JST 2021 test_brew_installed
+Tue Sep 21 00:53:42 JST 2021 test_zshrc_conpiled
+Tue Sep 21 00:53:42 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 00:53:42 JST 2021 test_dotfiles_path_set
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+/Users/oljfte/Documents/.config/dotfiles/dotfiles
+Tue Sep 21 00:53:42 JST 2021 test_foo
+test_foo:1: command not found: dummy
+Tue Sep 21 00:53:42 JST 2021 test_bar
+Tue Sep 21 00:53:42 JST 2021 test_baz
+Tue Sep 21 00:53:42 JST 2021 test_foo_foo
+test_foo_foo:1: command not found: dummy
+Tue Sep 21 00:53:42 JST 2021 test_foo_bar
+test_foo_bar:1: command not found: dummy
+Tue Sep 21 00:53:42 JST 2021 test_foo_baz
+Tue Sep 21 00:53:42 JST 2021 test_bar_foo
+test_bar_foo:1: command not found: dummy
+Tue Sep 21 00:53:42 JST 2021 test_bar_bar
+test_bar_bar:1: command not found: dummy
+Tue Sep 21 00:53:42 JST 2021 test_bar_baz
+Tue Sep 21 01:06:01 JST 2021 test_phoenix_installed
+Tue Sep 21 01:06:02 JST 2021 test_term_installed
+Tue Sep 21 01:06:02 JST 2021 test_bat_installed
+Tue Sep 21 01:06:02 JST 2021 test_fd_installed
+Tue Sep 21 01:06:02 JST 2021 test_git_installed
+Tue Sep 21 01:06:02 JST 2021 test_rg_installed
+Tue Sep 21 01:06:02 JST 2021 test_brew_installed
+Tue Sep 21 01:06:02 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:06:02 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:06:02 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:08:03 JST 2021 test_phoenix_installed
+Tue Sep 21 01:08:03 JST 2021 test_term_installed
+Tue Sep 21 01:08:03 JST 2021 test_bat_installed
+Tue Sep 21 01:08:03 JST 2021 test_fd_installed
+Tue Sep 21 01:08:03 JST 2021 test_git_installed
+Tue Sep 21 01:08:03 JST 2021 test_rg_installed
+Tue Sep 21 01:08:03 JST 2021 test_brew_installed
+Tue Sep 21 01:08:03 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:08:03 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:08:03 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:08:19 JST 2021 test_phoenix_installed
+Tue Sep 21 01:08:19 JST 2021 test_term_installed
+Tue Sep 21 01:08:19 JST 2021 test_bat_installed
+Tue Sep 21 01:08:19 JST 2021 test_fd_installed
+Tue Sep 21 01:08:19 JST 2021 test_git_installed
+Tue Sep 21 01:08:19 JST 2021 test_rg_installed
+Tue Sep 21 01:08:19 JST 2021 test_brew_installed
+Tue Sep 21 01:08:19 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:08:19 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:08:19 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:09:00 JST 2021 test_phoenix_installed
+Tue Sep 21 01:09:00 JST 2021 test_term_installed
+Tue Sep 21 01:09:01 JST 2021 test_bat_installed
+Tue Sep 21 01:09:01 JST 2021 test_fd_installed
+Tue Sep 21 01:09:01 JST 2021 test_git_installed
+Tue Sep 21 01:09:01 JST 2021 test_rg_installed
+Tue Sep 21 01:09:01 JST 2021 test_brew_installed
+Tue Sep 21 01:09:01 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:09:01 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:09:01 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:09:09 JST 2021 test_phoenix_installed
+Tue Sep 21 01:09:10 JST 2021 test_term_installed
+Tue Sep 21 01:09:10 JST 2021 test_bat_installed
+Tue Sep 21 01:09:10 JST 2021 test_fd_installed
+Tue Sep 21 01:09:10 JST 2021 test_git_installed
+Tue Sep 21 01:09:10 JST 2021 test_rg_installed
+Tue Sep 21 01:09:10 JST 2021 test_brew_installed
+Tue Sep 21 01:09:10 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:09:10 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:09:10 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:09:27 JST 2021 test_phoenix_installed
+Tue Sep 21 01:09:27 JST 2021 test_term_installed
+Tue Sep 21 01:09:27 JST 2021 test_bat_installed
+Tue Sep 21 01:09:27 JST 2021 test_fd_installed
+Tue Sep 21 01:09:27 JST 2021 test_git_installed
+Tue Sep 21 01:09:27 JST 2021 test_rg_installed
+Tue Sep 21 01:09:27 JST 2021 test_brew_installed
+Tue Sep 21 01:09:27 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:09:27 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:09:27 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:09:32 JST 2021 test_phoenix_installed
+Tue Sep 21 01:09:32 JST 2021 test_term_installed
+Tue Sep 21 01:09:32 JST 2021 test_bat_installed
+Tue Sep 21 01:09:32 JST 2021 test_fd_installed
+Tue Sep 21 01:09:32 JST 2021 test_git_installed
+Tue Sep 21 01:09:32 JST 2021 test_rg_installed
+Tue Sep 21 01:09:32 JST 2021 test_brew_installed
+Tue Sep 21 01:09:32 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:09:32 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:09:32 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:09:41 JST 2021 test_phoenix_installed
+Tue Sep 21 01:09:41 JST 2021 test_term_installed
+Tue Sep 21 01:09:42 JST 2021 test_bat_installed
+Tue Sep 21 01:09:42 JST 2021 test_fd_installed
+Tue Sep 21 01:09:42 JST 2021 test_git_installed
+Tue Sep 21 01:09:42 JST 2021 test_rg_installed
+Tue Sep 21 01:09:42 JST 2021 test_brew_installed
+Tue Sep 21 01:09:42 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:09:42 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:09:42 JST 2021 test_dotfiles_path_set
+Tue Sep 21 01:10:01 JST 2021 test_phoenix_installed
+Tue Sep 21 01:10:01 JST 2021 test_term_installed
+Tue Sep 21 01:10:01 JST 2021 test_bat_installed
+Tue Sep 21 01:10:01 JST 2021 test_fd_installed
+Tue Sep 21 01:10:01 JST 2021 test_git_installed
+Tue Sep 21 01:10:01 JST 2021 test_rg_installed
+Tue Sep 21 01:10:01 JST 2021 test_brew_installed
+Tue Sep 21 01:10:01 JST 2021 test_zshrc_conpiled
+Tue Sep 21 01:10:01 JST 2021 test_zcompdump_conpiled
+Tue Sep 21 01:10:01 JST 2021 test_dotfiles_path_set

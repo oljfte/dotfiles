@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-brew bundle install --file $DOTFILES/brew/Brewfile
-brew bundle cleanup --file $DOTFILES/brew/Brewfile -f
-brew update
-brew upgrade
-brew cleanup
