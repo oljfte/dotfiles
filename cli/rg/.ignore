@@ -3,3 +3,5 @@
 .Trash/
 ~/Library/
 .venv/
+*.min.js
+*.min.css
