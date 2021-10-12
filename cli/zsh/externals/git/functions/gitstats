@@ -1,0 +1,249 @@
+#!/bin/zsh -eu
+
+{
+  autoload -Uz catch throw
+
+  if [ $OSTYPE ] || throw "OSUnknownException"
+
+  if [[ $OSTYPE == darwin* ]]; then
+    command -v gsed &>/dev/null || throw "GsedCommandNotFoundException"
+    local IS_DARWIN=1
+  fi
+
+  ## Parse Args
+  local -A opts
+  zparseopts -D -E -M -A opts -- \
+    a:=-author -author: \
+    r:=-repo -repo: \
+    d:=-days -days: \
+    s:=-since -since: \
+    u:=-until -until: \
+    -nocolor
+
+  local author=${opts[--author]:-$(git config --get user.name)}
+  local repos=${opts[--repo]:-$(git rev-parse --show-toplevel 2>/dev/null)}
+  [ $repos ] || throw "RepositoryNotSpecifiedException"
+
+  local days=${opts[--days]:-7}
+  local week_ago=$([ $IS_DARWIN ] && date -j -v -${days}d +"%Y-%m-%d" || date -d "-${days}day" +"%Y-%m-%d" )
+  local since=${opts[--since]:-$week_ago}
+  local until=${opts[--until]:-$(date +"%Y-%m-%d")}
+  local nocolor=${opts[(i)--nocolor]}
+
+  ## Constants
+  local MAX_COLUMNS=120
+  local MIN_COLUMNS=75
+  local MAX_DIGITS=8
+  local LEN_DATE_STRING=14
+
+  local COL_SEPARATOR_CHAR="│"
+  local BAR_CHART_CHAR="▒"
+  local BAR_CHART_MARGIN_RIGHT=2
+
+  local -a COL_INDEX_NAME=( 2 commits 3 additions 4 deletions ) # col 1 is for date index
+
+  local NORMAL_TEXT_COLOR=38
+  local DIMMED_TEXT_COLOR=37
+
+  if [ $nocolor ]; then
+    local COMMITS_COLOR=38
+    local ADDITIONS_COLOR=38
+    local DELETIONS_COLOR=38
+  else
+    local COMMITS_COLOR=34
+    local ADDITIONS_COLOR=32
+    local DELETIONS_COLOR=31
+  fi
+
+  ## Functions
+  function read-lines() {
+    while read line; do $1 $line; done
+  }
+
+  function count-rows() {
+    awk '{c+=1} END {print c}'
+  }
+
+  function sum-nth-col() {
+    awk -F, "{v+=\$$1} END {print v}"
+  }
+
+  function max-nth-col() {
+    awk -F, "{if(v<\$$1)v=\$$1} END {print v}"
+  }
+
+  function flatten-csv-row() {
+
+    [ $IS_DARWIN ] && gsed ':a;N;$!ba;s/,\n/,/g' || sed ':a;N;$!ba;s/,\n/,/g'
+  }
+
+  function grep-diff-stats() {
+    grep 'files\? changed' <<< $1
+  }
+
+  function draw-horizontal-table-border() {
+    printf "\033[0;${DIMMED_TEXT_COLOR}m"
+    printf '—%.0s' {1..$((LEN_DATE_STRING + 1))}
+    for _ in $(seq 1 3); do
+      printf "—$COL_SEPARATOR_CHAR—"
+      printf '—%.0s' {1..$single_col_width}
+    done
+    print "—\033[0m"
+  }
+
+  function draw-border() {
+    local length=$1
+    printf "\033[0;${DIMMED_TEXT_COLOR}m"
+    printf '—%.0s' {1..$((length + 1))}
+    echo
+  }
+
+  function print-center-aligned-text() {
+    local text=$1
+    local width=$2
+    local color=${3:-38}
+    local padding_left=$(((width - ${#text}) / 2))
+    local padding_right=$(((width - ${#text}) - $padding_left))
+
+    printf ' %.0s' {1..$padding_left}
+    printf "\033[0;${color}m$text"
+    printf ' %.0s' {1..$padding_right}
+  }
+
+  function print-right-aligned-text() {
+    local text=$1
+    local width=$2
+    local color=${3:-38}
+
+    printf ' %.0s' {1..$((width - ${#text}))}
+    printf "\033[0;${color}m$text"
+  }
+
+  function calc-max-bar-width() {
+    echo $(((capped_columns - LEN_DATE_STRING) / 3 - $#1 - 6))
+  }
+
+  function generate-horizontal-bar-chart-text() {
+    local bar_width=$1
+    local width=$2
+    local color=${3:-38}
+
+    local result
+    result=$result"\033[0;$color"
+    result=$result$(printf "$BAR_CHART_CHAR%.0s" {1..$bar_width})
+    result=$result$(printf " %.0s" {1..$((width - bar_width))})
+    result=$result"\033[0m"
+    echo $result
+  }
+
+  ## Calc Stats
+  [ $COLUMNS ] && [ $COLUMNS -lt $MIN_COLUMNS ] && throw "WidthTooSmallException"
+
+  local capped_columns=$(($COLUMNS<$MAX_COLUMNS?$COLUMNS:$MAX_COLUMNS))
+  local single_col_width=$(((capped_columns - LEN_DATE_STRING) / 3 - 6))
+  local col_separator=" \033[0;37m$COL_SEPARATOR_CHAR\033[0m "
+  local table_width=$((capped_columns - 8))
+
+  if [ $IS_DARWIN ]; then
+    local empty_calendar=$(
+      d=$(date -j -f "%Y-%m-%d" "$since" +"%Y-%m-%d %a");
+      while [ "$d" != "$(date -j -f "%Y-%m-%d" "$until" +"%Y-%m-%d %a")" ]; do
+        echo "$d";
+        d=$(date -j -v +1d -f "%Y-%m-%d %a" $d +"%Y-%m-%d %a");
+      done
+    )
+  else
+    local empty_calendar=$(
+      d=$(date -d "$since" +"%Y-%m-%d %a");
+      while [ "$d" != "$(date -d "$until" +"%Y-%m-%d %a")" ]; do
+        echo "$d";
+        d=$(date -d "$d +1 day" +"%Y-%m-%d %a");
+      done
+    )
+  fi
+  local count_dates=$(wc -l <<< $empty_calendar)
+
+  local raw_git_log;
+  while read repo; do
+    [ -d $repo ] || throw "NoSuchRepositoryException"
+    raw_git_log=$raw_git_log"\n"$(pushd -q $repo; git log --shortstat --author=$author \
+    --pretty=format:"%ad" --date=format:"%Y-%m-%d %a," --since=$since --until=$until; popd -q)
+  done <<< $repos
+
+  local formatted_git_log=$({echo $raw_git_log; echo $empty_calendar;} | flatten-csv-row \
+    | awk -F, '{commits[$1]+=1;insertions[$1]+=$3;deletions[$1]+=$4}END{ \
+      for(i in insertions){if(i){printf"%s,%s,%s,%s\n",i,commits[i]-1,insertions[i],deletions[i]}}}' \
+    | sort)
+
+  for index name in ${(kv)COL_INDEX_NAME}; do
+    eval "local max_$name=\$(max-nth-col \$index <<< \$formatted_git_log); \
+      local sum_$name=\$(sum-nth-col \$index <<< \$formatted_git_log); \
+      local max_${name}_bar_width=\$((single_col_width - \$#max_$name - \$BAR_CHART_MARGIN_RIGHT));"
+  done
+
+  local bar_chart_drawing_script
+  for index name in ${(kv)COL_INDEX_NAME}; do
+    bar_chart_drawing_script=$bar_chart_drawing_script"printf \"'\$col_separator'\"; \\
+      bar_width='\$((single_col_width - \$#max_$name - BAR_CHART_MARGIN_RIGHT))'; \\
+      printf \"\\033[0;%sm\", \"'\$${(U)name}_COLOR'\"; \\
+      for(c=0;c<bar_width;c++)if(\"'\$max_$name'\"&&c<bar_width * \$$index/\"'\$max_$name'\"){ \\
+        printf \"'\$BAR_CHART_CHAR'\"
+      }else{printf\" \"}; \\
+      printf \"%'\$((\$#max_$name + BAR_CHART_MARGIN_RIGHT))'d\\033[0m\", \$$index;"
+  done
+  bar_chart_drawing_script="{printf \" %s\", \$1;"$bar_chart_drawing_script"printf \"\\n\"; };"
+
+  ## Draw result
+  # Header
+  draw-border $table_width
+  print-center-aligned-text Date $((LEN_DATE_STRING + 1)) $NORMAL_TEXT_COLOR
+  for index name in ${(kv)COL_INDEX_NAME}; do
+    eval "printf "\$col_separator";
+    print-center-aligned-text ${(C)name} \$single_col_width \$${(U)name}_COLOR"
+  done
+  echo
+  draw-horizontal-table-border
+  
+  # Figure
+  eval awk -F, \'$bar_chart_drawing_script\' <<< $formatted_git_log | sort
+  draw-border $table_width
+
+  # Total
+  print-center-aligned-text Total $((LEN_DATE_STRING + 1)) $DIMMED_TEXT_COLOR
+  for index name in ${(kv)COL_INDEX_NAME}; do
+    eval "print-right-aligned-text \$sum_$name \$((single_col_width + 3)) \$${(U)name}_COLOR"
+  done; echo
+  draw-border $table_width
+
+  # Average
+  print-center-aligned-text Average $((LEN_DATE_STRING + 1)) $DIMMED_TEXT_COLOR
+  for index name in ${(kv)COL_INDEX_NAME}; do
+    local average=$(eval "printf \"%.2f\" \$((sum_$name / $count_dates.0))")
+    eval "print-right-aligned-text \$average \$((single_col_width + 3)) \$${(U)name}_COLOR"
+  done; echo
+  draw-border $table_width
+
+} always {
+  if catch '*'; then
+    case $CAUGHT in
+      (OSUnknownException)
+        echo "OSUnknownException: gitstats is available on macOS/Linux."
+        ;;
+      (GsedCommandNotFoundException)
+        echo "CommandNotFoundException: If you are on macOS, you need GNU sed command installed."
+        ;;
+      (RepositoryNotSpecifiedException)
+        echo "RepositoryNotSpecifiedException: Run command in git repository or specify repository path(s) with -r/--repo."
+        ;;
+      (WidthTooSmallException)
+        echo "WidthTooSmallException: Retry in wider console window."
+        ;;
+      (NoSuchRepositoryException)
+        echo "NoSuchRepositoryException: Specified repository does not exist."
+        ;;
+      (*)
+        echo "other Exception"
+        ;;
+    esac
+  fi
+}

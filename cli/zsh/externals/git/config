@@ -1,2 +1,5 @@
 # Environment variables
 export GIT_EDITOR="nvim"
+
+# Functions
+autoload -z $(dirname $0)/functions/*
