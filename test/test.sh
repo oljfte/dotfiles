@@ -2,6 +2,7 @@
 
 function test() {
   # TODO: verbose
+  mkdir $DOTFILES/log 2>/dev/null
   echo $(date) $1 &>> $DOTFILES/log/test.log
   $1 &>> $DOTFILES/log/test.log
   if ((!$?)); then
