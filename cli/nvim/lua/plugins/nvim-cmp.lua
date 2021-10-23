@@ -15,20 +15,22 @@ return function()
             ['<CR>'] = cmp.mapping.confirm(),
             ["<Tab>"] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t("<C-n>"), "n")
-                elseif check_back_space() then
-                    vim.fn.feedkeys(t("<Tab>"), "n")
+                    feedkey("<C-n>", "n")
+                elseif cmp.visible() then
+                    cmp.select_next_item()
                 else
                     fallback()
                 end
-            end, { "i", "s" }),
+            end, {"i"}),
             ["<S-Tab>"] = cmp.mapping(function(fallback)
                 if vim.fn.pumvisible() == 1 then
-                    vim.fn.feedkeys(t("<C-p>"), "n")
+                    feedkey("<C-p>", "n")
+                elseif cmp.visible() then
+                    cmp.select_prev_item()
                 else
                     fallback()
                 end
-            end, { "i", "s" }),
+            end, {"i"}),
         },
         sources = {
             { name = "nvim_lsp" },
