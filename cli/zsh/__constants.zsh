@@ -2,7 +2,6 @@
 export PERSONAL="$DOTFILES/personal"
 export DOCUMENTS="$HOME/Documents"
 export DESKTOP="$HOME/Desktop"
-export CONFIG="$DOCUMENTS/.config"
 export TEMP_DIR="/tmp"
 export LOG_DIR="/var/log"
 export PATH="/usr/local/bin:$PATH"
