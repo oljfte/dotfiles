@@ -44,4 +44,13 @@ return function()
             completeopt = 'menu,menuone,noinsert',
         }
     }
+
+    vim.cmd(
+        [[
+          augroup disable-cmp-in-telescope
+            autocmd!
+            autocmd FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
+          augroup END
+        ]]
+    )
 end
