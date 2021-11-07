@@ -50,4 +50,6 @@ return function()
     utils.keymap('n', "<leader>fh", ":Telescope oldfiles<CR>")
     utils.keymap('n', "<leader>fb", ":Telescope buffers<CR>")
     utils.keymap('n', "<leader>fg", ":Telescope live_grep<CR>")
+    utils.keymap('n', "<leader>gc", ":Telescope git_commits<CR>")
+    utils.keymap('n', "<leader>gb", ":Telescope git_bcommits<CR>")
 end
