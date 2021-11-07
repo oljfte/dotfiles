@@ -1,0 +1,102 @@
+#!/bin/zsh -eu
+
+local HELP="
+
+A tool to make working with Git repositories easier.
+
+Requirement:
+    macOS 11.6 or later + zsh + fzf. Might work on other operating systems but not guaranteed.
+    For more information about fzf, see https://github.com/junegunn/fzf
+
+    You need to set an environment variable REPOSITORY_ROOT as the path to the directory where you want to store Git repositories.
+
+Usage:
+    repo [<command>] [<args>]
+
+    Running 'repo' alone shows all repositories in \$REPOSITORY_ROOT, and changes working directory to selected one.
+
+    Available commands:
+        list    Shows all repositories in \$REPOSITORY_ROOT, and return local full-path for selected one as stdout.
+        open    Shows all repositories in \$REPOSITORY_ROOT, and open selected one in default browser.
+        clone   Clones repository specified as args with format <org>/<repo> into \$REPOSITORY_ROOT/<org>/<repo>. You can pass multiple targets, separating them with whitespaces.
+
+"
+
+function max-repo-org-length() {
+  ls -d1 ${~REPOSITORY_ROOT}/* | xargs -L1 basename \
+    | xargs -L1 zsh -c 'echo ${#0}' | sort | head -1
+}
+
+function select-repo() {
+  while read repo; do
+    eval "awk -F'/' '{printf \"\\033[0;34m\";\
+      printf \"%-$(( $(max-repo-org-length) + 2))s\", \$5;\
+      printf \"\\033[0m\"\$6\"\\n\"}'" <<< $repo;
+    done <<< $(ls -d ${~REPOSITORY_ROOT}/*/*) \
+      | fzf --no-multi \
+      | sed 's/ \{1,\}/\//g'
+}
+
+{
+  autoload -Uz catch throw
+
+  [[ $REPOSITORY_ROOT ]] || throw "RepositoryRootNotSetException"
+  command -v fzf &>/dev/null || throw "FzfNotFoundException"
+
+  local -A opts
+  zparseopts -D -M -A opts -- h=-help -help
+
+  if [[ ${opts[(i)--help]} ]]; then
+    echo $HELP
+    return
+  fi
+
+  local command=$1
+  local args=${@:2}
+
+  case $command in
+    ""|list|open )
+      local repo_identifier=$(select-repo)
+      [[ $repo_identifier ]] || return
+      local repo_path=${~REPOSITORY_ROOT}/$repo_identifier
+      ;|
+    "" )
+      builtin cd ${repo_path:-$PWD}
+      ;;
+    list )
+      echo $repo_path
+      ;;
+    open )
+      open https://github.com/$repo_identifier
+      ;;
+    clone )
+      [[ $args ]] || throw "RepositoryNotSpecifiedException"
+      for repo_identifier in $(echo $args); do
+        git clone git@github.com:$repo_identifier.git ${~REPOSITORY_ROOT}/$repo_identifier
+      done
+      ;;
+    * )
+      throw "CommandNotFoundException"
+      ;;
+  esac
+} always {
+  if catch '*'; then
+    case $CAUGHT in
+      (RepositoryRootNotSetException)
+        echo "RepositoryRootNotSetException: You need to set REPOSITORY_ROOT. For more information try ---help."
+        ;;
+      (CommandNotFoundException)
+        echo "CommandNotFoundException: For more information try ---help."
+        ;;
+      (FzfNotFoundException)
+        echo "FzfNotFoundException: For more information try ---help."
+        ;;
+      (RepositoryNotSpecifiedException)
+        echo "RepositoryNotSpecifiedException: You must specify one or more repositories with format <org>/<repo>. For more information try --help."
+        ;;
+      (*)
+        echo "OtherException"
+        ;;
+    esac
+  fi
+}
