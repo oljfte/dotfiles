@@ -9,7 +9,7 @@ opt.signcolumn = "yes"
 opt.showmode = false
 opt.title = true
 opt.shortmess = opt.shortmess + "I"
-opt.laststatus = 1
+opt.laststatus = 2
 opt.guicursor = {"a:block-blinkon1", "i-c-ci:ver1-blinkon1"}
 opt.termguicolors = true
 
