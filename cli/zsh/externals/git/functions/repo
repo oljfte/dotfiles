@@ -55,7 +55,7 @@ function select-repo() {
   local args=${@:2}
 
   case $command in
-    ""|list|open )
+    ""|list|open|remove )
       local repo_identifier=$(select-repo)
       [[ $repo_identifier ]] || return
       local repo_path=${~REPOSITORY_ROOT}/$repo_identifier
@@ -74,6 +74,10 @@ function select-repo() {
       for repo_identifier in $(echo $args); do
         git clone git@github.com:$repo_identifier.git ${~REPOSITORY_ROOT}/$repo_identifier
       done
+      ;;
+    remove )
+      trash ${repo_path:-$PWD}
+      echo "Removed $repo_identifier"
       ;;
     * )
       throw "CommandNotFoundException"
