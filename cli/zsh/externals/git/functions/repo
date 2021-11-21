@@ -5,8 +5,10 @@ local HELP="
 A tool to make working with Git repositories easier.
 
 Requirement:
-    macOS 11.6 or later + zsh + fzf. Might work on other operating systems but not guaranteed.
-    For more information about fzf, see https://github.com/junegunn/fzf
+    macOS 11.6 or later + zsh + gh + fzf. Might work on other operating systems but not guaranteed.
+    More information about third-party dependencies:
+    - https://github.com/cli/cli
+    - https://github.com/junegunn/fzf
 
     You need to set an environment variable REPOSITORY_ROOT as the path to the directory where you want to store Git repositories.
 
@@ -18,9 +20,13 @@ Usage:
     Available commands:
         list    Shows all repositories in \$REPOSITORY_ROOT, and return local full-path for selected one as stdout.
         open    Shows all repositories in \$REPOSITORY_ROOT, and open selected one in default browser.
+        create  Creates git repository in \$REPOSITORY_ROOT and remote, and sets upstream automatically. You can specify several options with interactive prompts.
+        delete  Deletes git repository in \$REPOSITORY_ROOT and remote (optional).
         clone   Clones repository specified as args with format <org>/<repo> into \$REPOSITORY_ROOT/<org>/<repo>. You can pass multiple targets, separating them with whitespaces.
 
 "
+
+local -A yes_no=(y Yes n No)
 
 function max-repo-org-length() {
   ls -d1 ${~REPOSITORY_ROOT}/* | xargs -L1 basename \
@@ -37,11 +43,132 @@ function select-repo() {
       | sed 's/ \{1,\}/\//g'
 }
 
+function print-colored-text() {
+  local text=$1
+  local color=${2:-38}
+
+  echo -ne "\033[0;${color}m$text\033[0m"
+}
+
+function clear-after-nth-char() {
+  echo -ne "\033[${COLUMNS}D\033[${1}C\033[K"
+}
+
+function move-cursor-up-n-lines() {
+  echo -ne "\033[${1}A"
+}
+
+function clear-current-line() {
+  echo -ne "\n\033[1A\033[K"
+}
+
+function return-and-back() {
+  echo -ne "\033[s\n\033[u\033[1A"
+}
+
+function create-repo() {
+  local repo_name
+  local is_public
+
+  while true; do
+    local prompt_text="Repository Name"
+    print-colored-text \? 32
+    print-colored-text " $prompt_text "
+    read repo_name
+    move-cursor-up-n-lines 1
+    clear-after-nth-char $((${#prompt_text} + 3))
+    if [[ ! $repo_name ]]; then
+      print-colored-text Required 31
+      sleep 1
+      clear-current-line
+    else
+      print-colored-text $repo_name 36
+      echo
+      break
+    fi
+  done
+
+  while true; do
+    local prompt_text="Would you like to make this repository public?"
+    print-colored-text \? 32
+    print-colored-text " $prompt_text"
+    print-colored-text " (y/N) " 37
+    read is_public
+    is_public=${is_public:-"n"}
+    move-cursor-up-n-lines 1
+    clear-after-nth-char $((${#prompt_text} + 3))
+    if [[ ! $is_public = [YyNn] ]]; then
+      print-colored-text "Type y or n" 31
+      sleep 1
+      clear-current-line
+    else
+      print-colored-text ${yes_no[${is_public:l}]} 36
+      echo
+      break
+    fi
+  done
+
+  local local_repo_path="$REPOSITORY_ROOT/$USER/$repo_name"
+
+  mkdir -p ${~local_repo_path}
+  (
+    builtin cd ${~local_repo_path}
+    git init &>/dev/null
+
+    case $is_public in
+      [Yy])
+        gh repo create $repo_name --public
+        ;;
+      [Nn])
+        gh repo create $repo_name --private
+        ;;
+    esac
+  )
+}
+
+function delete-repo() {
+  local repo_identifier=$1
+  local repo_path=${~REPOSITORY_ROOT}/$repo_identifier
+
+  [[ $repo_identifier ]] || return
+
+  while true; do
+    local prompt_text="Would you like to delete remote repository as well?"
+    print-colored-text \? 32
+    print-colored-text " $prompt_text"
+    print-colored-text " (y/N) " 37
+    read delete_remote
+    delete_remote=${delete_remote:-"n"}
+    move-cursor-up-n-lines 1
+    clear-after-nth-char $((${#prompt_text} + 3))
+    if [[ ! $delete_remote = [YyNn] ]]; then
+      print-colored-text "Type y or n" 31
+      sleep 1
+      clear-current-line
+    else
+      print-colored-text ${yes_no[${delete_remote:l}]} 36
+      echo
+      break
+    fi
+  done
+
+  if [[ $delete_remote = [Yy] ]]; then
+    gh api -X DELETE repos/$repo_identifier
+    print-colored-text ✓ 32
+    echo " Deleted remote repository $repo_identifier"
+  fi
+
+  trash ${repo_path}
+  print-colored-text ✓ 32
+  echo " Deleted local repository $repo_identifier"
+}
+
 {
   autoload -Uz catch throw
 
   [[ $REPOSITORY_ROOT ]] || throw "RepositoryRootNotSetException"
   command -v fzf &>/dev/null || throw "FzfNotFoundException"
+  command -v gh &>/dev/null || throw "GhNotFoundException"
 
   local -A opts
   zparseopts -D -M -A opts -- h=-help -help
@@ -55,7 +182,7 @@ function select-repo() {
   local args=${@:2}
 
   case $command in
-    ""|list|open|remove )
+    ""|list|open|delete )
       local repo_identifier=$(select-repo)
       [[ $repo_identifier ]] || return
       local repo_path=${~REPOSITORY_ROOT}/$repo_identifier
@@ -75,9 +202,11 @@ function select-repo() {
         git clone git@github.com:$repo_identifier.git ${~REPOSITORY_ROOT}/$repo_identifier
       done
       ;;
-    remove )
-      trash ${repo_path:-$PWD}
-      echo "Removed $repo_identifier"
+    create )
+      create-repo
+      ;;
+    delete )
+      delete-repo $repo_identifier
       ;;
     * )
       throw "CommandNotFoundException"
@@ -87,13 +216,16 @@ function select-repo() {
   if catch '*'; then
     case $CAUGHT in
       (RepositoryRootNotSetException)
-        echo "RepositoryRootNotSetException: You need to set REPOSITORY_ROOT. For more information try ---help."
+        echo "RepositoryRootNotSetException: You need to set REPOSITORY_ROOT. For more information try --help."
         ;;
       (CommandNotFoundException)
-        echo "CommandNotFoundException: For more information try ---help."
+        echo "CommandNotFoundException: For more information try --help."
         ;;
       (FzfNotFoundException)
-        echo "FzfNotFoundException: For more information try ---help."
+        echo "FzfNotFoundException: For more information try --help."
+        ;;
+      (GhNotFoundException)
+        echo "GhNotFoundException: For more information try --help."
         ;;
       (RepositoryNotSpecifiedException)
         echo "RepositoryNotSpecifiedException: You must specify one or more repositories with format <org>/<repo>. For more information try --help."
