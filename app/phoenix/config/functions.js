@@ -170,7 +170,10 @@ const moveWindowToSpace = (
   focus = false
 ) => {
   const normalSpaces = Space.all().filter((space) => space.isNormal());
-  normalSpaces.map((space) => {
+  normalSpaces.map((space, i) => {
+    if (i == spaceIndex - 1) {
+      return;
+    }
     space.removeWindows([targetWindow]);
   });
   normalSpaces[spaceIndex - 1].addWindows([targetWindow]);
