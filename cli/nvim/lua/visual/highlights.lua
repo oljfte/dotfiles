@@ -14,7 +14,8 @@ local darkgray = colors.darkgray
 
 utils.highlight("Conceal", nil, "NONE", nil)
 utils.highlight("Cursor", "NONE", "NONE", "reverse")
-utils.highlight("CursorLineNr", "NONE", nil, nil)
+utils.highlight("CursorLine", "NONE", "NONE", nil)
+utils.highlight("CursorLineNr", lightgray, nil, nil)
 utils.highlight("Directory", blue, nil, nil)
 utils.highlight("DiffAdd", green, "NONE", nil)
 utils.highlight("DiffDelete", red, "NONE", nil)
