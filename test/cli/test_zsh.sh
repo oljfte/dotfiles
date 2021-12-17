@@ -1,12 +1,12 @@
 #!/bin/zsh
 
-function test_zshrc_conpiled() {
-  exec zsh -l
+function test_zshrc_compiled() {
+  exec zsh -l &!
   [ -e ~/.zshrc.zwc ]
 }
 
-function test_zcompdump_conpiled() {
-  exec zsh -l
+function test_zcompdump_compiled() {
+  exec zsh -l &!
   [ -e ~/.zcompdump.zwc ]
 }
 

@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-function test() {
+function execute_test() {
   # TODO: verbose
   mkdir $DOTFILES/log 2>/dev/null
   echo $(date) $1 &>> $DOTFILES/log/test.log
@@ -30,7 +30,7 @@ for script in $DOTFILES/test/**/test_*.sh; do
   draw-separator
   echo "\033[1;34mStart running test: ${script#*/}\033[0m\n"
   for func in ${$(grep "^function test_" $script | cut -d " " -f 2)//\(\)}; do
-    test $func
+    execute_test $func
     ((!$?)) && passed=$(( passed+1 )) || failed=$(( failed+1 ))
     echo
   done
