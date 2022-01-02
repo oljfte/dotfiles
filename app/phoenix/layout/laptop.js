@@ -1,13 +1,8 @@
 const WINDOW_LAYOUT = [
   // Space 1
   {
-    name: "Spotify",
-    gridFrame: { x: 0, y: 0, width: 7, height: 12 },
-    spaceIndex: 1,
-  },
-  {
     name: "TweetDeck",
-    gridFrame: { x: 7, y: 0, width: 5, height: 12 },
+    gridFrame: { x: 0, y: 0, width: 12, height: 12 },
     spaceIndex: 1,
   },
 
