@@ -6,6 +6,7 @@ function test_zshrc_compiled() {
 }
 
 function test_zcompdump_compiled() {
+  touch $HOME/.zcompdump
   exec zsh -l &! lsof -p $! +r 1 &>/dev/null
   [ -e ~/.zcompdump.zwc ]
 }
