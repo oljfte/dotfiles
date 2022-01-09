@@ -123,6 +123,10 @@ function create-repo() {
         gh repo create $repo_name --private
         ;;
     esac
+
+    git remote add origin https://github.com/$USER/$repo_name.git
+    git commit --allow-empty -m "Initial commit" &>/dev/null
+    git push -u origin main &>/dev/null
   )
 }
 
