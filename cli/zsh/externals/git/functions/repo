@@ -136,30 +136,32 @@ function delete-repo() {
 
   [[ $repo_identifier ]] || return
 
-  while true; do
-    local prompt_text="Would you like to delete remote repository as well?"
-    print-colored-text \? 32
-    print-colored-text " $prompt_text"
-    print-colored-text " (y/N) " 37
-    read delete_remote
-    delete_remote=${delete_remote:-"n"}
-    move-cursor-up-n-lines 1
-    clear-after-nth-char $((${#prompt_text} + 3))
-    if [[ ! $delete_remote = [YyNn] ]]; then
-      print-colored-text "Type y or n" 31
-      sleep 1
-      clear-current-line
-    else
-      print-colored-text ${yes_no[${delete_remote:l}]} 36
-      echo
-      break
-    fi
-  done
+  if [ ${repo_identifier%/*} == $USER ]; then
+    while true; do
+      local prompt_text="Would you like to delete remote repository as well?"
+      print-colored-text \? 32
+      print-colored-text " $prompt_text"
+      print-colored-text " (y/N) " 37
+      read delete_remote
+      delete_remote=${delete_remote:-"n"}
+      move-cursor-up-n-lines 1
+      clear-after-nth-char $((${#prompt_text} + 3))
+      if [[ ! $delete_remote = [YyNn] ]]; then
+        print-colored-text "Type y or n" 31
+        sleep 1
+        clear-current-line
+      else
+        print-colored-text ${yes_no[${delete_remote:l}]} 36
+        echo
+        break
+      fi
+    done
 
-  if [[ $delete_remote = [Yy] ]]; then
-    gh api -X DELETE repos/$repo_identifier
-    print-colored-text ✓ 32
-    echo " Deleted remote repository $repo_identifier"
+    if [[ $delete_remote = [Yy] ]]; then
+      gh api -X DELETE repos/$repo_identifier
+      print-colored-text ✓ 32
+      echo " Deleted remote repository $repo_identifier"
+    fi
   fi
 
   trash ${repo_path}
