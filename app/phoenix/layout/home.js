@@ -1,3 +1,5 @@
+const PADDING = 50;
+
 const WINDOW_LAYOUT = [
   // Space 1
   {
