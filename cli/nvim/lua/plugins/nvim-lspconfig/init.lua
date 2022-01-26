@@ -6,7 +6,7 @@ return function()
         require("plugins.nvim-lspconfig.visual")
         require("plugins.nvim-lspconfig.keymap")
 
-        vim.cmd("autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics({ focusable = false })")
+        vim.cmd("autocmd CursorHold <buffer> lua vim.diagnostic.open_float({ focusable = false })")
 
         if client.name ~= 'efm' then
             client.resolved_capabilities.document_formatting = false
