@@ -9,10 +9,6 @@ for session_name in $(get-tmux-sessions-with-configs); do
     || select-tmux-session $session_name\"";
 done
 
-alias kt="tmux kill-server"
-alias kw="tmux kill-window"
-alias kp="tmux kill-pane"
-
 # ZLE
 function select-tmux-session-in-term() {
   if [ $TMUX ]; then
