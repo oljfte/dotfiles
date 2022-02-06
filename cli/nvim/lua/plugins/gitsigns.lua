@@ -1,5 +1,6 @@
 return function()
     local utils = require("utils")
+    local colors = require("colors")
 
     require("gitsigns").setup(
         {
@@ -39,7 +40,7 @@ return function()
         }
     )
 
-    utils.highlight("GitSignsAdd", "#30d158", "NONE", nil)
-    utils.highlight("GitSignsChange", "#0a84ff", "NONE", nil)
-    utils.highlight("GitSignsDelete", "#ff453a", "NONE", nil)
+    utils.highlight("GitSignsAdd", colors.green, "NONE", nil)
+    utils.highlight("GitSignsChange", colors.blue, "NONE", nil)
+    utils.highlight("GitSignsDelete", colors.red, "NONE", nil)
 end
