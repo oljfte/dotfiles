@@ -2,7 +2,7 @@
 
 local target_session=$(get-tmux-session $1)
 [ -z "$target_session" ] && return 1
-if [ "$(tmux display -p -F "#{session_name}" 2>/dev/null)" = "popup" ]; then
+if [ $TMUX ] && [ "$(tmux display -p -F "#{session_name}" 2>/dev/null)" = "popup" ]; then
     eval $(tmux showenv -gs TMUX_LAST_DETECTED_SESSION)
     local from_session=$TMUX_LAST_DETECTED_SESSION
     if [ ! "$target_session" = "$from_session" ]; then
