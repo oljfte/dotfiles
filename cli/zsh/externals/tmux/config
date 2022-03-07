@@ -2,28 +2,10 @@
 autoload -z $(dirname $0)/functions/*
 
 # Aliases
-for session_name in $(get-tmux-sessions-with-configs); do
+for config in ~/.tmux/.config/*(ND@); do
+  local session_name=${config[(ws:.:)-2]}
   eval "alias $session_name=\"[ \"\$(tmux display-message -p '#S' 2>/dev/null)\" = \"$session_name\" ] &>/dev/null \
     && [ \$TMUX ] \
     && cd $(echo \$${(U)session_name:-PWD}) \
-    || select-tmux-session $session_name\"";
+    || attach-tmux-session $session_name\"";
 done
-
-# ZLE
-function select-tmux-session-in-term() {
-  if [ $TMUX ]; then
-    select-tmux-session
-  else
-    BUFFER="select-tmux-session"
-    zle transient-line
-    zle reset-prompt
-  fi
-}
-
-zle -N select-tmux-session-in-term
-bindkey -M vicmd "^o" select-tmux-session-in-term
-bindkey -M viins "^o" select-tmux-session-in-term
-
-zle -N toggle-tmux-popup
-bindkey -M vicmd "^p" toggle-tmux-popup
-bindkey -M viins "^p" toggle-tmux-popup

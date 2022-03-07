@@ -1,3 +1,0 @@
-#!/bin/zsh
-
-tmux ls -F "#{session_name}" 2>/dev/null | grep -v "popup" | xargs -0 echo
