@@ -34,10 +34,12 @@ function max-repo-org-length() {
 }
 
 function select-repo() {
+  local repo_org_col_width=$(( $(max-repo-org-length) + 2))
+  local repo_list_format_script="awk -F'/' '{printf \"\\033[0;34m\";\
+      printf \"%-${repo_org_col_width}s\", \$5;\
+      printf \"\\033[0m\"\$6\"\\n\"}'"
   while read repo; do
-    eval "awk -F'/' '{printf \"\\033[0;34m\";\
-      printf \"%-$(( $(max-repo-org-length) + 2))s\", \$5;\
-      printf \"\\033[0m\"\$6\"\\n\"}'" <<< $repo;
+    eval $repo_list_format_script <<< $repo;
     done <<< $(ls -d ${~REPOSITORY_ROOT}/*/*) \
       | fzf --no-multi \
       | sed 's/ \{1,\}/\//g'
