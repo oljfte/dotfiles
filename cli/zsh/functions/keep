@@ -1,3 +1,7 @@
 #!/bin/zsh
 
-cp -r $@ $TEMP_DIR
+if [ $# -eq 0 ]; then
+  cd $TEMP_DIR
+else
+  cp -r $@ $TEMP_DIR
+fi
