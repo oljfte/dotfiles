@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+for name in $(ls $WORK); do
+  tmux has-session -t $name 2>/dev/null && printf "\033[0;32m" || printf "\033[0;38m"
+  printf "$name\033[0m\n"
+done | fzf-tmux +m -w 40 -h 15 | read target_session
+
+[ $target_session ] || return 0
+
+attach-tmux-session $target_session

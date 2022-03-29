@@ -1,5 +1,5 @@
 #!/bin/zsh
 
 local target_session=$1
-tmux new -d -s $target_session &>/dev/null
+tmux new -d -s $target_session &>/dev/null && eval "[ -e \${${(U)target_session}:-''} ]" && tmux send -t $target_session "cd $WORK/${target_session} && clear" C-m
 tmux a -t $target_session &>/dev/null || tmux switchc -t $target_session &>/dev/null

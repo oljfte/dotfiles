@@ -2,10 +2,9 @@
 autoload -z $(dirname $0)/functions/*
 
 # Aliases
-for config in ~/.tmux/.config/*(ND@); do
-  local session_name=${config[(ws:.:)-2]}
-  eval "alias $session_name=\"[ \"\$(tmux display-message -p '#S' 2>/dev/null)\" = \"$session_name\" ] &>/dev/null \
+for name in $(ls $WORK); do
+  eval "alias $name=\"[ \"\$(tmux display-message -p '#S' 2>/dev/null)\" = \"$name\" ] &>/dev/null \
     && [ \$TMUX ] \
-    && cd $(echo \$${(U)session_name:-PWD}) \
-    || attach-tmux-session $session_name\"";
+    && cd $(echo \$${(U)name:-PWD}) \
+    || attach-tmux-session $name\"";
 done
