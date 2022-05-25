@@ -65,7 +65,6 @@ cask "google-cloud-sdk"
 cask "phoenix"
 cask "slack"
 cask "spotify"
-cask "timing"
 mas "EventScripts", id: 525319418
 mas "LINE", id: 539883307
 mas "TweetDeck", id: 485812721
