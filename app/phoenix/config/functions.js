@@ -2,18 +2,21 @@ const moveWindowToAdjacentSpace = (
   direction,
   { targetWindow = Window.focused(), focus = true }
 ) => {
+  const allSpaces = Space.all();
   const currentSpace = Space.active();
-  if (!(targetWindow && currentSpace)) return;
+  const currentIndex = allSpaces.findIndex(
+    (s) => s.hash() == currentSpace.hash()
+  );
+  if (!(targetWindow && currentSpace && currentIndex != -1)) return;
 
   let targetSpace;
   if (direction == "right") {
-    targetSpace = currentSpace.next();
+    targetSpace = allSpaces[currentIndex + 1];
   } else if (direction == "left") {
-    targetSpace = currentSpace.previous();
+    targetSpace = allSpaces[currentIndex - 1];
   }
 
-  currentSpace.removeWindows([targetWindow]);
-  targetSpace.addWindows([targetWindow]);
+  targetSpace.moveWindows([targetWindow]);
 
   if (focus) {
     targetWindow.focus();
@@ -170,13 +173,7 @@ const moveWindowToSpace = (
   focus = false
 ) => {
   const normalSpaces = Space.all().filter((space) => space.isNormal());
-  normalSpaces.map((space, i) => {
-    if (i == spaceIndex - 1) {
-      return;
-    }
-    space.removeWindows([targetWindow]);
-  });
-  normalSpaces[spaceIndex - 1].addWindows([targetWindow]);
+  normalSpaces[spaceIndex - 1].moveWindows([targetWindow]);
   if (!focus) return;
   targetWindow.focus();
 };
