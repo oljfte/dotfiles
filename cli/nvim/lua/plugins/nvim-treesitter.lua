@@ -4,7 +4,6 @@ return function()
             highlight = {
                 enable = true
             },
-            ensure_installed = "maintained",
             indent = {enable = true},
             autopairs = {enable = true}
         }
