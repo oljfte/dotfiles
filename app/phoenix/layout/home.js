@@ -3,7 +3,7 @@ const PADDING = 50;
 const WINDOW_LAYOUT = [
   // Space 1
   {
-    name: "TweetDeck",
+    name: "Twitter",
     gridFrame: { x: 0, y: 0, width: 3, height: 6 },
     spaceIndex: 1,
   },
