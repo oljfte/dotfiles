@@ -1,6 +1,6 @@
 local utils = require("utils")
 
-utils.buf_keymap("n", "<leader>for", ":lua vim.lsp.buf.formatting()<CR>")
+utils.buf_keymap("n", "<leader>for", ":lua vim.lsp.buf.format { async = true }<CR>")
 utils.buf_keymap("n", "<leader>dec", ":lua vim.lsp.buf.declaration()<CR>")
 utils.buf_keymap("n", "<leader>def", ":lua vim.lsp.buf.definition()<CR>")
 utils.buf_keymap("n", "<leader>hov", ":lua vim.lsp.buf.hover()<CR>")

@@ -9,7 +9,7 @@ return function()
         vim.cmd("autocmd CursorHold <buffer> lua vim.diagnostic.open_float({ focusable = false })")
 
         if client.name ~= 'efm' then
-            client.resolved_capabilities.document_formatting = false
+            client.server_capabilities.document_formatting = false
         end
     end
 
