@@ -7,10 +7,6 @@ return function()
         require("plugins.nvim-lspconfig.keymap")
 
         vim.cmd("autocmd CursorHold <buffer> lua vim.diagnostic.open_float({ focusable = false })")
-
-        if client.name ~= 'efm' then
-            client.server_capabilities.document_formatting = false
-        end
     end
 
     vim.lsp.handlers["textDocument/publishDiagnostics"] =
