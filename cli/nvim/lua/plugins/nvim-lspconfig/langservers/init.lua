@@ -3,5 +3,6 @@ return {
   clangd = {},
   tsserver = {},
   solargraph = {},
-  denols = {}
+  denols = {},
+  rust_analyzer = {}
 }
