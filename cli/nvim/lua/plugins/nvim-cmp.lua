@@ -1,15 +1,6 @@
 return function()
     local cmp = require "cmp"
 
-    local check_back_space = function()
-      local col = vim.fn.col '.' - 1
-      return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
-    end
-
-    local t = function(str)
-        return vim.api.nvim_replace_termcodes(str, true, true, true)
-    end
-
     cmp.setup {
         mapping = {
             ['<CR>'] = cmp.mapping.confirm(),
