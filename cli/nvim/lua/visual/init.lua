@@ -10,11 +10,11 @@ opt.showmode = false
 opt.title = true
 opt.shortmess = opt.shortmess + "I"
 opt.laststatus = 2
-opt.guicursor = {"a:block-blinkon1", "i-c-ci:ver1-blinkon1"}
+opt.guicursor = { "a:block-blinkon1", "i-c-ci:ver1-blinkon1" }
 opt.termguicolors = true
 
 vim.g.no_buffers_menu = 1
-vim.wo.fillchars = 'eob: '
+vim.wo.fillchars = "eob: "
 
 -- Highlight yanked area
 vim.cmd([[

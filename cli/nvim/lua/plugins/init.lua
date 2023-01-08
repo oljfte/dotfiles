@@ -2,71 +2,57 @@
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", install_path})
-    vim.api.nvim_command("packadd packer.nvim")
+	vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
+	vim.api.nvim_command("packadd packer.nvim")
 end
 
 -- Plugins
 local packer = require("packer")
 
-return packer.startup(
-    function(use)
-        use({"wbthomason/packer.nvim"})
+return packer.startup(function(use)
+	use({ "wbthomason/packer.nvim" })
 
-        use(
-            {
-                "nvim-treesitter/nvim-treesitter",
-                config = require("plugins.nvim-treesitter"),
-                event = "BufRead",
-                run = ":TSUpdate"
-            }
-        )
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		config = require("plugins.nvim-treesitter"),
+		event = "BufRead",
+		run = ":TSUpdate",
+	})
 
-        use(
-            {
-                "nvim-telescope/telescope.nvim",
-                config = require("plugins.telescope"),
-                requires = {
-                  {"nvim-lua/plenary.nvim"},
-                  {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-                }
-            }
-        )
+	use({
+		"nvim-telescope/telescope.nvim",
+		config = require("plugins.telescope"),
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+		},
+	})
 
-        use(
-            {
-                "neovim/nvim-lspconfig",
-                config = require("plugins.nvim-lspconfig"),
-            }
-        )
+	use({
+		"neovim/nvim-lspconfig",
+		config = require("plugins.nvim-lspconfig"),
+	})
 
-        use(
-            {
-                "hrsh7th/nvim-cmp",
-                config = require("plugins.nvim-cmp"),
-                requires = {
-                    "hrsh7th/cmp-buffer",
-                    "hrsh7th/cmp-nvim-lsp",
-                }
-            }
-        )
+	use({
+		"hrsh7th/nvim-cmp",
+		config = require("plugins.nvim-cmp"),
+		requires = {
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp",
+		},
+	})
 
-        use(
-            {
-                "lewis6991/gitsigns.nvim",
-                config = require("plugins.gitsigns"),
-                event = "BufRead"
-            }
-        )
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = require("plugins.gitsigns"),
+		event = "BufRead",
+	})
 
-        use(
-            {
-                "lukas-reineke/indent-blankline.nvim",
-                config = require("plugins.indent-blankline")
-            }
-        )
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		config = require("plugins.indent-blankline"),
+	})
 
-        packer.install()
-        packer.compile()
-    end
-)
+	packer.install()
+	packer.compile()
+end)
