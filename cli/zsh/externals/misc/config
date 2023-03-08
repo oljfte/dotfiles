@@ -8,7 +8,7 @@ export FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 
 # Functions
 autoload -Uz compinit
-[ $(date +'%j') != $(stat -f '%Sm' -t '%j' $HOME/.zcompdump) ] && compinit || compinit -C
+[ $(date +%Y-%m-%d ) != $(date +%Y-%m-%d -r $HOME/.zcompdump) ] && compinit || compinit -C
 
 autoload -Uz colors && colors
 
