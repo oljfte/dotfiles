@@ -28,5 +28,5 @@ const GRID_X_PATTERNS = GRID.x.length;
 const GRID_Y_PATTERNS = GRID.y.length;
 
 // Window restoration
-const RESTORING_ITERATION = 20;
+const RESTORING_ITERATION = 2;
 const RESTORING_INTERVAL = 200;
