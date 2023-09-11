@@ -1,0 +1,25 @@
+#!/usr/bin/zsh
+#
+if [ ! -f .watch ]; then
+    echo ".watch file does not exist. Exiting."
+    exit 1
+fi
+
+local command_to_run=$(sed -n '1p' .watch)
+
+local IFS=$'\n'
+local target_directories=($(sed -n '2,$p' .watch))
+local current_time
+local last_execution_time
+
+echo "Started watching..."
+echo "Target directories: ${$(printf "%s, " "${target_directories[@]}")%??}"
+fswatch -0 ${target_directories[*]} | while IFS= read -r -d ''
+do
+  current_time=$(date +%s)
+  if [[ $last_execution_time == $current_time ]]; then
+    continue;
+  fi
+  eval $command_to_run && echo "Command executed successfully." || echo "Command execution failed."
+  last_execution_time=$current_time
+done
