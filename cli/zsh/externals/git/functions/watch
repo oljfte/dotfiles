@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-#
+
 if [ ! -f .watch ]; then
     echo ".watch file does not exist. Exiting."
     exit 1
