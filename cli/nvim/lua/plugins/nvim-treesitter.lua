@@ -5,6 +5,6 @@ return function()
 		},
 		indent = { enable = true },
 		autopairs = { enable = true },
-		ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+		ensure_installed = "all",
 	})
 end
