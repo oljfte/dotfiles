@@ -3,7 +3,7 @@ local langservers = {
 	"dartls",
 	"pyright",
 	"rust_analyzer",
-	"solargraph",
+	"ruby_ls",
 	"tsserver",
 }
 local result = {}
