@@ -48,4 +48,8 @@ require("lazy").setup({
 		"lukas-reineke/indent-blankline.nvim",
 		config = require("plugins.indent-blankline"),
 	},
+	{
+		"zbirenbaum/copilot.lua",
+		config = require("plugins.copilot"),
+	},
 })
