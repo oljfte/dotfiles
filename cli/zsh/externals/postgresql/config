@@ -1,2 +1,2 @@
 # Environment variables
-export PATH="$HOMEBREW_PREFIX/postgresql@15/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/postgresql@15/bin:$PATH"
