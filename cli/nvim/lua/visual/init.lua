@@ -23,20 +23,3 @@ vim.cmd([[
         au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=500}
     augroup END
 ]])
-
--- Auto highlight word under cursor
-vim.cmd([[
-  setl updatetime=300
-  highlight WordUnderCursor guibg=#3C3F48
-  autocmd CursorHold * call HighlightCursorWord()
-  function! HighlightCursorWord()
-      let search = getreg('/')
-      let cword = expand('<cword>')
-      let cchar = matchstr(getline('.'), '\%'.col('.').'c.')
-      if match(cword, search) == -1 && len(cword) > 0 && stridx(cword, cchar) != -1
-          exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
-      else
-          exe 'match WordUnderCursor /\V\<%s\>/'
-      endif
-  endfunction
-]])
