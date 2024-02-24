@@ -1,0 +1,10 @@
+# Function
+function replace() {
+    rg $1 -l | xargs sed -i "s/$1/$2/g"
+
+    rg --files -g "*$1*" -g "**/*$1*/**" | while read file; do
+      new_file=${file/$1/$2}
+      [[ ! -d $(dirname "$new_file") ]] && mkdir -p $(dirname "$new_file")
+      mv "$file" "$new_file";
+    done
+}
