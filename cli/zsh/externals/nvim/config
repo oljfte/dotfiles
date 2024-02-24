@@ -5,7 +5,7 @@ bindkey "^?" backward-delete-char
 # Environment variables
 export EDITOR="nvim"
 
-# Functions
+# Function
 autoload -z $(dirname $0)/functions/*
 
 # ZLE

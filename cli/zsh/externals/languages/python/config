@@ -2,6 +2,6 @@
 export PYTHONDONTWRITEBYTECODE=1
 export PATH=$HOMEBREW_PREFIX/opt/python@3.9/libexec/bin:$PATH
 
-# Aliases
+# Aliase
 alias python=$HOMEBREW_PREFIX/bin/python3
 alias pip=$HOMEBREW_PREFIX/opt/python@3.9/libexec/bin/pip

@@ -55,7 +55,7 @@
     local DELETIONS_COLOR=31
   fi
 
-  ## Functions
+  ## Function
   function read-lines() {
     while read line; do $1 $line; done
   }

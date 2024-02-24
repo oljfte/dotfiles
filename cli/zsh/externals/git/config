@@ -2,5 +2,5 @@
 export GIT_EDITOR="nvim"
 export REPOSITORY_ROOT="$HOME/repo"
 
-# Functions
+# Function
 autoload -z $(dirname $0)/functions/*

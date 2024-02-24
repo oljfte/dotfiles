@@ -1,2 +1,2 @@
-# Aliases
+# Aliase
 alias delds="fd --no-ignore -H '^\.DS_Store$' -tf -X rm"

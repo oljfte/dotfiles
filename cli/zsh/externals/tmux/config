@@ -1,7 +1,7 @@
-# Functions
+# Function
 autoload -z $(dirname $0)/functions/*
 
-# Aliases
+# Aliase
 for name in $(ls $WORK); do
   eval "alias $name=\"[ \"\$(tmux display-message -p '#S' 2>/dev/null)\" = \"$name\" ] &>/dev/null \
     && [ \$TMUX ] \

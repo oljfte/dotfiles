@@ -5,7 +5,7 @@ source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Environment variables
 export FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 
-# Functions
+# Function
 autoload -Uz compinit
 [ $(date +%Y-%m-%d ) != $(date +%Y-%m-%d -r $HOME/.zcompdump) ] && compinit || compinit -C
 

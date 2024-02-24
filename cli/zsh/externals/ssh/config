@@ -1,2 +1,2 @@
-# Functions
+# Function
 autoload -z $(dirname $0)/functions/*
