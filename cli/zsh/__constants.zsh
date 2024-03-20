@@ -1,4 +1,4 @@
-# Environment Variables
+# Environment Variable
 export PERSONAL="$DOTFILES/personal"
 export DOCUMENTS="$HOME/Documents"
 export DESKTOP="$HOME/Desktop"

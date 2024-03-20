@@ -2,7 +2,7 @@
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Environment variables
+# Environment Variable
 export FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 
 # Function
@@ -11,7 +11,7 @@ autoload -Uz compinit
 
 autoload -Uz colors && colors
 
-# Options
+# Option
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 zstyle ':completion:*:default' menu select=1
 zstyle ':completion::complete:*' use-cache true

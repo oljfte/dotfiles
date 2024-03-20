@@ -1,4 +1,4 @@
-# Environment variables
+# Environment Variable
 export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 # NOTE: Path below depends on versions, but getting this dynamically slows down zsh login.
 export PATH="$HOMEBREW_PREFIX/lib/ruby/gems/3.2.0/bin:$PATH"

@@ -2,7 +2,7 @@
 bindkey -v
 bindkey "^?" backward-delete-char
 
-# Environment variables
+# Environment Variable
 export EDITOR="nvim"
 
 # Function

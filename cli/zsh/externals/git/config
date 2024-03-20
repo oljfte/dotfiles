@@ -1,4 +1,4 @@
-# Environment variables
+# Environment Variable
 export GIT_EDITOR="nvim"
 export REPOSITORY_ROOT="$HOME/repo"
 
